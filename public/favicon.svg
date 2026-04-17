@@ -1,6 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="12" fill="#4361ee"/>
-  <path d="M15 10h21l13 13v28a4 4 0 01-4 4H15a4 4 0 01-4-4V14a4 4 0 014-4z" fill="white"/>
-  <path d="M36 10l13 13H40a4 4 0 01-4-4V10z" fill="#bfcbff"/>
-  <text x="13" y="46" font-family="Arial Black,Arial,Helvetica,sans-serif" font-weight="900" font-size="13" fill="#4361ee" letter-spacing="0.5">PDF</text>
+  <!-- Background rounded square with brand gradient -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5b5ef4"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <!-- Document body -->
+  <path d="M14 9h22l14 14v30a3 3 0 01-3 3H14a3 3 0 01-3-3V12a3 3 0 013-3z" fill="white"/>
+  <!-- Folded corner -->
+  <path d="M36 9l14 14H39a3 3 0 01-3-3V9z" fill="#c4b5fd"/>
+  <!-- PDF label -->
+  <text x="12" y="47" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="12.5" fill="#5b5ef4" letter-spacing="1">PDF</text>
 </svg>
