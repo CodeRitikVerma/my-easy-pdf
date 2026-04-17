@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "Bash(npm install:*)",
+      "Bash(npm ls:*)",
+      "Bash(xargs wc:*)",
+      "Read(//d/projects/**)",
+      "Bash(npm --version)",
+      "Bash([ -d \"/d/projects/my-easy-pdf/node_modules/$pkg\" ])"
+    ]
+  }
+}

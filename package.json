@@ -1,0 +1,46 @@
+{
+  "name": "my-easy-pdf",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@fontsource/allura": "^5.2.8",
+    "@fontsource/caveat": "^5.2.8",
+    "@fontsource/dancing-script": "^5.2.8",
+    "@fontsource/great-vibes": "^5.2.8",
+    "@fontsource/indie-flower": "^5.2.7",
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/kaushan-script": "^5.2.8",
+    "@fontsource/lobster": "^5.2.8",
+    "@fontsource/pacifico": "^5.2.7",
+    "@fontsource/patrick-hand": "^5.2.8",
+    "@fontsource/permanent-marker": "^5.2.7",
+    "@fontsource/rock-salt": "^5.2.8",
+    "@fontsource/sacramento": "^5.2.8",
+    "@fontsource/satisfy": "^5.2.7",
+    "@fontsource/tangerine": "^5.2.8",
+    "bootstrap": "^5.3.8",
+    "bootstrap-icons": "^1.13.1",
+    "jszip": "^3.10.1",
+    "next": "16.2.4",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^5.6.205",
+    "react": "19.2.4",
+    "react-bootstrap": "^2.10.10",
+    "react-colorful": "^5.6.1",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.4",
+    "typescript": "^5"
+  }
+}
