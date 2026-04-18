@@ -106,14 +106,13 @@ export const metadata: Metadata = {
   applicationName: 'MyEasyPDF',
   category:        'Productivity',
 
-  /* ── Manifest / icons (add these files to /public as needed) ── */
-  // manifest: '/manifest.json',
+  /* ── Icons — app/icon.svg is auto-detected by Next.js App Router and
+     injected as <link rel="icon" type="image/svg+xml">, which modern
+     browsers prefer over favicon.ico.                                 ── */
   icons: {
-    icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/favicon.ico', sizes: 'any' },
-    ],
-    apple: [{ url: '/favicon.svg' }],
+    icon:       [{ url: '/icon.svg', type: 'image/svg+xml' }],
+    shortcut:   [{ url: '/icon.svg', type: 'image/svg+xml' }],
+    apple:      [{ url: '/icon.svg', type: 'image/svg+xml' }],
   },
 };
 

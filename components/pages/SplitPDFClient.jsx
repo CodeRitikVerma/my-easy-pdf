@@ -86,7 +86,7 @@ export default function SplitPDFClient() {
               <div className="fw-semibold text-truncate">{pdfFile.name}</div>
               <small className="text-muted">{pageCount} pages</small>
             </div>
-            <Button variant="outline-secondary" size="sm" onClick={() => { setPdfFile(null); setPageCount(0); setSuccess(''); }}>Change File</Button>
+            <Button variant="outline-secondary" size="sm" className="d-inline-flex align-items-center gap-1" onClick={() => { setPdfFile(null); setPageCount(0); setSuccess(''); }}><i className="bi bi-arrow-repeat" /> Change File</Button>
           </div>
         )}
 

@@ -16,9 +16,9 @@ const headerJson = {
           items: [
             { name: "Merge PDF",     href: "/merge-pdf",  icon: "bi-layers-fill"       },
             { name: "Split PDF",     href: "/split-pdf",  icon: "bi-scissors"          },
-            { name: "Remove Pages",  href: "#",           icon: "bi-file-earmark-x"    },
-            { name: "Extract Pages", href: "#",           icon: "bi-file-earmark-plus" },
-            { name: "Organize PDF",  href: "#",           icon: "bi-grid"              },
+            { name: "Remove Pages",  href: "/remove-pages",  icon: "bi-file-earmark-x"    },
+            { name: "Extract Pages", href: "/extract-pages", icon: "bi-file-earmark-plus" },
+            { name: "Organize PDF",  href: "/organize-pdf",  icon: "bi-grid"              },
           ],
         },
         {
@@ -26,7 +26,7 @@ const headerJson = {
           icon: "bi-speedometer2",
           color: "#10b981",
           items: [
-            { name: "Compress PDF", href: "#", icon: "bi-file-zip"        },
+            { name: "Compress PDF", href: "/compress-pdf", icon: "bi-file-zip"        },
             { name: "Repair PDF",   href: "#", icon: "bi-wrench"          },
             { name: "OCR PDF",      href: "#", icon: "bi-text-paragraph"  },
           ],
@@ -62,8 +62,8 @@ const headerJson = {
           items: [
             { name: "Sign PDF",         href: "/sign-pdf",   icon: "bi-pen"             },
             { name: "Rotate PDF",       href: "/rotate-pdf", icon: "bi-arrow-clockwise" },
-            { name: "Add Page Numbers", href: "#",           icon: "bi-123"             },
-            { name: "Add Watermark",    href: "#",           icon: "bi-droplet"         },
+            { name: "Add Page Numbers", href: "/add-page-numbers", icon: "bi-123"             },
+            { name: "Add Watermark",    href: "/add-watermark",    icon: "bi-droplet"         },
             { name: "Crop PDF",         href: "#",           icon: "bi-crop"            },
             { name: "Edit PDF",         href: "#",           icon: "bi-pencil"          },
           ],

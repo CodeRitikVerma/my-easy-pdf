@@ -7,7 +7,8 @@
       "Bash(xargs wc:*)",
       "Read(//d/projects/**)",
       "Bash(npm --version)",
-      "Bash([ -d \"/d/projects/my-easy-pdf/node_modules/$pkg\" ])"
+      "Bash([ -d \"/d/projects/my-easy-pdf/node_modules/$pkg\" ])",
+      "Bash(node -e \"const fs=require\\('fs'\\); const s=fs.statSync\\('app/favicon.ico'\\); console.log\\('size:', s.size, 'bytes'\\)\")"
     ]
   }
 }

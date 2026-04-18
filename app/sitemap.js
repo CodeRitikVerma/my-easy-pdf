@@ -16,6 +16,14 @@ export default function sitemap() {
     { url: `${BASE}/sign-pdf`,            lastModified: now, changeFrequency: 'monthly', priority: 0.90 },
     { url: `${BASE}/camera-to-pdf`,       lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
 
+    // ── New tool pages ──
+    { url: `${BASE}/remove-pages`,        lastModified: now, changeFrequency: 'monthly', priority: 0.90 },
+    { url: `${BASE}/extract-pages`,       lastModified: now, changeFrequency: 'monthly', priority: 0.90 },
+    { url: `${BASE}/organize-pdf`,        lastModified: now, changeFrequency: 'monthly', priority: 0.88 },
+    { url: `${BASE}/compress-pdf`,        lastModified: now, changeFrequency: 'monthly', priority: 0.88 },
+    { url: `${BASE}/add-watermark`,       lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${BASE}/add-page-numbers`,    lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
+
     // ── Info pages ──
     { url: `${BASE}/about`,               lastModified: now, changeFrequency: 'monthly', priority: 0.60 },
     { url: `${BASE}/faq`,                 lastModified: now, changeFrequency: 'monthly', priority: 0.65 },

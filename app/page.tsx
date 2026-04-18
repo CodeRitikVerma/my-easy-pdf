@@ -7,12 +7,12 @@ export const metadata: Metadata = {
   title: 'Free Online PDF Tools — No Uploads, 100% Private',
   description:
     'Free PDF tools that work entirely in your browser — no uploads, no account, no watermarks. ' +
-    'Convert images to PDF, merge, split, sign PDFs, and extract pages. 100% private.',
+    'Merge, split, compress, watermark, sign PDFs, convert images, and more. 100% private.',
   keywords: [
     'free PDF tools online', 'PDF converter free', 'merge PDF online free',
     'image to PDF converter', 'split PDF online', 'sign PDF online',
-    'PDF to image', 'no upload PDF tools',
-    'browser based PDF tools', 'privacy PDF converter',
+    'compress PDF free', 'add watermark to PDF', 'remove pages from PDF',
+    'PDF to image', 'no upload PDF tools', 'browser based PDF tools',
   ],
   alternates: { canonical: '/' },
   openGraph: {
@@ -34,12 +34,18 @@ const toolsSchema = {
   name:       'Free Online PDF Tools by MyEasyPDF',
   url:        BASE,
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Image to PDF Converter', url: `${BASE}/image-to-pdf`  },
-    { '@type': 'ListItem', position: 2, name: 'Merge PDF',              url: `${BASE}/merge-pdf`     },
-    { '@type': 'ListItem', position: 3, name: 'PDF to Image',           url: `${BASE}/pdf-to-image`  },
-    { '@type': 'ListItem', position: 4, name: 'Split PDF',              url: `${BASE}/split-pdf`     },
-    { '@type': 'ListItem', position: 5, name: 'Sign PDF',               url: `${BASE}/sign-pdf`      },
-    { '@type': 'ListItem', position: 6, name: 'Camera to PDF',          url: `${BASE}/camera-to-pdf` },
+    { '@type': 'ListItem', position: 1,  name: 'Image to PDF Converter', url: `${BASE}/image-to-pdf`      },
+    { '@type': 'ListItem', position: 2,  name: 'Merge PDF',              url: `${BASE}/merge-pdf`         },
+    { '@type': 'ListItem', position: 3,  name: 'PDF to Image',           url: `${BASE}/pdf-to-image`      },
+    { '@type': 'ListItem', position: 4,  name: 'Split PDF',              url: `${BASE}/split-pdf`         },
+    { '@type': 'ListItem', position: 5,  name: 'Sign PDF',               url: `${BASE}/sign-pdf`          },
+    { '@type': 'ListItem', position: 6,  name: 'Camera to PDF',          url: `${BASE}/camera-to-pdf`     },
+    { '@type': 'ListItem', position: 7,  name: 'Remove Pages from PDF',  url: `${BASE}/remove-pages`      },
+    { '@type': 'ListItem', position: 8,  name: 'Extract Pages from PDF', url: `${BASE}/extract-pages`     },
+    { '@type': 'ListItem', position: 9,  name: 'Organize PDF',           url: `${BASE}/organize-pdf`      },
+    { '@type': 'ListItem', position: 10, name: 'Compress PDF',           url: `${BASE}/compress-pdf`      },
+    { '@type': 'ListItem', position: 11, name: 'Add Watermark to PDF',   url: `${BASE}/add-watermark`     },
+    { '@type': 'ListItem', position: 12, name: 'Add Page Numbers to PDF',url: `${BASE}/add-page-numbers`  },
   ],
 };
 

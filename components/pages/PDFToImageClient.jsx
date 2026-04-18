@@ -100,7 +100,7 @@ export default function PDFToImageClient() {
               <div className="fw-semibold text-truncate">{pdfFile.name}</div>
               <small className="text-muted">{pages.length} pages loaded</small>
             </div>
-            <Button variant="outline-secondary" size="sm" onClick={() => { setPdfFile(null); setPages([]); setPdfjsDoc(null); }}>Change File</Button>
+            <Button variant="outline-secondary" size="sm" className="d-inline-flex align-items-center gap-1" onClick={() => { setPdfFile(null); setPages([]); setPdfjsDoc(null); }}><i className="bi bi-arrow-repeat" /> Change File</Button>
           </div>
         )}
 
