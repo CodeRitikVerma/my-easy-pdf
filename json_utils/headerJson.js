@@ -6,6 +6,18 @@ const headerJson = {
     { name: "PDF to Image",  href: "/pdf-to-image",  icon: "bi-card-image"   },
     { name: "Merge PDF",     href: "/merge-pdf",     icon: "bi-layers-fill"  },
     {
+      name: "Company",
+      icon: "bi-info-circle",
+      subMenu: [
+        { name: "About Us",       href: "/about",   icon: "bi-info-circle"    },
+        { name: "FAQ",            href: "/faq",     icon: "bi-question-circle" },
+        { name: "Contact",        href: "/contact", icon: "bi-envelope"        },
+        { name: "Privacy Policy", href: "/privacy", icon: "bi-shield-lock"     },
+        { name: "Terms of Service", href: "/terms", icon: "bi-file-text"       },
+        { name: "Cookie Policy",  href: "/cookie-policy", icon: "bi-cookie"   },
+      ],
+    },
+    {
       name: "Your Needs",
       icon: "bi-grid-fill",
       megaMenu: [

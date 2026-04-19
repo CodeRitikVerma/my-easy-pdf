@@ -96,11 +96,9 @@ export const metadata: Metadata = {
     images:      [OG_IMAGE],
   },
 
-  /* ── Verification placeholders (fill in after registering) ── */
-  verification: {
-    google: 'REPLACE_WITH_GOOGLE_SITE_VERIFICATION_TOKEN',
-    // bing: 'REPLACE_WITH_BING_VERIFICATION_TOKEN',
-  },
+  /* ── Verification — add token after registering in Google Search Console ──
+     verification: { google: 'YOUR_TOKEN_HERE' },
+  ── */
 
   /* ── App-related meta ── */
   applicationName: 'MyEasyPDF',

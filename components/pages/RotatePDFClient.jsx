@@ -20,6 +20,17 @@ const renderThumbnail = async (pdfjsDoc, pageNum) => {
   return canvas.toDataURL();
 };
 
+const formatBytes = (bytes) => {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+};
+
+const ROTATE_BTNS = [
+  { angle: -90, label: '↺ 90°', title: 'Rotate 90° counter-clockwise' },
+  { angle:  90, label: '↻ 90°', title: 'Rotate 90° clockwise' },
+];
+
 export default function RotatePDFClient() {
   const [pdfFile,      setPdfFile]      = useState(null);
   const [pages,        setPages]        = useState([]);
@@ -43,14 +54,19 @@ export default function RotatePDFClient() {
   };
 
   const togglePage  = (index) => setPages(prev => prev.map(p => p.index === index ? { ...p, selected: !p.selected } : p));
-  const selectAll   = () => setPages(prev => prev.map(p => ({ ...p, selected: true })));
+  const selectAll   = () => setPages(prev => prev.map(p => ({ ...p, selected: true  })));
   const deselectAll = () => setPages(prev => prev.map(p => ({ ...p, selected: false })));
 
+  /* ── Rotate helpers ── */
   const rotate = (angle, target) => setPages(prev => prev.map(p => {
-    if (target === 'all' || (target === 'selected' && p.selected))
+    if (target === 'all' || (target === 'selected' && p.selected) || target === p.index)
       return { ...p, rotation: ((p.rotation + angle) % 360 + 360) % 360 };
     return p;
   }));
+
+  /* ── Reset helpers ── */
+  const resetAll  = () => setPages(prev => prev.map(p => ({ ...p, rotation: 0 })));
+  const resetPage = (index) => setPages(prev => prev.map(p => p.index === index ? { ...p, rotation: 0 } : p));
 
   const selectedCount = pages.filter(p => p.selected).length;
   const hasRotations  = pages.some(p => p.rotation !== 0);
@@ -61,10 +77,14 @@ export default function RotatePDFClient() {
     try {
       const pdf = await PDFDocument.load(await pdfFile.arrayBuffer());
       pages.forEach(({ index, rotation }) => {
-        if (rotation !== 0) { const page = pdf.getPage(index - 1); page.setRotation(degrees((page.getRotation().angle + rotation) % 360)); }
+        if (rotation !== 0) {
+          const page = pdf.getPage(index - 1);
+          page.setRotation(degrees((page.getRotation().angle + rotation) % 360));
+        }
       });
+      const baseName = pdfFile.name.replace(/\.pdf$/i, '');
       const url = URL.createObjectURL(new Blob([await pdf.save()], { type: 'application/pdf' }));
-      Object.assign(document.createElement('a'), { href: url, download: 'rotated.pdf' }).click();
+      Object.assign(document.createElement('a'), { href: url, download: `${baseName}-rotated.pdf` }).click();
       setTimeout(() => URL.revokeObjectURL(url), 1000);
     } catch (err) { setError('Failed to process PDF: ' + err.message); }
     finally { setIsProcessing(false); }
@@ -75,78 +95,185 @@ export default function RotatePDFClient() {
       <div className="page-header text-center">
         <Container>
           <h1 className="fw-bold mb-2"><i className="bi bi-arrow-clockwise me-2"></i>Rotate PDF</h1>
-          <p className="lead opacity-90 mb-0">Rotate pages in your PDF — select pages or rotate all at once</p>
+          <p className="lead opacity-90 mb-0">Rotate pages individually or all at once — preview updates instantly</p>
         </Container>
       </div>
 
       <Container className="py-4 py-md-5">
+        {/* ── File picker ── */}
         {!pdfFile ? (
           <DropZone onFiles={handleFiles} accept="application/pdf" multiple={false} label="Drop a PDF file here or click to browse" />
         ) : (
-          <div className="d-flex align-items-center settings-panel mb-4">
-            <i className="bi bi-file-earmark-pdf-fill text-danger me-3" style={{ fontSize: '2rem' }}></i>
-            <div className="flex-grow-1 min-w-0">
-              <div className="fw-semibold text-truncate">{pdfFile.name}</div>
-              <small className="text-muted">{pages.length} pages</small>
+          <div className="d-flex align-items-center settings-panel mb-4 gap-3">
+            <i className="bi bi-file-earmark-pdf-fill text-danger flex-shrink-0" style={{ fontSize: '2rem' }} />
+            <div className="flex-grow-1 min-w-0 d-flex flex-column flex-sm-row align-items-sm-center gap-2">
+              <div className="min-w-0 flex-grow-1">
+                <div className="fw-semibold text-truncate">{pdfFile.name}</div>
+                <small className="text-muted">{pages.length} pages &middot; {formatBytes(pdfFile.size)}</small>
+              </div>
+              <Button
+                variant="outline-secondary" size="sm"
+                className="d-inline-flex align-items-center gap-1 flex-shrink-0"
+                onClick={() => { setPdfFile(null); setPages([]); }}
+              >
+                <i className="bi bi-arrow-repeat" /> Change File
+              </Button>
             </div>
-            <Button variant="outline-secondary" size="sm" className="d-inline-flex align-items-center gap-1" onClick={() => { setPdfFile(null); setPages([]); }}><i className="bi bi-arrow-repeat" /> Change File</Button>
           </div>
         )}
 
-        {error && <Alert variant="danger" className="mt-3">{error}</Alert>}
-        {isLoading && <div className="text-center py-5"><Spinner variant="primary" style={{ width: '3rem', height: '3rem' }} /><p className="mt-3 text-muted">Loading PDF pages…</p></div>}
+        {error && <Alert variant="danger" className="mt-3" dismissible onClose={() => setError('')}>{error}</Alert>}
+        {isLoading && (
+          <div className="text-center py-5">
+            <Spinner variant="primary" style={{ width: '3rem', height: '3rem' }} />
+            <p className="mt-3 text-muted">Loading PDF pages…</p>
+          </div>
+        )}
 
         {pages.length > 0 && (
           <>
-            <div className="settings-panel mb-4">
-              <Row className="g-2 align-items-center flex-wrap">
-                <Col xs="auto"><Button variant="outline-primary" size="sm" onClick={selectAll}>Select All</Button></Col>
-                <Col xs="auto"><Button variant="outline-secondary" size="sm" onClick={deselectAll}>Deselect All</Button></Col>
+            {/* ── Global toolbar ── */}
+            <div className="settings-panel mb-3">
+              {/* Row 1 — selection + reset */}
+              <div className="d-flex flex-wrap align-items-center gap-2 mb-3">
+                <Button variant="outline-primary"    size="sm" onClick={selectAll}>Select All</Button>
+                <Button variant="outline-secondary"  size="sm" onClick={deselectAll}>Deselect All</Button>
+                <div className="ms-auto d-flex gap-2">
+                  {hasRotations && (
+                    <Button
+                      variant="outline-danger" size="sm"
+                      className="d-inline-flex align-items-center gap-1"
+                      onClick={resetAll}
+                      title="Reset all rotations to original"
+                    >
+                      <i className="bi bi-arrow-counterclockwise" /> Reset All
+                    </Button>
+                  )}
+                </div>
+              </div>
+
+              {/* Row 2 — rotate selected + rotate all (side-by-side on desktop) */}
+              <div className="d-flex flex-column flex-sm-row gap-3">
                 {selectedCount > 0 && (
-                  <>
-                    <Col xs="auto"><span className="text-muted small">Rotate selected ({selectedCount}):</span></Col>
-                    <Col xs="auto">
-                      <ButtonGroup size="sm">
-                        <Button variant="outline-primary" onClick={() => rotate(-90, 'selected')}><i className="bi bi-arrow-counterclockwise"></i> 90°</Button>
-                        <Button variant="outline-primary" onClick={() => rotate(90,  'selected')}><i className="bi bi-arrow-clockwise"></i> 90°</Button>
-                        <Button variant="outline-primary" onClick={() => rotate(180, 'selected')}>180°</Button>
-                      </ButtonGroup>
-                    </Col>
-                  </>
+                  <div className="d-flex align-items-center gap-2 flex-wrap">
+                    <span className="text-muted small fw-semibold">Rotate selected ({selectedCount}):</span>
+                    <ButtonGroup size="sm">
+                      {ROTATE_BTNS.map(btn => (
+                        <Button key={btn.angle} variant="outline-primary" title={btn.title} onClick={() => rotate(btn.angle, 'selected')}>
+                          {btn.label}
+                        </Button>
+                      ))}
+                    </ButtonGroup>
+                  </div>
                 )}
-                <Col xs="auto" className="ms-auto">
-                  <span className="text-muted small me-2">Rotate all:</span>
+
+                <div className="d-flex align-items-center gap-2 flex-wrap">
+                  <span className="text-muted small fw-semibold">Rotate all:</span>
                   <ButtonGroup size="sm">
-                    <Button variant="primary" onClick={() => rotate(-90, 'all')}><i className="bi bi-arrow-counterclockwise"></i> 90°</Button>
-                    <Button variant="primary" onClick={() => rotate(90,  'all')}><i className="bi bi-arrow-clockwise"></i> 90°</Button>
-                    <Button variant="primary" onClick={() => rotate(180, 'all')}>180°</Button>
+                    {ROTATE_BTNS.map(btn => (
+                      <Button key={btn.angle} variant="primary" title={btn.title} onClick={() => rotate(btn.angle, 'all')}>
+                        {btn.label}
+                      </Button>
+                    ))}
                   </ButtonGroup>
-                </Col>
-              </Row>
+                </div>
+              </div>
             </div>
 
-            <p className="text-muted small mb-3">Click a page to select it, then use rotation buttons above. Preview updates instantly.</p>
+            <p className="text-muted small mb-3">
+              <i className="bi bi-info-circle me-1" />
+              Click a page to select it for bulk rotation. Use the per-page buttons below each thumbnail for individual control.
+            </p>
 
+            {/* ── Page grid ── */}
             <Row className="g-3 mb-4">
               {pages.map(page => (
                 <Col key={page.index} xs={6} sm={4} md={3} lg={2}>
-                  <div className={`page-thumbnail${page.selected ? ' selected' : ''}`} onClick={() => togglePage(page.index)}>
-                    <div style={{ overflow: 'hidden', borderRadius: 6, aspectRatio: '1/1', display: 'flex', alignItems: 'center', justifyContent: 'center', background: palette.surface.overlay }}>
-                      <img src={page.thumbnail} alt={`Page ${page.index}`} style={{ maxWidth: '100%', maxHeight: '100%', transform: `rotate(${page.rotation}deg)`, transition: 'transform 0.3s ease' }} />
+                  <div
+                    className={`page-thumbnail${page.selected ? ' selected' : ''}`}
+                    onClick={() => togglePage(page.index)}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    {/* Thumbnail preview */}
+                    <div style={{
+                      overflow: 'hidden', borderRadius: 6, aspectRatio: '1/1',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      background: palette.surface.overlay,
+                    }}>
+                      <img
+                        src={page.thumbnail}
+                        alt={`Page ${page.index}`}
+                        style={{
+                          maxWidth: '100%', maxHeight: '100%',
+                          transform: `rotate(${page.rotation}deg)`,
+                          transition: 'transform 0.3s ease',
+                        }}
+                      />
                     </div>
+
+                    {/* Page label + badges */}
                     <div className="text-center mt-1 small fw-semibold">Page {page.index}</div>
-                    <div className="text-center" style={{ minHeight: 22 }}>
-                      {page.rotation !== 0 && <Badge bg="warning" text="dark" pill className="me-1"><i className="bi bi-arrow-clockwise me-1"></i>{page.rotation}°</Badge>}
-                      {page.selected && <Badge bg="primary" pill><i className="bi bi-check-lg"></i></Badge>}
+                    <div className="text-center mb-1" style={{ minHeight: 22 }}>
+                      {page.rotation !== 0 && (
+                        <Badge bg="warning" text="dark" pill className="me-1">
+                          <i className="bi bi-arrow-clockwise me-1" />{page.rotation}°
+                        </Badge>
+                      )}
+                      {page.selected && <Badge bg="primary" pill><i className="bi bi-check-lg" /></Badge>}
+                    </div>
+
+                    {/* Per-page rotate buttons — stop click from toggling selection */}
+                    <div
+                      className="d-flex justify-content-center flex-wrap gap-1"
+                      onClick={e => e.stopPropagation()}
+                    >
+                      {[
+                        { angle: -90, title: '↺ 90°' },
+                        { angle:  90, title: '↻ 90°' },
+                      ].map(btn => (
+                        <Button
+                          key={btn.angle}
+                          size="sm"
+                          variant="outline-secondary"
+                          title={btn.title}
+                          onClick={() => rotate(btn.angle, page.index)}
+                          style={{ padding: '1px 5px', fontSize: '0.7rem' }}
+                        >
+                          {btn.title}
+                        </Button>
+                      ))}
+
+                      {/* Per-page reset — only shown when rotated */}
+                      {page.rotation !== 0 && (
+                        <Button
+                          size="sm"
+                          variant="outline-danger"
+                          title="Reset rotation"
+                          onClick={() => resetPage(page.index)}
+                          style={{ padding: '1px 5px', fontSize: '0.7rem' }}
+                        >
+                          <i className="bi bi-x-circle" /> Reset
+                        </Button>
+                      )}
                     </div>
                   </div>
                 </Col>
               ))}
             </Row>
 
+            {/* ── Download ── */}
             <div className="text-center">
-              <Button variant="primary" size="lg" onClick={applyAndDownload} disabled={isProcessing || !hasRotations} className="px-5">
-                {isProcessing ? <><Spinner size="sm" className="me-2" />Processing…</> : <><i className="bi bi-file-earmark-arrow-down me-2"></i>Apply Rotation &amp; Download</>}
+              <Button
+                size="lg"
+                onClick={applyAndDownload}
+                disabled={isProcessing || !hasRotations}
+                className="px-5"
+                style={{ background: palette.gradient.primary, border: 'none', color: '#fff' }}
+              >
+                {isProcessing
+                  ? <><Spinner size="sm" className="me-2" />Processing…</>
+                  : <><i className="bi bi-file-earmark-arrow-down me-2" />Apply Rotation &amp; Download</>
+                }
               </Button>
               {!hasRotations && <p className="text-muted small mt-2">Rotate at least one page to enable download.</p>}
             </div>

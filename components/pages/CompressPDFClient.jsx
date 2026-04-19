@@ -34,7 +34,7 @@ const PRESETS = [
     icon:       'bi-camera-fill',
     quality:    0.80,
     scaleSteps: [0.80, 0.65, 0.52],
-    desc:       'Best quality — auto-adjusts to ensure smaller output',
+    desc:       'Good quality, moderate size',
   },
   {
     key:        'medium',
@@ -42,7 +42,7 @@ const PRESETS = [
     icon:       'bi-speedometer2',
     quality:    0.58,
     scaleSteps: [0.65, 0.50, 0.38],
-    desc:       'Balanced quality and compression',
+    desc:       'Balanced quality & size',
   },
   {
     key:        'low',
@@ -50,7 +50,7 @@ const PRESETS = [
     icon:       'bi-file-zip',
     quality:    0.30,
     scaleSteps: [0.50, 0.38, 0.28],
-    desc:       'Maximum compression, lower quality',
+    desc:       'Smallest file, lower quality',
   },
 ];
 
@@ -235,19 +235,21 @@ export default function CompressPDFClient() {
             label="Drop a PDF file here or click to browse"
           />
         ) : (
-          <div className="d-flex align-items-center settings-panel mb-4">
-            <i className="bi bi-file-earmark-pdf-fill text-danger me-3" style={{ fontSize: '2rem' }} />
-            <div className="flex-grow-1 min-w-0">
-              <div className="fw-semibold text-truncate">{pdfFile.name}</div>
-              <small className="text-muted">Original size: <strong>{formatBytes(pdfFile.size)}</strong></small>
+          <div className="d-flex align-items-center settings-panel mb-4 gap-3">
+            <i className="bi bi-file-earmark-pdf-fill text-danger flex-shrink-0" style={{ fontSize: '2rem' }} />
+            <div className="flex-grow-1 min-w-0 d-flex flex-column flex-sm-row align-items-sm-center gap-2">
+              <div className="min-w-0 flex-grow-1">
+                <div className="fw-semibold text-truncate">{pdfFile.name}</div>
+                <small className="text-muted">Original size: <strong>{formatBytes(pdfFile.size)}</strong></small>
+              </div>
+              <Button
+                variant="outline-secondary" size="sm"
+                className="d-inline-flex align-items-center gap-1 flex-shrink-0"
+                onClick={() => { setPdfFile(null); setResult(null); setError(''); }}
+              >
+                <i className="bi bi-arrow-repeat" /> Change File
+              </Button>
             </div>
-            <Button
-              variant="outline-secondary" size="sm"
-              className="d-inline-flex align-items-center gap-1"
-              onClick={() => { setPdfFile(null); setResult(null); setError(''); }}
-            >
-              <i className="bi bi-arrow-repeat" /> Change File
-            </Button>
           </div>
         )}
 
@@ -290,31 +292,52 @@ export default function CompressPDFClient() {
                 <p className="text-muted small mb-3">
                   Choose how aggressively the PDF should be compressed.
                 </p>
-                <Row className="g-3 mb-4">
-                  {PRESETS.map(p => (
-                    <Col key={p.key} xs={12} sm={4}>
-                      <button
-                        onClick={() => setQualityKey(p.key)}
-                        style={{
-                          width: '100%', padding: '18px 12px', borderRadius: 12, cursor: 'pointer',
-                          border:     qualityKey === p.key ? `2px solid ${palette.primary}` : '2px solid #e5e7eb',
-                          background: qualityKey === p.key ? '#eef2ff' : '#fff',
-                          textAlign: 'center', transition: 'border-color 0.15s, background 0.15s',
-                        }}
-                      >
-                        <i
-                          className={`bi ${p.icon}`}
-                          style={{ fontSize: '1.9rem', color: qualityKey === p.key ? palette.primary : palette.text.muted }}
-                        />
-                        <div className="fw-bold mt-2" style={{ color: qualityKey === p.key ? '#1e1b4b' : palette.text.primary }}>
-                          {p.label}
-                        </div>
-                        <div style={{ fontSize: '0.78rem', color: palette.text.muted, marginTop: 4 }}>
-                          {p.desc}
-                        </div>
-                      </button>
-                    </Col>
-                  ))}
+                <Row className="g-2 g-sm-3 mb-4">
+                  {PRESETS.map(p => {
+                    const active = qualityKey === p.key;
+                    return (
+                      <Col key={p.key} xs={4}>
+                        <button
+                          onClick={() => setQualityKey(p.key)}
+                          style={{
+                            width: '100%', height: '100%',
+                            padding: '12px 8px',
+                            borderRadius: 12, cursor: 'pointer',
+                            border:     active ? `2px solid ${palette.primary}` : '2px solid #e5e7eb',
+                            background: active ? '#eef2ff' : '#fff',
+                            textAlign: 'center',
+                            transition: 'border-color 0.15s, background 0.15s, box-shadow 0.15s',
+                            boxShadow: active ? '0 0 0 3px rgba(99,102,241,0.12)' : 'none',
+                          }}
+                        >
+                          <i
+                            className={`bi ${p.icon}`}
+                            style={{ fontSize: '1.5rem', color: active ? palette.primary : palette.text.muted }}
+                          />
+                          <div
+                            className="fw-bold mt-1"
+                            style={{ color: active ? '#1e1b4b' : palette.text.primary, fontSize: '0.88rem' }}
+                          >
+                            {p.label}
+                          </div>
+                          <div
+                            className="d-none d-sm-block"
+                            style={{
+                              fontSize: '0.72rem',
+                              color: palette.text.muted,
+                              marginTop: 3,
+                              lineHeight: 1.3,
+                              whiteSpace: 'nowrap',
+                              overflow: 'hidden',
+                              textOverflow: 'ellipsis',
+                            }}
+                          >
+                            {p.desc}
+                          </div>
+                        </button>
+                      </Col>
+                    );
+                  })}
                 </Row>
               </>
             )}

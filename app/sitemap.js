@@ -30,5 +30,6 @@ export default function sitemap() {
     { url: `${BASE}/contact`,             lastModified: now, changeFrequency: 'yearly',  priority: 0.40 },
     { url: `${BASE}/privacy`,             lastModified: now, changeFrequency: 'yearly',  priority: 0.30 },
     { url: `${BASE}/terms`,               lastModified: now, changeFrequency: 'yearly',  priority: 0.30 },
+    { url: `${BASE}/cookie-policy`,       lastModified: now, changeFrequency: 'yearly',  priority: 0.25 },
   ];
 }
