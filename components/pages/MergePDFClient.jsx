@@ -4,6 +4,7 @@ import { Container, Button, Alert, Spinner } from 'react-bootstrap';
 import { PDFDocument } from 'pdf-lib';
 import DropZone from '@/components/common/DropZone';
 import palette from '@/theme/palette';
+import SeoContent from '@/components/common/SeoContent';
 
 /* ── PDF.js lazy loader ── */
 const getPdfJs = async () => {
@@ -342,6 +343,7 @@ export default function MergePDFClient() {
           </>
         )}
       </Container>
+      <SeoContent slug="merge-pdf" />
     </>
   );
 }

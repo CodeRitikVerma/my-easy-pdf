@@ -627,7 +627,7 @@ export default function HomePageClient() {
                 <i className="bi bi-rocket-takeoff-fill d-none d-lg-inline me-2" /> Get Started
               </Button>
               <Button
-                as={Link} href="#all-tools" size="lg"
+                as={Link} href="/all-pdf-tools" size="lg"
                 className="fw-semibold d-inline-flex align-items-center justify-content-center"
                 style={{ borderRadius: 12, minHeight: 52, flex: 1, maxWidth: 200, fontSize: '1rem', background: 'white', border: '2px solid #6366f1', color: '#6366f1' }}
               >

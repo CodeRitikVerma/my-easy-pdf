@@ -7,6 +7,7 @@ const headerJson = {
     { name: "Merge PDF",     href: "/merge-pdf",     icon: "bi-layers-fill"  },
     {
       name: "Company",
+      href: "/company",
       icon: "bi-info-circle",
       subMenu: [
         { name: "About Us",       href: "/about",   icon: "bi-info-circle"    },
@@ -19,6 +20,7 @@ const headerJson = {
     },
     {
       name: "Your Needs",
+      href: "/all-pdf-tools",
       icon: "bi-grid-fill",
       megaMenu: [
         {

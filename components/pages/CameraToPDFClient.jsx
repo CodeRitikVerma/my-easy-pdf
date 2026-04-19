@@ -9,6 +9,7 @@ import PhotoCard         from '@/components/camera/PhotoCard';
 import PhotoPreview      from '@/components/camera/PhotoPreview';
 import DesktopOnlyCamera from '@/components/camera/DesktopOnlyCamera';
 import { PAGE_SIZES, FILTERS, moveItem, renderWithFilter } from '@/components/camera/cameraUtils';
+import SeoContent from '@/components/common/SeoContent';
 
 const HOW_IT_WORKS = [
   { icon: 'bi-camera-fill',  color: palette.primary,        text: 'Tap the zone below to open your back camera full-screen'   },
@@ -195,6 +196,7 @@ export default function CameraToPDFClient() {
           </div>
         )}
       </Container>
+      <SeoContent slug="camera-to-pdf" />
     </>
   );
 }

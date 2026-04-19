@@ -4,6 +4,7 @@ import { Container, Row, Col, Button, Alert, Spinner, Form, Badge } from 'react-
 import { PDFDocument, StandardFonts, rgb, degrees } from 'pdf-lib';
 import DropZone from '@/components/common/DropZone';
 import palette from '@/theme/palette';
+import SeoContent from '@/components/common/SeoContent';
 
 /* ─── helpers ─────────────────────────────────────────────────────────────── */
 const formatBytes = (bytes) => {
@@ -512,6 +513,7 @@ export default function AddWatermarkClient() {
           </>
         )}
       </Container>
+      <SeoContent slug="add-watermark" />
     </>
   );
 }

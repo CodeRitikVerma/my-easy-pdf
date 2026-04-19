@@ -24,6 +24,10 @@ export default function sitemap() {
     { url: `${BASE}/add-watermark`,       lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${BASE}/add-page-numbers`,    lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
 
+    // ── Hub pages ──
+    { url: `${BASE}/all-pdf-tools`,       lastModified: now, changeFrequency: 'monthly', priority: 0.80 },
+    { url: `${BASE}/company`,             lastModified: now, changeFrequency: 'monthly', priority: 0.55 },
+
     // ── Info pages ──
     { url: `${BASE}/about`,               lastModified: now, changeFrequency: 'monthly', priority: 0.60 },
     { url: `${BASE}/faq`,                 lastModified: now, changeFrequency: 'monthly', priority: 0.65 },

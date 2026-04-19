@@ -62,7 +62,7 @@ const CategoryCard = ({ cat, onClose, compact }) => {
   );
 };
 
-const MegaMenu = ({ categories, onClose }) => {
+const MegaMenu = ({ categories, onClose, onMouseEnter, onMouseLeave }) => {
   const isMobile = useIsMobile();
   const winWidth = useWindowWidth();
   const visible  = categories.filter(c => !c.mobileOnly || isMobile);
@@ -73,7 +73,10 @@ const MegaMenu = ({ categories, onClose }) => {
   return (
     <>
       <div onClick={onClose} style={{ position: 'fixed', top: 56, left: 0, right: 0, bottom: 0, zIndex: 1040, background: 'rgba(15,23,42,0.4)', backdropFilter: 'blur(4px)' }} />
-      <div style={{ position: 'fixed', top: 56, left: 0, right: 0, zIndex: 1041, display: 'flex', flexDirection: 'column', maxHeight: 'calc(100vh - 56px)', background: palette.surface.raised, boxShadow: '0 16px 48px rgba(15,23,42,0.18)' }}>
+      <div
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        style={{ position: 'fixed', top: 56, left: 0, right: 0, zIndex: 1041, display: 'flex', flexDirection: 'column', maxHeight: 'calc(100vh - 56px)', background: palette.surface.raised, boxShadow: '0 16px 48px rgba(15,23,42,0.18)' }}>
         <div style={{ height: 3, background: palette.gradient.primary, flexShrink: 0 }} />
         <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: compact ? '12px 16px' : '16px 28px 14px', borderBottom: `1px solid ${palette.border.default}`, background: palette.surface.base, boxShadow: '0 2px 8px rgba(15,23,42,0.06)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>

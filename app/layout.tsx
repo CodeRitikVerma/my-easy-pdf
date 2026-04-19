@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import Header from '@/components/fragments/Header';
 import Footer from '@/components/fragments/Footer';
+import ScrollToTop from '@/components/fragments/ScrollToTop';
 
 /* ─────────────────────────────────────────────
    Base domain — swap to production URL before deploy
@@ -169,6 +170,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
         />
 
+        <ScrollToTop />
         <div className="d-flex flex-column min-vh-100">
           <Header />
           <main className="flex-grow-1">{children}</main>

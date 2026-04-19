@@ -9,7 +9,11 @@
       "Bash(npm --version)",
       "Bash([ -d \"/d/projects/my-easy-pdf/node_modules/$pkg\" ])",
       "Bash(node -e \"const fs=require\\('fs'\\); const s=fs.statSync\\('app/favicon.ico'\\); console.log\\('size:', s.size, 'bytes'\\)\")",
-      "Bash(del \"D:\\\\projects\\\\my-easy-pdf\\\\components\\\\common\\\\ToolIllustrations.jsx\")"
+      "Bash(del \"D:\\\\projects\\\\my-easy-pdf\\\\components\\\\common\\\\ToolIllustrations.jsx\")",
+      "Bash(node -e \"require\\('./json_utils/seoContent.js'\\)\")",
+      "Read(//d D:/projects/**)",
+      "Bash(npx next *)",
+      "Bash(node -e \"import\\('./json_utils/seoContent.js'\\).then\\(m => console.log\\('OK:', Object.keys\\(m.default\\).length, 'entries'\\)\\).catch\\(e => { console.error\\(e\\); process.exit\\(1\\); }\\)\")"
     ]
   }
 }

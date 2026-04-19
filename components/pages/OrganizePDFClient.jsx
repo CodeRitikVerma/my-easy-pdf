@@ -4,6 +4,7 @@ import { Container, Row, Col, Button, Alert, Spinner } from 'react-bootstrap';
 import { PDFDocument } from 'pdf-lib';
 import DropZone from '@/components/common/DropZone';
 import palette from '@/theme/palette';
+import SeoContent from '@/components/common/SeoContent';
 
 const getPdfJs = async () => {
   const pdfjsLib = await import('pdfjs-dist');
@@ -222,6 +223,7 @@ export default function OrganizePDFClient() {
           </>
         )}
       </Container>
+      <SeoContent slug="organize-pdf" />
     </>
   );
 }

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Button, Form, Alert, Spinner, Badge } from 'react-bootstrap';
 import { PDFDocument } from 'pdf-lib';
 import DropZone from '@/components/common/DropZone';
+import SeoContent from '@/components/common/SeoContent';
 
 const PAGE_SIZES = {
   'A4': [595.28, 841.89],
@@ -164,6 +165,7 @@ export default function ImageToPDFClient() {
           </>
         )}
       </Container>
+      <SeoContent slug="image-to-pdf" />
     </>
   );
 }
