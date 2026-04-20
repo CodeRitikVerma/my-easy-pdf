@@ -9,6 +9,7 @@ export default function sitemap() {
 
     // ── Tool pages ── (highest priority)
     { url: `${BASE}/image-to-pdf`,        lastModified: now, changeFrequency: 'monthly', priority: 0.95 },
+    { url: `${BASE}/png-to-pdf`,          lastModified: now, changeFrequency: 'monthly', priority: 0.90 },
     { url: `${BASE}/merge-pdf`,           lastModified: now, changeFrequency: 'monthly', priority: 0.95 },
     { url: `${BASE}/pdf-to-image`,        lastModified: now, changeFrequency: 'monthly', priority: 0.95 },
     { url: `${BASE}/split-pdf`,           lastModified: now, changeFrequency: 'monthly', priority: 0.90 },
@@ -23,6 +24,7 @@ export default function sitemap() {
     { url: `${BASE}/compress-pdf`,        lastModified: now, changeFrequency: 'monthly', priority: 0.88 },
     { url: `${BASE}/add-watermark`,       lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${BASE}/add-page-numbers`,    lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${BASE}/crop-pdf`,            lastModified: now, changeFrequency: 'monthly', priority: 0.88 },
 
     // ── Hub pages ──
     { url: `${BASE}/all-pdf-tools`,       lastModified: now, changeFrequency: 'monthly', priority: 0.80 },

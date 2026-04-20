@@ -8,7 +8,9 @@ import ScrollToTop from '@/components/fragments/ScrollToTop';
    Base domain — swap to production URL before deploy
 ───────────────────────────────────────────── */
 const BASE = 'https://myeasypdf.com';
-const OG_IMAGE = `${BASE}/og-image.png`;
+// NOTE: OG image is SVG for now — most social platforms (Facebook, LinkedIn, Twitter, Slack)
+// require PNG/JPG for link previews. Generate a real 1200x630 PNG and swap this to .png when ready.
+const OG_IMAGE = `${BASE}/og-image.svg`;
 
 /* ─────────────────────────────────────────────
    Viewport (separate export — Next.js 15+ requirement)
@@ -82,7 +84,7 @@ export const metadata: Metadata = {
         width:  1200,
         height: 630,
         alt:    'MyEasyPDF — Free Online PDF Tools',
-        type:   'image/png',
+        type:   'image/svg+xml',
       },
     ],
   },
@@ -97,9 +99,12 @@ export const metadata: Metadata = {
     images:      [OG_IMAGE],
   },
 
-  /* ── Verification — add token after registering in Google Search Console ──
-     verification: { google: 'YOUR_TOKEN_HERE' },
-  ── */
+  /* ── Verification — set NEXT_PUBLIC_GSC_VERIFICATION in .env.local after
+     registering in Google Search Console (HTML tag method). Leaving it unset
+     is fine; GSC can also be verified via DNS TXT record or sitemap submission. */
+  verification: process.env.NEXT_PUBLIC_GSC_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION }
+    : undefined,
 
   /* ── App-related meta ── */
   applicationName: 'MyEasyPDF',
@@ -144,7 +149,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     '@type':      'Organization',
     name:         'MyEasyPDF',
     url:          BASE,
-    logo:         `${BASE}/icon-192.png`,
+    logo:         `${BASE}/icon.svg`,
     sameAs: [
       'mailto:ritikverma210@gmail.com',
     ],
@@ -153,11 +158,32 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
+        {/* Preconnect to third-party origins for faster first-party render */}
+        <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <link rel="preconnect" href="https://www.googletagmanager.com" />
+        )}
+
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6502133214775091"
           crossOrigin="anonymous"
         />
+
+        {/* Google Analytics 4 — set NEXT_PUBLIC_GA_ID in .env.local (e.g. G-XXXXXXXXXX) */}
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${process.env.NEXT_PUBLIC_GA_ID}');`,
+              }}
+            />
+          </>
+        )}
       </head>
       <body>
         {/* Global structured data */}

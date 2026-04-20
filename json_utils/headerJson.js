@@ -51,6 +51,7 @@ const headerJson = {
           color: "#f59e0b",
           items: [
             { name: "JPG to PDF",         href: "/image-to-pdf", icon: "bi-image"                    },
+            { name: "PNG to PDF",         href: "/png-to-pdf",   icon: "bi-filetype-png"             },
             { name: "Word to PDF",         href: "#",             icon: "bi-file-earmark-word"        },
             { name: "PowerPoint to PDF",   href: "#",             icon: "bi-file-earmark-slides"      },
             { name: "Excel to PDF",        href: "#",             icon: "bi-file-earmark-spreadsheet" },
@@ -78,8 +79,7 @@ const headerJson = {
             { name: "Rotate PDF",       href: "/rotate-pdf", icon: "bi-arrow-clockwise" },
             { name: "Add Page Numbers", href: "/add-page-numbers", icon: "bi-123"             },
             { name: "Add Watermark",    href: "/add-watermark",    icon: "bi-droplet"         },
-            { name: "Crop PDF",         href: "#",           icon: "bi-crop"            },
-            { name: "Edit PDF",         href: "#",           icon: "bi-pencil"          },
+            { name: "Crop PDF",         href: "/crop-pdf",   icon: "bi-crop"            },
           ],
         },
       ],

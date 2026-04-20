@@ -284,6 +284,15 @@ const allTools = [
     light: '#fffbeb',
   },
   {
+    title: 'PNG to PDF',
+    desc:  'Combine PNG screenshots and images into a PDF.',
+    icon:  'bi-filetype-png',
+    href:  '/png-to-pdf',
+    color: '#d97706',
+    bg:    'linear-gradient(135deg,#b45309,#f59e0b)',
+    light: '#fef3c7',
+  },
+  {
     title: 'PDF to Image',
     desc:  'Export every page as PNG or JPEG.',
     icon:  'bi-card-image',
@@ -355,6 +364,15 @@ const allTools = [
     bg:    'linear-gradient(135deg,#0284c7,#38bdf8)',
     light: '#f0f9ff',
     badge: 'Mobile',
+  },
+  {
+    title: 'Crop PDF',
+    desc:  'Trim margins or whitespace from pages.',
+    icon:  'bi-crop',
+    href:  '/crop-pdf',
+    color: '#6366f1',
+    bg:    'linear-gradient(135deg,#4f46e5,#818cf8)',
+    light: '#eef2ff',
   },
 ];
 

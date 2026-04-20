@@ -13,7 +13,12 @@ const PAGE_SIZES = {
   'Image Size': null,
 };
 
-export default function ImageToPDFClient() {
+export default function ImageToPDFClient({
+  slug = 'image-to-pdf',
+  heading = 'Image to PDF',
+  subtitle = 'Upload photos and convert them into a single PDF file',
+  headingIcon = 'bi-images',
+} = {}) {
   const [images, setImages] = useState([]);
   const [pageSize, setPageSize] = useState('A4');
   const [orientation, setOrientation] = useState('portrait');
@@ -87,8 +92,8 @@ export default function ImageToPDFClient() {
     <>
       <div className="page-header text-center">
         <Container>
-          <h1 className="fw-bold mb-2"><i className="bi bi-images me-2"></i>Image to PDF</h1>
-          <p className="lead opacity-90 mb-0">Upload photos and convert them into a single PDF file</p>
+          <h1 className="fw-bold mb-2"><i className={`bi ${headingIcon} me-2`}></i>{heading}</h1>
+          <p className="lead opacity-90 mb-0">{subtitle}</p>
         </Container>
       </div>
 
@@ -165,7 +170,7 @@ export default function ImageToPDFClient() {
           </>
         )}
       </Container>
-      <SeoContent slug="image-to-pdf" />
+      <SeoContent slug={slug} />
     </>
   );
 }

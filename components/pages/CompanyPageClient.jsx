@@ -102,7 +102,7 @@ export default function CompanyPageClient() {
         <section className="mb-5">
           <h2 className="fw-bold mb-3">What MyEasyPDF does</h2>
           <p className="text-muted lh-lg">
-            MyEasyPDF is a browser-based suite of <strong>13 free PDF tools</strong> covering the
+            MyEasyPDF is a browser-based suite of <strong>15 free PDF tools</strong> covering the
             operations people actually need every day: merging and splitting documents, compressing
             large PDFs for email, rotating scanned pages, signing contracts, adding watermarks and page
             numbers, converting images to PDF and PDF pages back to images, and reorganising the page

@@ -189,6 +189,49 @@ const seoContent = {
       { q: 'Can I reorder images before converting?',  a: 'Yes. Each thumbnail has ↑ and ↓ buttons to move it up or down, and you can drag thumbnails too, so the final PDF follows the exact order you set.' },
     ],
     related: [
+      { name: 'PNG to PDF',    href: '/png-to-pdf',    icon: 'bi-filetype-png' },
+      { name: 'Camera to PDF', href: '/camera-to-pdf', icon: 'bi-camera-fill' },
+      { name: 'PDF to Image',  href: '/pdf-to-image',  icon: 'bi-card-image' },
+      { name: 'Merge PDF',     href: '/merge-pdf',     icon: 'bi-layers-fill' },
+      { name: 'All PDF Tools', href: '/all-pdf-tools', icon: 'bi-grid-fill' },
+    ],
+  },
+
+  /* ═════════════════════════════════════════════════════════
+     PNG TO PDF
+  ═════════════════════════════════════════════════════════ */
+  'png-to-pdf': {
+    h1: 'Convert PNG to PDF online — free, private, no watermark',
+    intro: [
+      'Turn one PNG or a batch of PNG images into a single polished PDF document. MyEasyPDF’s free PNG-to-PDF converter runs entirely in your browser — nothing is uploaded, nothing is stored, and the output never carries a watermark.',
+      'It’s perfect for stitching together screenshots into a report, combining diagrams exported from Figma or Canva, or bundling design mockups to email to a client.',
+    ],
+    howTo: {
+      title: 'How to convert PNG to PDF',
+      steps: [
+        { title: 'Drop your PNG files',     text: 'Drag one or more PNG images onto the uploader, or click to browse. You can keep adding more images before you export.' },
+        { title: 'Arrange page order',      text: 'Reorder the PNGs with the ↑ and ↓ buttons, or drag the thumbnails into the sequence you want them to appear.' },
+        { title: 'Pick page settings',      text: 'Choose A4, Letter, Legal, or “Fit to Image” (one page per PNG at its native size), set orientation, and adjust margins if needed.' },
+        { title: 'Download the PDF',        text: 'Click Convert to PDF — the file downloads immediately from your browser. Nothing is sent to a server.' },
+      ],
+    },
+    features: [
+      { icon: 'bi-filetype-png',        title: 'Pure PNG support',    text: 'Purpose-built for PNG files — keep crisp line art, screenshots and logos without re-encoding artefacts.' },
+      { icon: 'bi-shield-lock',         title: '100% private',        text: 'Every conversion happens on your device with pdf-lib. Your PNGs never travel over the network.' },
+      { icon: 'bi-file-earmark-ruled',  title: 'A4, Letter, Legal…',  text: 'Choose a standard page size, or use Fit to Image to match each PDF page to its source PNG exactly.' },
+      { icon: 'bi-arrows-angle-expand', title: 'Orientation + margin',text: 'Toggle portrait / landscape and dial in a margin — ideal for printable reports and documentation.' },
+      { icon: 'bi-infinity',            title: 'No limits',           text: 'No page cap, no daily quota, no signup, no watermark. Convert as often as you like.' },
+    ],
+    faqs: [
+      { q: 'How do I convert PNG to PDF for free?',           a: 'Drop your PNGs onto this page, pick a page size, and click Convert to PDF. The download starts instantly — no account, no watermark.' },
+      { q: 'Are my PNG images uploaded anywhere?',            a: 'No. MyEasyPDF runs entirely in your browser using pdf-lib. Your PNGs never leave your device.' },
+      { q: 'Can I combine multiple PNGs into one PDF?',       a: 'Yes — add as many PNGs as you like, reorder them by drag-and-drop, and the converter stitches them into a single PDF with one image per page.' },
+      { q: 'Is there a limit on PNG file size?',              a: 'There is no server-side limit. The practical limit is your device’s memory — large batches work best on desktop browsers.' },
+      { q: 'Does the PDF keep PNG transparency?',             a: 'PNGs are placed on an opaque page background, so transparent areas appear white in the exported PDF (PDF pages don’t themselves support transparency).' },
+      { q: 'Will the PNG to PDF converter add a watermark?',  a: 'Never. The output PDF is clean, with no branding or extra pages.' },
+    ],
+    related: [
+      { name: 'Image to PDF',  href: '/image-to-pdf',  icon: 'bi-images' },
       { name: 'Camera to PDF', href: '/camera-to-pdf', icon: 'bi-camera-fill' },
       { name: 'PDF to Image',  href: '/pdf-to-image',  icon: 'bi-card-image' },
       { name: 'Merge PDF',     href: '/merge-pdf',     icon: 'bi-layers-fill' },
@@ -547,6 +590,54 @@ const seoContent = {
       { name: 'All PDF Tools', href: '/all-pdf-tools', icon: 'bi-grid-fill' },
     ],
   },
+
+  /* ═════════════════════════════════════════════════════════
+     CROP PDF
+  ═════════════════════════════════════════════════════════ */
+  'crop-pdf': {
+    h1: 'Crop PDF online — trim margins & whitespace for free',
+    intro: [
+      'Crop any PDF right in your browser. Drag an adjustable crop rectangle over a page preview, apply the same crop to every page (or just the current one), and download a cleaner PDF with margins, whitespace or scanner borders trimmed away.',
+      'The tool is 100% free, requires no account, and never uploads your file — perfect for tidying up scanned pages, cropping the black borders from photocopies, or zooming a presentation into its key area.',
+    ],
+    howTo: {
+      title: 'How to crop a PDF',
+      steps: [
+        { title: 'Upload your PDF',       text: 'Drag and drop the PDF, or click to browse. Each page is rendered as a thumbnail on the left.' },
+        { title: 'Adjust the crop box',   text: 'On the big preview, drag the crop rectangle to move it, or grab any corner / edge handle to resize it. Everything outside the box gets cropped away.' },
+        { title: 'Choose how to apply',   text: 'Pick “All pages” to crop every page the same way, or “Current page only” to crop just the page you’re viewing.' },
+        { title: 'Download the cropped PDF', text: 'Click Crop & Download — the tool writes a new PDF in-browser with trimmed pages and your original file is untouched.' },
+      ],
+    },
+    features: [
+      { icon: 'bi-crop',           title: 'Drag-and-resize crop box', text: 'Eight handles (four corners + four edges) let you dial in the exact crop area with pixel precision.' },
+      { icon: 'bi-files',          title: 'Apply to all pages',       text: 'One click applies the same crop rectangle across every page — ideal for removing identical scanner margins.' },
+      { icon: 'bi-file-earmark',   title: 'Or just one page',         text: 'Need to crop a single page differently? Switch to Current Page mode and crop it independently.' },
+      { icon: 'bi-patch-check',    title: 'Quality preserved',        text: 'Cropping adjusts the PDF’s crop box metadata, so text stays selectable and images keep full resolution — no rasterisation.' },
+      { icon: 'bi-shield-lock',    title: 'Runs in your browser',     text: 'Your PDF is processed locally using pdf-lib. Nothing is uploaded to any server.' },
+    ],
+    whyUs: {
+      title: 'Why crop PDFs with MyEasyPDF',
+      paragraphs: [
+        'Most online PDF croppers upload your file to a remote server, process it there, and make you wait for a download link — risky if the PDF is confidential and slow if it’s large. MyEasyPDF crops PDFs entirely in your browser, so confidential contracts, bank statements and medical scans never leave your computer.',
+        'Because we only update the PDF’s crop-box metadata, the text inside your document stays fully selectable and searchable after cropping — no loss of quality and no hidden conversion to images.',
+      ],
+    },
+    faqs: [
+      { q: 'What does cropping a PDF do?',            a: 'Cropping trims the visible area of each page, hiding margins, whitespace or unwanted borders. MyEasyPDF adjusts the PDF’s crop-box and media-box metadata, so text inside the kept area stays fully selectable.' },
+      { q: 'Can I crop every page at once?',          a: 'Yes. Choose “All pages” and the crop rectangle you set on the preview is applied to every page in the document with a single click.' },
+      { q: 'Does cropping reduce PDF file size?',     a: 'A little — cropping trims the viewable area but doesn’t re-encode images. If you also need a much smaller file, run the result through Compress PDF afterwards.' },
+      { q: 'Is my PDF uploaded anywhere?',            a: 'No. The cropper uses pdf-lib and pdf.js entirely in your browser, so your file never touches a server.' },
+      { q: 'Will cropping mess up selectable text?',  a: 'No. Unlike croppers that rasterise pages to an image, MyEasyPDF just updates the PDF’s crop metadata, so text remains selectable and searchable.' },
+    ],
+    related: [
+      { name: 'Compress PDF',  href: '/compress-pdf',  icon: 'bi-file-zip' },
+      { name: 'Rotate PDF',    href: '/rotate-pdf',    icon: 'bi-arrow-clockwise' },
+      { name: 'Organize PDF',  href: '/organize-pdf',  icon: 'bi-grid' },
+      { name: 'All PDF Tools', href: '/all-pdf-tools', icon: 'bi-grid-fill' },
+    ],
+  },
+
 };
 
 export default seoContent;

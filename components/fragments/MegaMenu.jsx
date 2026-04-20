@@ -66,7 +66,7 @@ const MegaMenu = ({ categories, onClose, onMouseEnter, onMouseLeave }) => {
   const isMobile = useIsMobile();
   const winWidth = useWindowWidth();
   const visible  = categories.filter(c => !c.mobileOnly || isMobile);
-  const cols     = winWidth < 480 ? 1 : winWidth < 768 ? 2 : 4;
+  const cols     = winWidth < 480 ? 1 : winWidth < 768 ? 2 : 5;
   const compact  = winWidth < 768;
   const pad      = winWidth < 480 ? '12px' : winWidth < 768 ? '14px' : '20px 24px 24px';
 

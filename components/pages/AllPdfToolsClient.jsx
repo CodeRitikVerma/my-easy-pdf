@@ -34,6 +34,7 @@ const CATEGORIES = [
     bg: '#fffbeb',
     tools: [
       { icon: 'bi-images',           href: '/image-to-pdf',   title: 'Image to PDF',   desc: 'Turn JPG, PNG, WebP images into a PDF'      },
+      { icon: 'bi-filetype-png',     href: '/png-to-pdf',     title: 'PNG to PDF',     desc: 'Combine PNG images into a single PDF file'  },
       { icon: 'bi-camera-fill',      href: '/camera-to-pdf',  title: 'Camera to PDF',  desc: 'Scan documents with your device camera'     },
     ],
   },
@@ -52,6 +53,7 @@ const CATEGORIES = [
     color: '#6366f1',
     bg: '#eef2ff',
     tools: [
+      { icon: 'bi-crop',             href: '/crop-pdf',        title: 'Crop PDF',        desc: 'Trim margins or whitespace from any page'   },
       { icon: 'bi-pen',              href: '/sign-pdf',        title: 'Sign PDF',        desc: 'Draw or type your signature on any page'   },
       { icon: 'bi-arrow-clockwise',  href: '/rotate-pdf',      title: 'Rotate PDF',      desc: 'Rotate individual pages or the whole doc'  },
       { icon: 'bi-droplet',          href: '/add-watermark',   title: 'Add Watermark',   desc: 'Overlay text on every page, with previews' },
