@@ -1,41 +1,61 @@
 const BASE = 'https://myeasypdf.com';
 
+// helper to create entry
+const createUrl = (path, priority, changeFrequency, lastModified) => ({
+  url: BASE + path,
+  lastModified,
+  changeFrequency,
+  priority
+});
+
 export default function sitemap() {
   const now = new Date();
 
   return [
     // ── Homepage ──
-    { url: BASE,                          lastModified: now, changeFrequency: 'weekly',  priority: 1.0 },
+    createUrl('', 1.0, 'weekly', now),
 
-    // ── Tool pages ── (highest priority)
-    { url: `${BASE}/image-to-pdf`,        lastModified: now, changeFrequency: 'monthly', priority: 0.95 },
-    { url: `${BASE}/png-to-pdf`,          lastModified: now, changeFrequency: 'monthly', priority: 0.90 },
-    { url: `${BASE}/merge-pdf`,           lastModified: now, changeFrequency: 'monthly', priority: 0.95 },
-    { url: `${BASE}/pdf-to-image`,        lastModified: now, changeFrequency: 'monthly', priority: 0.95 },
-    { url: `${BASE}/split-pdf`,           lastModified: now, changeFrequency: 'monthly', priority: 0.90 },
-    { url: `${BASE}/rotate-pdf`,          lastModified: now, changeFrequency: 'monthly', priority: 0.90 },
-    { url: `${BASE}/sign-pdf`,            lastModified: now, changeFrequency: 'monthly', priority: 0.90 },
-    { url: `${BASE}/camera-to-pdf`,       lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
+    // ── Core Tool Pages (HIGH priority) ──
+    createUrl('/merge-pdf', 0.95, 'monthly', now),
+    createUrl('/pdf-to-image', 0.95, 'monthly', now),
+    createUrl('/image-to-pdf', 0.95, 'monthly', now),
 
-    // ── New tool pages ──
-    { url: `${BASE}/remove-pages`,        lastModified: now, changeFrequency: 'monthly', priority: 0.90 },
-    { url: `${BASE}/extract-pages`,       lastModified: now, changeFrequency: 'monthly', priority: 0.90 },
-    { url: `${BASE}/organize-pdf`,        lastModified: now, changeFrequency: 'monthly', priority: 0.88 },
-    { url: `${BASE}/compress-pdf`,        lastModified: now, changeFrequency: 'monthly', priority: 0.88 },
-    { url: `${BASE}/add-watermark`,       lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
-    { url: `${BASE}/add-page-numbers`,    lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
-    { url: `${BASE}/crop-pdf`,            lastModified: now, changeFrequency: 'monthly', priority: 0.88 },
+    // ── Secondary Tool Pages ──
+    createUrl('/png-to-pdf', 0.9, 'monthly', now),
+    createUrl('/split-pdf', 0.9, 'monthly', now),
+    createUrl('/rotate-pdf', 0.9, 'monthly', now),
+    createUrl('/sign-pdf', 0.9, 'monthly', now),
 
-    // ── Hub pages ──
-    { url: `${BASE}/all-pdf-tools`,       lastModified: now, changeFrequency: 'monthly', priority: 0.80 },
-    { url: `${BASE}/company`,             lastModified: now, changeFrequency: 'monthly', priority: 0.55 },
+    // ── Utility Tool Pages ──
+    createUrl('/remove-pages', 0.9, 'monthly', now),
+    createUrl('/extract-pages', 0.9, 'monthly', now),
+    createUrl('/organize-pdf', 0.88, 'monthly', now),
+    createUrl('/compress-pdf', 0.88, 'monthly', now),
+    createUrl('/crop-pdf', 0.88, 'monthly', now),
 
-    // ── Info pages ──
-    { url: `${BASE}/about`,               lastModified: now, changeFrequency: 'monthly', priority: 0.60 },
-    { url: `${BASE}/faq`,                 lastModified: now, changeFrequency: 'monthly', priority: 0.65 },
-    { url: `${BASE}/contact`,             lastModified: now, changeFrequency: 'yearly',  priority: 0.40 },
-    { url: `${BASE}/privacy`,             lastModified: now, changeFrequency: 'yearly',  priority: 0.30 },
-    { url: `${BASE}/terms`,               lastModified: now, changeFrequency: 'yearly',  priority: 0.30 },
-    { url: `${BASE}/cookie-policy`,       lastModified: now, changeFrequency: 'yearly',  priority: 0.25 },
+    // ── Supporting Tool Pages ──
+    createUrl('/add-watermark', 0.85, 'monthly', now),
+    createUrl('/add-page-numbers', 0.85, 'monthly', now),
+    createUrl('/camera-to-pdf', 0.85, 'monthly', now),
+
+    // ── Hub Pages ──
+    createUrl('/all-pdf-tools', 0.8, 'monthly', now),
+    createUrl('/company', 0.55, 'monthly', now),
+
+    // ── Info Pages ──
+    createUrl('/about', 0.6, 'monthly', now),
+    createUrl('/faq', 0.65, 'monthly', now),
+    createUrl('/contact', 0.4, 'yearly', now),
+
+    // ── Legal Pages ──
+    createUrl('/privacy', 0.3, 'yearly', now),
+    createUrl('/terms', 0.3, 'yearly', now),
+    createUrl('/cookie-policy', 0.25, 'yearly', now)
+
+    // ── Future SEO Pages (IMPORTANT for ranking) ──
+    // Uncomment when created
+    // createUrl('/blog', 0.75, 'weekly', now),
+    // createUrl('/blog/merge-pdf-online-free', 0.80, 'monthly', now),
+    // createUrl('/blog/compress-pdf-without-losing-quality', 0.80, 'monthly', now),
   ];
 }
