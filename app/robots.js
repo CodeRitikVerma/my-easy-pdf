@@ -6,20 +6,48 @@ export default function robots() {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/_next/', '/404', '/500'],
+        disallow: ['/api/', '/_next/', '/404', '/500']
       },
-      // Be explicit for major crawlers — some interpret `*` less generously
-      { userAgent: 'Googlebot',      allow: '/' },
-      { userAgent: 'Bingbot',        allow: '/' },
-      { userAgent: 'DuckDuckBot',    allow: '/' },
-      { userAgent: 'Slurp',          allow: '/' }, // Yahoo
-      { userAgent: 'YandexBot',      allow: '/' },
-      // AI-training crawlers we explicitly permit (helps visibility in AI answers)
-      { userAgent: 'GPTBot',         allow: '/' },
-      { userAgent: 'PerplexityBot',  allow: '/' },
-      { userAgent: 'ClaudeBot',      allow: '/' },
+
+      // Major search engine bots
+      {
+        userAgent: 'Googlebot',
+        allow: '/'
+      },
+      {
+        userAgent: 'Bingbot',
+        allow: '/'
+      },
+
+      // Secondary crawlers (optional but safe)
+      {
+        userAgent: 'DuckDuckBot',
+        allow: '/'
+      },
+      {
+        userAgent: 'Slurp', // Yahoo
+        allow: '/'
+      },
+      {
+        userAgent: 'YandexBot',
+        allow: '/'
+      },
+
+      // AI crawlers (optional — no impact on SEO ranking)
+      {
+        userAgent: 'GPTBot',
+        allow: '/'
+      },
+      {
+        userAgent: 'PerplexityBot',
+        allow: '/'
+      },
+      {
+        userAgent: 'ClaudeBot',
+        allow: '/'
+      }
     ],
-    sitemap: `${BASE}/sitemap.xml`,
-    host: BASE,
+
+    sitemap: `${BASE}/sitemap.xml`
   };
 }
