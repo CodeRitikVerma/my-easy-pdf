@@ -102,9 +102,14 @@ export const metadata: Metadata = {
   /* ── Verification — set NEXT_PUBLIC_GSC_VERIFICATION in .env.local after
      registering in Google Search Console (HTML tag method). Leaving it unset
      is fine; GSC can also be verified via DNS TXT record or sitemap submission. */
-  verification: process.env.NEXT_PUBLIC_GSC_VERIFICATION
-    ? { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION }
-    : undefined,
+  verification: {
+    ...(process.env.NEXT_PUBLIC_GSC_VERIFICATION && {
+      google: process.env.NEXT_PUBLIC_GSC_VERIFICATION,
+    }),
+    other: {
+      'msvalidate.01': '0FF6ECF9DCD37D1D5A67FDFA11303759',
+    },
+  },
 
   /* ── App-related meta ── */
   applicationName: 'MyEasyPDF',
