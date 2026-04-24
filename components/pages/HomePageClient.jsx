@@ -248,6 +248,26 @@ function HeroIllustration() {
 
 const allTools = [
   {
+    title: 'JPG to PDF',
+    desc:  'Convert JPEG photos into a PDF instantly.',
+    icon:  'bi-image',
+    href:  '/jpg-to-pdf',
+    color: '#f59e0b',
+    bg:    'linear-gradient(135deg,#d97706,#fbbf24)',
+    light: '#fffbeb',
+    badge: 'Popular',
+  },
+  {
+    title: 'PDF to JPG',
+    desc:  'Export PDF pages as high-quality JPEG images.',
+    icon:  'bi-file-earmark-image',
+    href:  '/pdf-to-jpg',
+    color: '#3b82f6',
+    bg:    'linear-gradient(135deg,#2563eb,#60a5fa)',
+    light: '#eff6ff',
+    badge: 'Popular',
+  },
+  {
     title: 'Merge PDF',
     desc:  'Combine multiple PDFs into a single file.',
     icon:  'bi-layers-fill',
@@ -279,27 +299,27 @@ const allTools = [
     desc:  'Turn JPG, PNG or WebP images into a PDF.',
     icon:  'bi-images',
     href:  '/image-to-pdf',
-    color: '#f59e0b',
-    bg:    'linear-gradient(135deg,#d97706,#fbbf24)',
-    light: '#fffbeb',
+    color: '#d97706',
+    bg:    'linear-gradient(135deg,#b45309,#f59e0b)',
+    light: '#fef3c7',
   },
   {
     title: 'PNG to PDF',
     desc:  'Combine PNG screenshots and images into a PDF.',
     icon:  'bi-filetype-png',
     href:  '/png-to-pdf',
-    color: '#d97706',
-    bg:    'linear-gradient(135deg,#b45309,#f59e0b)',
-    light: '#fef3c7',
+    color: '#84cc16',
+    bg:    'linear-gradient(135deg,#65a30d,#a3e635)',
+    light: '#f7fee7',
   },
   {
     title: 'PDF to Image',
     desc:  'Export every page as PNG or JPEG.',
     icon:  'bi-card-image',
     href:  '/pdf-to-image',
-    color: '#3b82f6',
-    bg:    'linear-gradient(135deg,#2563eb,#60a5fa)',
-    light: '#eff6ff',
+    color: '#0ea5e9',
+    bg:    'linear-gradient(135deg,#0284c7,#38bdf8)',
+    light: '#f0f9ff',
   },
   {
     title: 'Sign PDF',
@@ -381,7 +401,7 @@ const steps = [
     n:    '01',
     icon: 'bi-cursor-fill',
     title:'Pick a Tool',
-    text: 'Choose from 12 free PDF and image tools — no account needed.',
+    text: 'Choose from 16 free PDF and image tools — no account needed.',
   },
   {
     n:    '02',
@@ -459,7 +479,7 @@ export default function HomePageClient() {
               {/* CTA buttons */}
               <div className="d-flex gap-3 mb-4">
                 <Button
-                  as={Link} href="/image-to-pdf" size="lg"
+                  as={Link} href="/jpg-to-pdf" size="lg"
                   className="fw-bold d-inline-flex align-items-center justify-content-center gap-2"
                   style={{ borderRadius: 12, minHeight: 52, width: 180, background: 'linear-gradient(135deg,#6366f1,#8b5cf6)', border: 'none', fontSize: '1rem', color: 'white', boxShadow: '0 8px 28px rgba(99,102,241,0.38)', letterSpacing: '-0.01em' }}
                 >
@@ -521,7 +541,7 @@ export default function HomePageClient() {
               All PDF &amp; Image Tools
             </h2>
             <p className="text-muted mb-0" style={{ maxWidth: 500, margin: '0 auto' }}>
-              Everything you need — all free, all private, all running in your browser
+              16 free tools — all private, all running in your browser, no account required
             </p>
           </div>
 
@@ -638,7 +658,7 @@ export default function HomePageClient() {
 
             <div className="d-flex gap-3 justify-content-center">
               <Button
-                as={Link} href="/image-to-pdf" size="lg"
+                as={Link} href="/jpg-to-pdf" size="lg"
                 className="fw-bold d-inline-flex align-items-center justify-content-center gap-2"
                 style={{ borderRadius: 12, minHeight: 52, flex: 1, maxWidth: 200, background: 'linear-gradient(135deg,#6366f1,#8b5cf6)', border: 'none', color: '#ffffff', fontSize: '1rem', boxShadow: '0 8px 28px rgba(99,102,241,0.35)' }}
               >

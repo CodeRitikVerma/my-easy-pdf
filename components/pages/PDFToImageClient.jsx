@@ -19,7 +19,13 @@ const renderPage = async (pdfjsDoc, pageNum, scale) => {
   return canvas;
 };
 
-export default function PDFToImageClient() {
+export default function PDFToImageClient({
+  slug          = 'pdf-to-image',
+  heading       = 'PDF to Image',
+  subtitle      = 'Extract PDF pages as PNG or JPEG images',
+  headingIcon   = 'bi-card-image',
+  defaultFormat = 'png',
+} = {}) {
   const [pdfFile,        setPdfFile]        = useState(null);
   const [pdfjsDoc,       setPdfjsDoc]       = useState(null);
   const [pages,          setPages]          = useState([]);
@@ -27,7 +33,7 @@ export default function PDFToImageClient() {
   const [isExporting,    setIsExporting]    = useState(false);
   const [exportProgress, setExportProgress] = useState(0);
   const [error,          setError]          = useState('');
-  const [format,         setFormat]         = useState('png');
+  const [format,         setFormat]         = useState(defaultFormat);
   const [scale,          setScale]          = useState(2);
 
   const handleFiles = async (files) => {
@@ -86,8 +92,8 @@ export default function PDFToImageClient() {
     <>
       <div className="page-header text-center">
         <Container>
-          <h1 className="fw-bold mb-2"><i className="bi bi-card-image me-2"></i>PDF to Image</h1>
-          <p className="lead opacity-90 mb-0">Extract PDF pages as PNG or JPEG images</p>
+          <h1 className="fw-bold mb-2"><i className={`bi ${headingIcon} me-2`}></i>{heading}</h1>
+          <p className="lead opacity-90 mb-0">{subtitle}</p>
         </Container>
       </div>
 
@@ -165,7 +171,7 @@ export default function PDFToImageClient() {
           </>
         )}
       </Container>
-      <SeoContent slug="pdf-to-image" />
+      <SeoContent slug={slug} />
     </>
   );
 }

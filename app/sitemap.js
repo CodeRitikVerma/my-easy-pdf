@@ -19,9 +19,11 @@ export default function sitemap() {
     createUrl('', 1.0, 'weekly', now),
 
     // ── Core Tool Pages (HIGH priority) ──
+    createUrl('/jpg-to-pdf', 0.97, 'monthly', now),
+    createUrl('/pdf-to-jpg', 0.97, 'monthly', now),
     createUrl('/merge-pdf', 0.95, 'monthly', now),
-    createUrl('/pdf-to-image', 0.95, 'monthly', now),
-    createUrl('/image-to-pdf', 0.95, 'monthly', now),
+    createUrl('/pdf-to-image', 0.90, 'monthly', now),
+    createUrl('/image-to-pdf', 0.90, 'monthly', now),
 
     // ── Secondary Tool Pages ──
     createUrl('/png-to-pdf', 0.9, 'monthly', now),

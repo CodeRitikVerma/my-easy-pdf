@@ -5,8 +5,8 @@ const PAGE = `${BASE}/all-pdf-tools`;
 
 export const metadata = {
   title: 'All PDF Tools — Free Online PDF Converter & Editor | MyEasyPDF',
-  description: 'Browse all 13 free PDF tools on MyEasyPDF — merge, split, compress, rotate, sign, watermark, convert and more. No uploads, no account, 100% private.',
-  keywords: ['all pdf tools', 'free pdf tools online', 'pdf converter', 'pdf editor', 'merge pdf', 'split pdf', 'compress pdf', 'sign pdf', 'rotate pdf', 'image to pdf'],
+  description: 'Browse all 16 free PDF tools on MyEasyPDF — JPG to PDF, PDF to JPG, merge, split, compress, rotate, sign, watermark, convert and more. No uploads, no account, 100% private.',
+  keywords: ['all pdf tools', 'free pdf tools online', 'pdf converter', 'jpg to pdf', 'pdf to jpg', 'merge pdf', 'split pdf', 'compress pdf', 'sign pdf', 'rotate pdf', 'image to pdf'],
   alternates: { canonical: '/all-pdf-tools' },
   openGraph: {
     url: PAGE,

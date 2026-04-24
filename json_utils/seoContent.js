@@ -592,6 +592,106 @@ const seoContent = {
   },
 
   /* ═════════════════════════════════════════════════════════
+     JPG TO PDF
+  ═════════════════════════════════════════════════════════ */
+  'jpg-to-pdf': {
+    h1: 'JPG to PDF converter — free, online, no upload',
+    intro: [
+      'Convert JPG photos into a polished PDF document in seconds. MyEasyPDF's free JPG-to-PDF tool runs entirely in your browser — no account needed, nothing uploaded, and no watermark ever added to the output.',
+      'Upload one photo or a whole batch of JPEGs, drag thumbnails to arrange the page order, pick a page size and orientation, and download a clean PDF immediately. Perfect for scanning receipts, sharing product photos as a document, or bundling homework images for a teacher.',
+    ],
+    howTo: {
+      title: 'How to convert JPG to PDF',
+      steps: [
+        { title: 'Upload your JPG files',   text: 'Drag and drop one or more JPEG images onto the tool, or click to browse. You can add more files at any time before converting.' },
+        { title: 'Arrange the pages',       text: 'Use the ↑ and ↓ arrows — or drag thumbnails — to set the order pages will appear in the PDF. Remove any image you don\'t need.' },
+        { title: 'Choose PDF settings',     text: 'Pick a page size (A4, A3, Letter, Legal, or Fit to Image), portrait or landscape orientation, and a custom page margin.' },
+        { title: 'Download the PDF',        text: 'Click "Convert to PDF" — the file is built in your browser and downloads immediately. Your JPEGs are never uploaded anywhere.' },
+      ],
+    },
+    features: [
+      { icon: 'bi-image',                   title: 'JPEG & JPG accepted',  text: 'Upload standard .jpg or .jpeg files — the converter handles both extensions at any quality level.' },
+      { icon: 'bi-file-earmark-ruled',      title: 'A4, A3, Letter & more',text: 'Choose a standard page size or use "Fit to Image" to match each PDF page exactly to the source photo.' },
+      { icon: 'bi-shield-lock',             title: '100% private',         text: 'All conversion happens in your browser using pdf-lib. Your photos never leave your device.' },
+      { icon: 'bi-infinity',                title: 'No limits',            text: 'No file size cap, no page limit, no daily quota, no sign-up required.' },
+      { icon: 'bi-patch-check',             title: 'No watermarks',        text: 'The output PDF is clean — we never stamp a logo or watermark on your document.' },
+      { icon: 'bi-arrows-angle-expand',     title: 'Custom margin',        text: 'Dial in a margin with the slider for a professional-looking PDF with breathing room around your photos.' },
+    ],
+    whyUs: {
+      title: 'Why convert JPGs to PDF without uploading?',
+      paragraphs: [
+        'Most JPG-to-PDF services send your photos to a remote server, which raises real privacy concerns for ID cards, receipts and personal images. MyEasyPDF converts JPEG files to PDF entirely inside your browser — nothing is ever transmitted over the network.',
+        'There are no limits on file count or size, no watermarks, and no premium tier. Just drop your photos in and get a PDF.',
+      ],
+    },
+    faqs: [
+      { q: 'How do I convert JPG to PDF for free?',                 a: 'Upload your JPG files, arrange them in order, pick a page size, and click "Convert to PDF". The download starts instantly — no account, no watermark, 100% free.' },
+      { q: 'Can I combine multiple JPGs into one PDF?',              a: 'Yes. Drop as many JPEG images as you like, drag them into the order you want, and the converter stitches them into a single PDF — one image per page.' },
+      { q: 'Are my JPG photos uploaded to a server?',               a: 'No. MyEasyPDF converts JPEG to PDF entirely in your browser with pdf-lib. Your photos never leave your device.' },
+      { q: 'What page sizes are available?',                        a: 'A4, A3, Letter, Legal, and Fit to Image. "Fit to Image" sizes each PDF page to match the source JPEG exactly — great for photos of any aspect ratio.' },
+      { q: 'Does converting JPG to PDF reduce image quality?',      a: 'No. The JPEG is embedded into the PDF at its original quality — no re-compression is applied.' },
+      { q: 'Can I convert .jpeg files too?',                        a: 'Yes — JPEG and JPG are the same format. The converter accepts both .jpg and .jpeg file extensions.' },
+    ],
+    related: [
+      { name: 'Image to PDF',  href: '/image-to-pdf',  icon: 'bi-images' },
+      { name: 'PNG to PDF',    href: '/png-to-pdf',    icon: 'bi-filetype-png' },
+      { name: 'PDF to JPG',    href: '/pdf-to-jpg',    icon: 'bi-card-image' },
+      { name: 'Camera to PDF', href: '/camera-to-pdf', icon: 'bi-camera-fill' },
+      { name: 'All PDF Tools', href: '/all-pdf-tools', icon: 'bi-grid-fill' },
+    ],
+  },
+
+  /* ═════════════════════════════════════════════════════════
+     PDF TO JPG
+  ═════════════════════════════════════════════════════════ */
+  'pdf-to-jpg': {
+    h1: 'PDF to JPG converter — free, online, no upload',
+    intro: [
+      'Convert PDF pages into high-quality JPEG images right in your browser. MyEasyPDF's free PDF-to-JPG converter requires no sign-up, uploads nothing to any server, and adds no watermark to your exported images.',
+      'Perfect for turning presentation slides into shareable photos, creating social-media previews from a report, or extracting a specific image from a PDF without taking a screenshot.',
+    ],
+    howTo: {
+      title: 'How to convert PDF to JPG',
+      steps: [
+        { title: 'Upload your PDF',           text: 'Drop the PDF into the upload area. Every page is rendered as a selectable thumbnail.' },
+        { title: 'Set quality and resolution',text: 'The format defaults to JPEG. Drag the Resolution Scale slider from 1× (screen-ready) up to 4× (print-quality) for sharper images.' },
+        { title: 'Select the pages to export',text: 'Click thumbnails to include them, or use "Select All" / "Deselect All" for quick bulk selection.' },
+        { title: 'Download your JPEGs',       text: 'Hit "Download Selected" for one image, or download a ZIP archive for multiple pages. All files are exported as JPEG.' },
+      ],
+    },
+    features: [
+      { icon: 'bi-file-earmark-image',  title: 'JPEG output',           text: 'Exports pages as compact JPEG files — ideal for email attachments, social media and web use.' },
+      { icon: 'bi-aspect-ratio',        title: 'Resolution scale 1×–4×', text: 'From 96 DPI screen-ready to 384 DPI print-quality — one slider controls the sharpness of every exported page.' },
+      { icon: 'bi-check2-square',       title: 'Choose which pages',    text: 'Select any combination of pages — only the ones you pick are converted and downloaded.' },
+      { icon: 'bi-hdd-stack',           title: 'Batch ZIP download',    text: 'Download all selected JPEGs at once as a tidy, numbered ZIP archive.' },
+      { icon: 'bi-shield-lock',         title: 'Nothing uploaded',      text: 'Pages are rendered in-browser with pdf.js. Your PDF never reaches any server.' },
+      { icon: 'bi-patch-check',         title: 'No watermarks',         text: 'Clean JPEG output — no logos, no banners, no MyEasyPDF branding on your images.' },
+    ],
+    whyUs: {
+      title: 'Convert PDF to JPEG without uploading',
+      paragraphs: [
+        'Cloud-based PDF-to-JPEG converters upload your file — often a confidential report or private document — to a third-party server before returning images. MyEasyPDF renders every page using pdf.js entirely within your browser, so nothing is ever transmitted.',
+        'There is no file size limit, no trial tier, and no watermark on the output. Convert as many pages as you need, as often as you like, for free.',
+      ],
+    },
+    faqs: [
+      { q: 'How do I convert a PDF to JPG for free?',             a: 'Upload your PDF, keep the format set to JPEG, select the pages you want, and click Download. The JPEG files are generated in-browser and download instantly — no account required.' },
+      { q: 'What resolution are the exported JPEGs?',             a: 'The Resolution Scale slider goes from 1× (roughly 96 DPI, great for screens and web) up to 4× (roughly 384 DPI, sharp enough for print). Higher scale means larger files.' },
+      { q: 'Can I convert every page of a PDF to JPEG at once?',  a: 'Yes — click "Select All", then "Download All as ZIP" and you get every page as a separate numbered JPEG in one archive.' },
+      { q: 'Is my PDF uploaded to a server?',                     a: 'No. The conversion runs entirely in your browser using pdf.js. Your PDF is never uploaded anywhere.' },
+      { q: 'Is JPEG lower quality than PNG?',                     a: 'JPEG uses lossy compression so files are smaller. At 2× scale or higher the output looks excellent for most documents. Use "PNG" format if you need lossless quality or transparency.' },
+      { q: 'Will the JPEGs have a watermark?',                    a: 'No. MyEasyPDF never adds watermarks, logos or banners to exported images.' },
+    ],
+    related: [
+      { name: 'PDF to Image',  href: '/pdf-to-image',  icon: 'bi-card-image' },
+      { name: 'JPG to PDF',    href: '/jpg-to-pdf',    icon: 'bi-image' },
+      { name: 'Image to PDF',  href: '/image-to-pdf',  icon: 'bi-images' },
+      { name: 'Compress PDF',  href: '/compress-pdf',  icon: 'bi-file-zip' },
+      { name: 'All PDF Tools', href: '/all-pdf-tools', icon: 'bi-grid-fill' },
+    ],
+  },
+
+  /* ═════════════════════════════════════════════════════════
      CROP PDF
   ═════════════════════════════════════════════════════════ */
   'crop-pdf': {

@@ -15,16 +15,21 @@ const nextConfig = {
     return config;
   },
 
-  // 301-redirect any /?q= URLs to / — prevents ?q= parameterised URLs from
-  // appearing as "Alternate page with proper canonical tag" in Google Search Console.
   async redirects() {
     return [
+      // 301-redirect /?q= URLs to / — prevents parameterised URLs appearing as
+      // "Alternate page with proper canonical tag" in Google Search Console.
       {
         source:      '/',
         has:         [{ type: 'query', key: 'q' }],
         destination: '/',
         permanent:   true,
       },
+      // Canonical aliases — keep traffic from common alternate spellings
+      { source: '/jpeg-to-pdf',  destination: '/jpg-to-pdf',   permanent: true },
+      { source: '/photo-to-pdf', destination: '/image-to-pdf', permanent: true },
+      { source: '/pdf-to-jpeg',  destination: '/pdf-to-jpg',   permanent: true },
+      { source: '/png-to-jpg',   destination: '/pdf-to-image', permanent: true },
     ];
   },
 

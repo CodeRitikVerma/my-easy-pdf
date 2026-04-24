@@ -1,9 +1,9 @@
 const headerJson = {
   brand: { name: "MyEasyPDF", href: "/" },
   menu: [
-    { name: "Image to PDF",  href: "/image-to-pdf",  icon: "bi-images"       },
+    { name: "JPG to PDF",    href: "/jpg-to-pdf",    icon: "bi-image"        },
     { name: "Camera to PDF", href: "/camera-to-pdf", icon: "bi-camera-fill", mobileOnly: true },
-    { name: "PDF to Image",  href: "/pdf-to-image",  icon: "bi-card-image"   },
+    { name: "PDF to JPG",    href: "/pdf-to-jpg",    icon: "bi-file-earmark-image" },
     { name: "Merge PDF",     href: "/merge-pdf",     icon: "bi-layers-fill"  },
     {
       name: "Company",
@@ -50,12 +50,12 @@ const headerJson = {
           icon: "bi-file-earmark-arrow-down",
           color: "#f59e0b",
           items: [
-            { name: "JPG to PDF",         href: "/image-to-pdf", icon: "bi-image"                    },
-            { name: "PNG to PDF",         href: "/png-to-pdf",   icon: "bi-filetype-png"             },
+            { name: "JPG to PDF",          href: "/jpg-to-pdf",   icon: "bi-image"                    },
+            { name: "Image to PDF",        href: "/image-to-pdf", icon: "bi-images"                   },
+            { name: "PNG to PDF",          href: "/png-to-pdf",   icon: "bi-filetype-png"             },
             { name: "Word to PDF",         href: "#",             icon: "bi-file-earmark-word"        },
             { name: "PowerPoint to PDF",   href: "#",             icon: "bi-file-earmark-slides"      },
             { name: "Excel to PDF",        href: "#",             icon: "bi-file-earmark-spreadsheet" },
-            { name: "HTML to PDF",         href: "#",             icon: "bi-filetype-html"            },
           ],
         },
         {
@@ -63,11 +63,11 @@ const headerJson = {
           icon: "bi-file-earmark-arrow-up",
           color: "#ec4899",
           items: [
-            { name: "PDF to JPG",        href: "/pdf-to-image", icon: "bi-card-image"               },
+            { name: "PDF to JPG",         href: "/pdf-to-jpg",   icon: "bi-file-earmark-image"       },
+            { name: "PDF to Image",       href: "/pdf-to-image", icon: "bi-card-image"               },
             { name: "PDF to Word",        href: "#",             icon: "bi-file-earmark-word"        },
             { name: "PDF to PowerPoint",  href: "#",             icon: "bi-file-earmark-slides"      },
             { name: "PDF to Excel",       href: "#",             icon: "bi-file-earmark-spreadsheet" },
-            { name: "PDF to PDF/A",       href: "#",             icon: "bi-file-earmark-check"       },
           ],
         },
         {
