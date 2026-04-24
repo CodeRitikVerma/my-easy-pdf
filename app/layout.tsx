@@ -142,11 +142,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       name:    'Ritik Verma',
       email:   'ritikverma210@gmail.com',
     },
-    potentialAction: {
-      '@type':       'SearchAction',
-      target:        `${BASE}/?q={search_term_string}`,
-      'query-input': 'required name=search_term_string',
-    },
   };
 
   const orgSchema = {

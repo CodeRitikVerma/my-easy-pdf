@@ -1,5 +1,8 @@
 const BASE = 'https://myeasypdf.com';
 
+// Cache the sitemap for 24 hours (ISR) instead of regenerating on every request
+export const revalidate = 86400;
+
 // helper to create entry
 const createUrl = (path, priority, changeFrequency, lastModified) => ({
   url: BASE + path,
