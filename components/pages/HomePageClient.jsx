@@ -554,11 +554,7 @@ export default function HomePageClient() {
                   </div>
                   <div className="htc-title">{tool.title}</div>
                   <div className="htc-desc">{tool.desc}</div>
-                  {tool.badge && (
-                    <span className="d-none d-lg-inline-block" style={{ marginTop: 4, fontSize: '0.68rem', fontWeight: 700, color: '#374151', background: tool.light, border: `1px solid ${tool.color}33`, borderRadius: 100, padding: '1px 8px' }}>
-                      {tool.badge}
-                    </span>
-                  )}
+
                   <div className="htc-arrow">
                     Open <i className="bi bi-arrow-right" aria-hidden="true" />
                   </div>
