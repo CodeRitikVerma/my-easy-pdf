@@ -34,12 +34,12 @@ const Footer = () => {
             <Row className="g-0 g-md-3">
               {footerJson.sections.map((section, i) => (
                 <Col key={i} xs={12} md={3}>
-                  <button className="footer-acc-toggle d-flex d-md-none" onClick={() => toggle(i)} aria-expanded={isOpen(i)}>
+                  <button className="footer-acc-toggle d-flex d-md-none" onClick={() => toggle(i)} aria-expanded={isOpen(i)} aria-controls={`footer-section-${i}`}>
                     <span className="footer-heading mb-0">{section.title}</span>
-                    <i className={`bi bi-chevron-${isOpen(i) ? 'up' : 'down'} footer-acc-icon`}></i>
+                    <i className={`bi bi-chevron-${isOpen(i) ? 'up' : 'down'} footer-acc-icon`} aria-hidden="true"></i>
                   </button>
                   <div className="footer-heading d-none d-md-block">{section.title}</div>
-                  <div className={`footer-acc-body${isOpen(i) ? ' open' : ''}`}>
+                  <div id={`footer-section-${i}`} className={`footer-acc-body${isOpen(i) ? ' open' : ''}`}>
                     <ul className="list-unstyled mb-0 pb-2 pb-md-0">
                       {section.links.map((link, j) => (
                         <li key={j}>

@@ -116,17 +116,17 @@ export default function ImageToPDFClient({
                 <div key={img.id} className={`file-item${dragIndex === index ? ' dragging' : ''}`}
                   draggable onDragStart={() => handleDragStart(index)} onDragOver={(e) => handleDragOver(e, index)} onDragEnd={handleDragEnd}>
                   <div className="d-flex flex-column gap-1 me-2 flex-shrink-0">
-                    <button className="btn-reorder" onClick={() => moveUp(index)} disabled={index === 0} title="Move up"><i className="bi bi-chevron-up"></i></button>
-                    <button className="btn-reorder" onClick={() => moveDown(index)} disabled={index === images.length - 1} title="Move down"><i className="bi bi-chevron-down"></i></button>
+                    <button className="btn-reorder" onClick={() => moveUp(index)} disabled={index === 0} aria-label="Move up"><i className="bi bi-chevron-up" aria-hidden="true"></i></button>
+                    <button className="btn-reorder" onClick={() => moveDown(index)} disabled={index === images.length - 1} aria-label="Move down"><i className="bi bi-chevron-down" aria-hidden="true"></i></button>
                   </div>
-                  <i className="bi bi-grip-vertical text-muted me-2 fs-5 d-none d-md-block" style={{ cursor: 'grab' }}></i>
+                  <i className="bi bi-grip-vertical text-muted me-2 fs-5 d-none d-md-block" aria-hidden="true" style={{ cursor: 'grab' }}></i>
                   <img src={img.preview} alt={img.name} className="rounded me-3" style={{ width: 52, height: 52, objectFit: 'cover', flexShrink: 0 }} />
                   <div className="flex-grow-1 min-w-0">
                     <div className="fw-semibold text-truncate">{img.name}</div>
                     <small className="text-muted">{(img.size / 1024).toFixed(1)} KB</small>
                   </div>
                   <Badge bg="secondary" className="me-2">#{index + 1}</Badge>
-                  <Button variant="outline-danger" size="sm" onClick={() => removeImage(img.id)}><i className="bi bi-trash"></i></Button>
+                  <Button variant="outline-danger" size="sm" onClick={() => removeImage(img.id)} aria-label={`Remove ${img.name}`}><i className="bi bi-trash" aria-hidden="true"></i></Button>
                 </div>
               ))}
             </div>
@@ -136,8 +136,8 @@ export default function ImageToPDFClient({
               <Row className="g-3 align-items-end">
                 <Col md={4}>
                   <Form.Group>
-                    <Form.Label className="fw-semibold small">Page Size</Form.Label>
-                    <Form.Select value={pageSize} onChange={e => setPageSize(e.target.value)}>
+                    <Form.Label htmlFor="img-page-size" className="fw-semibold small">Page Size</Form.Label>
+                    <Form.Select id="img-page-size" value={pageSize} onChange={e => setPageSize(e.target.value)}>
                       {Object.keys(PAGE_SIZES).map(s => <option key={s}>{s}</option>)}
                     </Form.Select>
                   </Form.Group>
@@ -145,8 +145,8 @@ export default function ImageToPDFClient({
                 {pageSize !== 'Image Size' && (
                   <Col md={4}>
                     <Form.Group>
-                      <Form.Label className="fw-semibold small">Orientation</Form.Label>
-                      <Form.Select value={orientation} onChange={e => setOrientation(e.target.value)}>
+                      <Form.Label htmlFor="img-orientation" className="fw-semibold small">Orientation</Form.Label>
+                      <Form.Select id="img-orientation" value={orientation} onChange={e => setOrientation(e.target.value)}>
                         <option value="portrait">Portrait</option>
                         <option value="landscape">Landscape</option>
                       </Form.Select>
@@ -155,8 +155,8 @@ export default function ImageToPDFClient({
                 )}
                 <Col md={4}>
                   <Form.Group>
-                    <Form.Label className="fw-semibold small">Margin: {margin} pt</Form.Label>
-                    <Form.Range min="0" max="72" value={margin} onChange={e => setMargin(e.target.value)} />
+                    <Form.Label htmlFor="img-margin" className="fw-semibold small">Margin: {margin} pt</Form.Label>
+                    <Form.Range id="img-margin" min="0" max="72" value={margin} onChange={e => setMargin(e.target.value)} />
                   </Form.Group>
                 </Col>
               </Row>

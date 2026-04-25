@@ -4,14 +4,14 @@ const BASE = 'https://myeasypdf.com';
 const PAGE = `${BASE}/compress-pdf`;
 
 export const metadata = {
-  title: 'Compress PDF Online Free — Reduce PDF File Size',
+  title: 'Compress PDF Online Free — Reduce PDF File Size Instantly',
   description:
-    'Compress your PDF and reduce file size online for free. Choose from High, Medium, or Low ' +
-    'quality presets. See savings percentage instantly. 100% browser-based.',
+    'Make your PDF smaller online for free. Choose High, Medium, or Low quality — or set an exact target size like 500 KB. ' +
+    'See the file size savings instantly. No upload, no sign-up, 100% private.',
   keywords: [
-    'compress PDF online free', 'reduce PDF file size', 'PDF compressor',
-    'shrink PDF', 'PDF size reducer', 'compress PDF without uploading',
-    'PDF compression tool', 'browser PDF compressor',
+    'compress PDF online free', 'reduce PDF file size', 'PDF compressor online',
+    'shrink PDF free', 'make PDF smaller', 'compress PDF without uploading',
+    'PDF size reducer', 'compress PDF to 1 MB', 'compress PDF no sign up',
   ],
   alternates: { canonical: '/compress-pdf' },
   openGraph: {

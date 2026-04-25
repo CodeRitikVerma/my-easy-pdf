@@ -59,15 +59,15 @@ const CameraOverlay = ({ videoRef, pendingPhoto, photos, flashActive, showGrid, 
 
           {/* Top bar */}
           <div style={{ position: 'absolute', top: 0, left: 0, right: 0, display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: safeTop, paddingLeft: 16, paddingRight: 16, paddingBottom: 20, background: 'linear-gradient(rgba(0,0,0,0.6), transparent)' }}>
-            <button onClick={stopCamera} style={camBtn}><i className="bi bi-arrow-left"></i></button>
+            <button onClick={stopCamera} aria-label="Stop camera" style={camBtn}><i className="bi bi-arrow-left" aria-hidden="true"></i></button>
             {photos.length > 0 && (
               <Badge bg="primary" pill style={{ fontSize: '0.85rem', padding: '0.45em 0.85em', backdropFilter: 'blur(4px)' }}>
                 <i className="bi bi-images me-1"></i>{photos.length} photo{photos.length > 1 ? 's' : ''}
               </Badge>
             )}
-            <button onClick={() => setShowGrid(g => !g)} title={showGrid ? 'Hide grid' : 'Show grid'}
+            <button onClick={() => setShowGrid(g => !g)} aria-label={showGrid ? 'Hide grid overlay' : 'Show grid overlay'}
               style={{ ...camBtn, background: showGrid ? 'rgba(91,94,244,0.65)' : 'rgba(0,0,0,0.35)', border: showGrid ? '1.5px solid rgba(91,94,244,0.85)' : '1.5px solid rgba(255,255,255,0.35)' }}>
-              <i className="bi bi-grid-3x3"></i>
+              <i className="bi bi-grid-3x3" aria-hidden="true"></i>
             </button>
           </div>
 

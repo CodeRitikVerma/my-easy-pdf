@@ -4,15 +4,13 @@ const BASE = 'https://myeasypdf.com';
 const PAGE = `${BASE}/remove-pages`;
 
 export const metadata = {
-  title: 'Remove Pages from PDF Online Free — Delete PDF Pages',
+  title: 'Remove Pages from PDF Online Free — Delete Unwanted Pages Instantly',
   description:
-    'Remove unwanted pages from your PDF online for free. ' +
-    'Select pages to delete, preview thumbnails, and download the result instantly. ' +
-    '100% browser-based — no upload to servers, no account required.',
+    'Delete unwanted pages from your PDF — free, no sign-up, nothing uploaded. Click thumbnail previews to mark pages for removal, then download a clean new PDF in seconds.',
   keywords: [
-    'remove pages from PDF', 'delete PDF pages', 'PDF page remover',
-    'remove page from PDF online free', 'delete pages PDF', 'PDF page delete tool',
-    'remove PDF pages without uploading', 'browser PDF editor',
+    'remove pages from PDF free', 'delete PDF pages online', 'PDF page remover',
+    'remove page from PDF online', 'delete pages from PDF free', 'cut pages from PDF',
+    'remove PDF pages without uploading', 'free PDF page remover',
   ],
   alternates: { canonical: '/remove-pages' },
   openGraph: {

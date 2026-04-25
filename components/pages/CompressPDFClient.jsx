@@ -359,6 +359,7 @@ export default function CompressPDFClient() {
                     placeholder={targetUnit === 'kb' ? 'e.g. 500' : 'e.g. 2.5'}
                     value={targetValue}
                     onChange={e => setTargetValue(e.target.value)}
+                    aria-label={`Target file size in ${targetUnit.toUpperCase()}`}
                     style={{
                       flex: 1, height: 48, borderRadius: 10,
                       borderColor: '#d1d5db', fontSize: '1rem',

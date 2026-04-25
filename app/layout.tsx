@@ -158,7 +158,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        {/* Preconnect to third-party origins for faster first-party render */}
+        {/* Preconnect to AdSense for faster ad loading */}
         <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
         {process.env.NEXT_PUBLIC_GA_ID && (
           <link rel="preconnect" href="https://www.googletagmanager.com" />
@@ -196,10 +196,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
         />
 
+        {/* Skip navigation — keyboard accessibility (Lighthouse bypass audit) */}
+        <a href="#main-content" className="visually-hidden-focusable">Skip to main content</a>
+
         <ScrollToTop />
         <div className="d-flex flex-column min-vh-100">
           <Header />
-          <main className="flex-grow-1">{children}</main>
+          <main id="main-content" className="flex-grow-1">{children}</main>
           <Footer />
         </div>
       </body>

@@ -4,14 +4,13 @@ const BASE = 'https://myeasypdf.com';
 const PAGE = `${BASE}/add-watermark`;
 
 export const metadata = {
-  title: 'Add Watermark to PDF Online Free — Text Watermark PDF',
+  title: 'Add Watermark to PDF Online Free — Custom Text, Opacity and Position',
   description:
-    'Add a diagonal text watermark to your PDF online for free. ' +
-    'Customize opacity, font size, and color. 100% browser-based — no upload to servers.',
+    'Stamp a text watermark on every PDF page — free, no upload, no sign-up. Set the text, opacity, colour, size, and position. Live preview on every page before you download.',
   keywords: [
-    'add watermark to PDF', 'PDF watermark online free', 'text watermark PDF',
-    'watermark PDF pages', 'PDF watermark tool', 'add text to PDF free',
-    'diagonal watermark PDF', 'browser PDF watermark',
+    'add watermark to PDF free', 'PDF watermark online', 'text watermark PDF',
+    'stamp watermark on PDF', 'confidential watermark PDF', 'add watermark to PDF no upload',
+    'PDF watermark tool free', 'custom watermark PDF online',
   ],
   alternates: { canonical: '/add-watermark' },
   openGraph: {

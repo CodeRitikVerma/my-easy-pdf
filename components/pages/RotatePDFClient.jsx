@@ -253,7 +253,7 @@ export default function RotatePDFClient() {
                           onClick={() => resetPage(page.index)}
                           style={{ padding: '1px 5px', fontSize: '0.7rem' }}
                         >
-                          <i className="bi bi-x-circle" /> Reset
+                          <i className="bi bi-x-circle" aria-hidden="true" /> Reset
                         </Button>
                       )}
                     </div>

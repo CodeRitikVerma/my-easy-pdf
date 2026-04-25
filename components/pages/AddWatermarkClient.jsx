@@ -298,8 +298,9 @@ export default function AddWatermarkClient() {
               <Row className="g-4">
                 {/* Text */}
                 <Col xs={12}>
-                  <Form.Label className="fw-semibold small">Watermark Text</Form.Label>
+                  <Form.Label htmlFor="wm-text" className="fw-semibold small">Watermark Text</Form.Label>
                   <Form.Control
+                    id="wm-text"
                     type="text" value={text} maxLength={60}
                     onChange={e => setText(e.target.value)}
                     placeholder="e.g. CONFIDENTIAL, DRAFT, SAMPLE"
@@ -308,8 +309,8 @@ export default function AddWatermarkClient() {
 
                 {/* Opacity */}
                 <Col xs={12} sm={6}>
-                  <Form.Label className="fw-semibold small">Opacity: <strong>{opacity}%</strong></Form.Label>
-                  <Form.Range min={5} max={80} value={opacity} onChange={e => setOpacity(parseInt(e.target.value))} />
+                  <Form.Label htmlFor="wm-opacity" className="fw-semibold small">Opacity: <strong>{opacity}%</strong></Form.Label>
+                  <Form.Range id="wm-opacity" min={5} max={80} value={opacity} onChange={e => setOpacity(parseInt(e.target.value))} />
                   <div className="d-flex justify-content-between">
                     <small className="text-muted">5% (faint)</small>
                     <small className="text-muted">80% (bold)</small>
@@ -318,8 +319,8 @@ export default function AddWatermarkClient() {
 
                 {/* Font size */}
                 <Col xs={12} sm={6}>
-                  <Form.Label className="fw-semibold small">Default font size: <strong>{fontSize}pt</strong></Form.Label>
-                  <Form.Range min={16} max={90} value={fontSize} onChange={e => setFontSize(parseInt(e.target.value))} />
+                  <Form.Label htmlFor="wm-font-size" className="fw-semibold small">Default font size: <strong>{fontSize}pt</strong></Form.Label>
+                  <Form.Range id="wm-font-size" min={16} max={90} value={fontSize} onChange={e => setFontSize(parseInt(e.target.value))} />
                   <div className="d-flex justify-content-between">
                     <small className="text-muted">16pt</small>
                     <small className="text-muted">90pt</small>

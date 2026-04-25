@@ -231,8 +231,9 @@ export default function AddPageNumbersClient() {
 
                 {/* Start from */}
                 <Col xs={12} sm={6}>
-                  <Form.Label className="fw-semibold small">Start from number</Form.Label>
+                  <Form.Label htmlFor="pn-start-from" className="fw-semibold small">Start from number</Form.Label>
                   <Form.Control
+                    id="pn-start-from"
                     type="number" min={1} value={startFrom}
                     onChange={e => setStartFrom(Math.max(1, parseInt(e.target.value) || 1))}
                     style={{ maxWidth: 120 }}
@@ -241,8 +242,8 @@ export default function AddPageNumbersClient() {
 
                 {/* Font size */}
                 <Col xs={12} sm={6}>
-                  <Form.Label className="fw-semibold small">Font size: <strong>{fontSize}pt</strong></Form.Label>
-                  <Form.Range min={8} max={24} value={fontSize} onChange={e => setFontSize(parseInt(e.target.value))} />
+                  <Form.Label htmlFor="pn-font-size" className="fw-semibold small">Font size: <strong>{fontSize}pt</strong></Form.Label>
+                  <Form.Range id="pn-font-size" min={8} max={24} value={fontSize} onChange={e => setFontSize(parseInt(e.target.value))} />
                   <div className="d-flex justify-content-between">
                     <small className="text-muted">8pt</small><small className="text-muted">24pt</small>
                   </div>
@@ -250,8 +251,8 @@ export default function AddPageNumbersClient() {
 
                 {/* Margin */}
                 <Col xs={12} sm={6}>
-                  <Form.Label className="fw-semibold small">Margin from edge: <strong>{margin}pt</strong></Form.Label>
-                  <Form.Range min={5} max={60} value={margin} onChange={e => setMargin(parseInt(e.target.value))} />
+                  <Form.Label htmlFor="pn-margin" className="fw-semibold small">Margin from edge: <strong>{margin}pt</strong></Form.Label>
+                  <Form.Range id="pn-margin" min={5} max={60} value={margin} onChange={e => setMargin(parseInt(e.target.value))} />
                   <div className="d-flex justify-content-between">
                     <small className="text-muted">5pt</small><small className="text-muted">60pt</small>
                   </div>

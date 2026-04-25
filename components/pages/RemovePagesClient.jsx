@@ -118,6 +118,11 @@ export default function RemovePagesClient() {
                 <Col key={page.index} xs={6} sm={4} md={3}>
                   <div
                     onClick={() => togglePage(page.index)}
+                    onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); togglePage(page.index); } }}
+                    role="checkbox"
+                    aria-checked={page.selected}
+                    aria-label={`Page ${page.index}${page.selected ? ' — marked for removal' : ''}`}
+                    tabIndex={0}
                     style={{
                       cursor: 'pointer',
                       borderRadius: 10,
@@ -130,7 +135,7 @@ export default function RemovePagesClient() {
                   >
                     <img
                       src={page.thumbnail}
-                      alt={`Page ${page.index}`}
+                      alt=""
                       style={{
                         width: '100%',
                         borderRadius: 6,
@@ -146,7 +151,7 @@ export default function RemovePagesClient() {
                         background: 'rgba(239,68,68,0.85)', borderRadius: '50%',
                         width: 36, height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center',
                       }}>
-                        <i className="bi bi-x-lg text-white" style={{ fontSize: '1.1rem' }}></i>
+                        <i className="bi bi-x-lg text-white" aria-hidden="true" style={{ fontSize: '1.1rem' }}></i>
                       </div>
                     )}
                     <div className="text-center mt-1 small fw-semibold" style={{ color: page.selected ? '#ef4444' : palette.text.secondary }}>

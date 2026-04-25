@@ -89,7 +89,7 @@ export default function CompanyPageClient() {
                     <i className={`bi ${v.icon}`} style={{ fontSize: '1.35rem', color: v.color }} />
                   </div>
                   <div>
-                    <h6 className="fw-bold mb-1">{v.title}</h6>
+                    <h3 className="fw-bold mb-1" style={{ fontSize: '1rem' }}>{v.title}</h3>
                     <p className="text-muted small mb-0">{v.text}</p>
                   </div>
                 </div>

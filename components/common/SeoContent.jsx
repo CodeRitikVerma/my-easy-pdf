@@ -104,7 +104,7 @@ const SeoContent = ({ slug }) => {
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       fontSize: '1.1rem',
                     }}>
-                      <i className={`bi ${f.icon || 'bi-check2-circle'}`} />
+                      <i className={`bi ${f.icon || 'bi-check2-circle'}`} aria-hidden="true" />
                     </span>
                     <div>
                       <h3 className="fw-bold mb-1" style={{ fontSize: '1rem', color: '#111827' }}>{f.title}</h3>
@@ -164,7 +164,7 @@ const SeoContent = ({ slug }) => {
                     fontSize: '0.88rem', fontWeight: 500,
                   }}
                 >
-                  <i className={`bi ${r.icon || 'bi-arrow-right'} me-2`} style={{ fontSize: '0.85rem' }} />
+                  <i className={`bi ${r.icon || 'bi-arrow-right'} me-2`} aria-hidden="true" style={{ fontSize: '0.85rem' }} />
                   {r.name}
                 </Link>
               ))}

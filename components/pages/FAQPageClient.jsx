@@ -60,7 +60,7 @@ export default function FAQPageClient() {
       <Container className="py-4 py-md-5" style={{ maxWidth: 780 }}>
         {faqSections.map((section, si) => (
           <div key={si} className="mb-5">
-            <h5 className="fw-bold mb-3 d-flex align-items-center gap-2" style={{ color: palette.text.primary }}>
+            <h2 className="fw-bold mb-3 d-flex align-items-center gap-2" style={{ color: palette.text.primary, fontSize: '1.15rem' }}>
               <i className={`bi ${section.icon} text-primary`}></i>{section.title}
             </h5>
             <Accordion flush className="border rounded-3 overflow-hidden">
@@ -76,7 +76,7 @@ export default function FAQPageClient() {
 
         <div className="text-center p-4 rounded-4 border" style={{ background: palette.surface.inset }}>
           <i className="bi bi-chat-heart-fill text-primary mb-2 d-block" style={{ fontSize: '1.8rem' }}></i>
-          <h6 className="fw-bold mb-1">Still have a question?</h6>
+          <h3 className="fw-bold mb-1" style={{ fontSize: '1rem' }}>Still have a question?</h3>
           <p className="text-muted small mb-3">Reach out to the developer directly by email.</p>
           <a href="mailto:ritikverma210@gmail.com"
             className="btn btn-sm px-4 fw-semibold" style={{ background: palette.gradient.primary, color: 'white', border: 'none' }}>

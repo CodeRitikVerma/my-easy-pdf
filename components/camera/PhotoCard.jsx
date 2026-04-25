@@ -13,11 +13,11 @@ const PhotoCard = ({ photo, index, total, onMoveUp, onMoveDown, onDelete, onFilt
       {/* ── Main row ── */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
         <div className="d-flex flex-column gap-1 me-1 flex-shrink-0">
-          <button className="btn-reorder" onClick={onMoveUp}   disabled={index === 0}         title="Move up">
-            <i className="bi bi-chevron-up"></i>
+          <button className="btn-reorder" onClick={onMoveUp}   disabled={index === 0}         aria-label="Move up">
+            <i className="bi bi-chevron-up" aria-hidden="true"></i>
           </button>
-          <button className="btn-reorder" onClick={onMoveDown} disabled={index === total - 1} title="Move down">
-            <i className="bi bi-chevron-down"></i>
+          <button className="btn-reorder" onClick={onMoveDown} disabled={index === total - 1} aria-label="Move down">
+            <i className="bi bi-chevron-down" aria-hidden="true"></i>
           </button>
         </div>
 
@@ -41,11 +41,11 @@ const PhotoCard = ({ photo, index, total, onMoveUp, onMoveDown, onDelete, onFilt
           )}
         </div>
 
-        <Button variant="outline-secondary" size="sm" onClick={onPreview} title="Preview with filter" className="me-1">
-          <i className="bi bi-eye"></i>
+        <Button variant="outline-secondary" size="sm" onClick={onPreview} aria-label="Preview with filter" className="me-1">
+          <i className="bi bi-eye" aria-hidden="true"></i>
         </Button>
-        <Button variant="outline-danger" size="sm" onClick={onDelete}>
-          <i className="bi bi-trash"></i>
+        <Button variant="outline-danger" size="sm" onClick={onDelete} aria-label="Delete photo">
+          <i className="bi bi-trash" aria-hidden="true"></i>
         </Button>
       </div>
 

@@ -4,16 +4,14 @@ const BASE = 'https://myeasypdf.com';
 const PAGE = `${BASE}/sign-pdf`;
 
 export const metadata = {
-  title: 'Sign PDF Online Free — Add Typed or Drawn Signature',
+  title: 'Sign PDF Online Free — Draw or Type Your Signature, No Account',
   description:
-    'Add your signature to any PDF online for free — type it in a font or draw it by hand. ' +
-    'Drag your signature anywhere on the page, resize it, and apply to multiple pages. ' +
-    'No upload, no account, 100% browser-based.',
+    'Add a handwritten or typed signature to any PDF — free, no account, no upload. Draw with your mouse or finger, pick any colour, place it anywhere on the page, and download a signed PDF instantly.',
   keywords: [
-    'sign PDF online free', 'add signature to PDF', 'digital signature PDF',
-    'draw signature on PDF', 'electronic signature PDF free', 'type signature on PDF',
-    'sign PDF without Adobe', 'free PDF signer online', 'handwritten signature PDF',
-    'sign PDF no upload',
+    'sign PDF online free', 'add signature to PDF free', 'draw signature on PDF',
+    'electronic signature PDF free', 'e-sign PDF online', 'type signature on PDF',
+    'sign PDF no account', 'free PDF signature tool', 'sign PDF without Adobe',
+    'digital signature PDF free',
   ],
   alternates: { canonical: '/sign-pdf' },
   openGraph: {

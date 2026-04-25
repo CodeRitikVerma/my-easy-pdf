@@ -23,9 +23,9 @@ const PhotoPreview = ({ photo, onClose, onFilterChange }) => {
         background: 'linear-gradient(rgba(0,0,0,0.75), transparent)',
       }}>
         {/* Close */}
-        <button onClick={onClose}
+        <button onClick={onClose} aria-label="Close preview"
           style={{ ...btnBase, width: 40, height: 40, justifyContent: 'center', padding: 0, background: 'rgba(0,0,0,0.4)', fontSize: '1rem' }}>
-          <i className="bi bi-x-lg"></i>
+          <i className="bi bi-x-lg" aria-hidden="true"></i>
         </button>
 
         {/* Title */}

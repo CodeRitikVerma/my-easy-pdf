@@ -290,16 +290,15 @@ export default function MergePDFClient() {
                       title="Move left"
                       aria-label="Move page left"
                     >
-                      <i className="bi bi-chevron-left" />
+                      <i className="bi bi-chevron-left" aria-hidden="true" />
                     </button>
                     <button
                       className="mtr-btn"
                       onClick={() => movePage(page.id, 'right')}
                       disabled={idx === pages.length - 1}
-                      title="Move right"
                       aria-label="Move page right"
                     >
-                      <i className="bi bi-chevron-right" />
+                      <i className="bi bi-chevron-right" aria-hidden="true" />
                     </button>
                   </div>
 
@@ -313,7 +312,7 @@ export default function MergePDFClient() {
                     title="Remove this page"
                     aria-label="Remove page"
                   >
-                    <i className="bi bi-x-lg" />
+                    <i className="bi bi-x-lg" aria-hidden="true" />
                   </button>
                 </div>
               ))}

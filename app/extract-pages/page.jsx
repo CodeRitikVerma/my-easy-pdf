@@ -4,14 +4,13 @@ const BASE = 'https://myeasypdf.com';
 const PAGE = `${BASE}/extract-pages`;
 
 export const metadata = {
-  title: 'Extract Pages from PDF Online Free — Save Selected Pages',
+  title: 'Extract Pages from PDF Online Free — Save Specific Pages as New PDF',
   description:
-    'Extract specific pages from a PDF and save them as a new PDF online for free. ' +
-    'Click thumbnails to select the pages you want to keep. 100% browser-based.',
+    'Pull specific pages out of a PDF and save them as a new document — free, no sign-up, nothing uploaded. Click page thumbnails to select what you want, then download instantly.',
   keywords: [
-    'extract pages from PDF', 'save selected PDF pages', 'PDF page extractor',
-    'extract PDF pages online free', 'keep specific pages PDF', 'PDF page saver',
-    'extract pages without uploading', 'browser PDF extractor',
+    'extract pages from PDF free', 'save selected PDF pages', 'PDF page extractor online',
+    'extract specific pages from PDF', 'pull pages from PDF free', 'keep pages from PDF',
+    'extract PDF pages without uploading', 'free PDF page extractor',
   ],
   alternates: { canonical: '/extract-pages' },
   openGraph: {

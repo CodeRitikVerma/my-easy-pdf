@@ -4,15 +4,14 @@ const BASE = 'https://myeasypdf.com';
 const PAGE = `${BASE}/split-pdf`;
 
 export const metadata = {
-  title: 'Split PDF Online Free — Extract Pages or Custom Ranges',
+  title: 'Split PDF Online Free — Extract Pages or Custom Ranges Instantly',
   description:
-    'Split a PDF into individual pages or define custom page ranges online for free. ' +
-    'Download all split files as a ZIP. No upload to servers, no account required. ' +
-    '100% browser-based.',
+    'Split a PDF into separate pages or custom page ranges — free, no sign-up, nothing uploaded. ' +
+    'Download all output files as one ZIP. 100% private and browser-based.',
   keywords: [
-    'split PDF online free', 'PDF splitter', 'separate PDF pages',
-    'extract pages from PDF', 'divide PDF into parts', 'split PDF into multiple files',
-    'custom page range PDF split', 'PDF page extractor free', 'split PDF without uploading',
+    'split PDF online free', 'PDF splitter free', 'divide PDF into pages',
+    'split PDF by page range', 'extract pages from PDF free', 'separate PDF pages online',
+    'split PDF into multiple files', 'split PDF without uploading', 'free PDF splitter',
   ],
   alternates: { canonical: '/split-pdf' },
   openGraph: {

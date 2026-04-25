@@ -4,15 +4,15 @@ const BASE = 'https://myeasypdf.com';
 const PAGE = `${BASE}/merge-pdf`;
 
 export const metadata = {
-  title: 'Merge PDF Files Online Free — Combine PDFs Instantly',
+  title: 'Merge PDF Files Online Free — Combine PDFs in Seconds',
   description:
-    'Combine multiple PDF files into one document online for free. ' +
-    'Drag to reorder pages before merging. No file size limit, no upload to servers, no sign-up. ' +
-    'Works 100% in your browser.',
+    'Merge multiple PDF files into one document — free, no sign-up, no upload. ' +
+    'Drag pages to reorder, remove any you don\'t need, and download one clean PDF instantly. ' +
+    '100% private — everything runs in your browser.',
   keywords: [
-    'merge PDF online free', 'combine PDF files', 'join PDF online',
-    'PDF combiner free', 'merge multiple PDF into one', 'combine PDF without uploading',
-    'merge PDF free no limit', 'PDF merger tool online', 'unite PDF files',
+    'merge PDF online free', 'combine PDF files', 'join PDF files online',
+    'PDF merger free', 'merge multiple PDFs into one', 'combine PDFs without uploading',
+    'merge PDF no sign up', 'free PDF combiner', 'PDF merge tool',
   ],
   alternates: { canonical: '/merge-pdf' },
   openGraph: {

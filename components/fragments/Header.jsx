@@ -76,7 +76,7 @@ const Header = () => {
       >
         <Container>
           <Navbar.Brand as={Link} href="/" onClick={close} className="fw-bold d-flex align-items-center gap-2">
-            <i className="bi bi-file-earmark-pdf-fill" style={{ fontSize: '1.3rem' }} />
+            <i className="bi bi-file-earmark-pdf-fill" aria-hidden="true" style={{ fontSize: '1.3rem' }} />
             {headerJson.brand.name}
           </Navbar.Brand>
 
@@ -95,10 +95,11 @@ const Header = () => {
                     active={megaOpen}
                     className="d-flex align-items-center gap-1"
                   >
-                    {item.icon && <i className={`bi ${item.icon}`} />}
+                    {item.icon && <i className={`bi ${item.icon}`} aria-hidden="true" />}
                     {item.name}
                     <i
                       className={`bi bi-chevron-${megaOpen ? 'up' : 'down'} ms-1`}
+                      aria-hidden="true"
                       style={{ fontSize: '0.72rem', opacity: 0.8 }}
                     />
                   </Nav.Link>
@@ -116,10 +117,11 @@ const Header = () => {
                       active={isDropdownActive(item) || clickDrop?.index === index}
                       className="d-flex align-items-center gap-1"
                     >
-                      {item.icon && <i className={`bi ${item.icon}`} />}
+                      {item.icon && <i className={`bi ${item.icon}`} aria-hidden="true" />}
                       {item.name}
                       <i
                         className={`bi bi-chevron-${clickDrop?.index === index ? 'up' : 'down'} ms-1`}
+                        aria-hidden="true"
                         style={{ fontSize: '0.72rem', opacity: 0.8 }}
                       />
                     </Nav.Link>
@@ -132,7 +134,7 @@ const Header = () => {
                           className="d-flex align-items-center gap-2 py-1"
                           style={{ fontSize: '0.875rem' }}
                         >
-                          <i className={`bi ${sub.icon}`} style={{ width: 18, textAlign: 'center' }} />
+                          <i className={`bi ${sub.icon}`} aria-hidden="true" style={{ width: 18, textAlign: 'center' }} />
                           {sub.name}
                         </Nav.Link>
                       ))}
@@ -150,7 +152,7 @@ const Header = () => {
                     className={`d-flex align-items-center gap-1${item.mobileOnly ? ' d-lg-none' : ''}`}
                     active={pathname === item.href}
                   >
-                    {item.icon && <i className={`bi ${item.icon}`} />}
+                    {item.icon && <i className={`bi ${item.icon}`} aria-hidden="true" />}
                     {item.name}
                   </Nav.Link>
                 );
@@ -193,7 +195,7 @@ const Header = () => {
               onMouseEnter={e => { e.currentTarget.style.background = '#eef2ff'; e.currentTarget.style.color = '#4f46e5'; }}
               onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#374151'; }}
             >
-              <i className={`bi ${sub.icon}`} style={{ color: '#5b5ef4', fontSize: '0.9rem', width: 18, textAlign: 'center' }} />
+              <i className={`bi ${sub.icon}`} aria-hidden="true" style={{ color: '#5b5ef4', fontSize: '0.9rem', width: 18, textAlign: 'center' }} />
               {sub.name}
             </Link>
           ))}

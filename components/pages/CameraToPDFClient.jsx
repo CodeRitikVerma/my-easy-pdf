@@ -150,23 +150,23 @@ export default function CameraToPDFClient() {
               <h6 className="fw-bold mb-3">PDF Settings</h6>
               <Row className="g-3">
                 <Col xs={12}>
-                  <Form.Label className="fw-semibold small"><i className="bi bi-pencil me-1 text-primary"></i>PDF Name</Form.Label>
+                  <Form.Label htmlFor="cam-pdf-name" className="fw-semibold small"><i className="bi bi-pencil me-1 text-primary" aria-hidden="true"></i>PDF Name</Form.Label>
                   <div className="input-group">
-                    <Form.Control type="text" placeholder="camera-scan" value={pdfName} onChange={e => setPdfName(e.target.value)} maxLength={80} />
+                    <Form.Control id="cam-pdf-name" type="text" placeholder="camera-scan" value={pdfName} onChange={e => setPdfName(e.target.value)} maxLength={80} />
                     <span className="input-group-text text-muted small">.pdf</span>
                   </div>
                   <Form.Text className="text-muted">Leave blank to use "camera-scan.pdf"</Form.Text>
                 </Col>
                 <Col xs={6}>
-                  <Form.Label className="fw-semibold small">Page Size</Form.Label>
-                  <Form.Select value={pageSize} onChange={e => setPageSize(e.target.value)}>
+                  <Form.Label htmlFor="cam-page-size" className="fw-semibold small">Page Size</Form.Label>
+                  <Form.Select id="cam-page-size" value={pageSize} onChange={e => setPageSize(e.target.value)}>
                     {Object.keys(PAGE_SIZES).map(s => <option key={s}>{s}</option>)}
                   </Form.Select>
                 </Col>
                 {pageSize !== 'Photo Size' && (
                   <Col xs={6}>
-                    <Form.Label className="fw-semibold small">Orientation</Form.Label>
-                    <Form.Select value={orientation} onChange={e => setOrientation(e.target.value)}>
+                    <Form.Label htmlFor="cam-orientation" className="fw-semibold small">Orientation</Form.Label>
+                    <Form.Select id="cam-orientation" value={orientation} onChange={e => setOrientation(e.target.value)}>
                       <option value="portrait">Portrait</option>
                       <option value="landscape">Landscape</option>
                     </Form.Select>

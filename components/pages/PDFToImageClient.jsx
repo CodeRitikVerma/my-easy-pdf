@@ -120,8 +120,8 @@ export default function PDFToImageClient({
               <Row className="g-3 align-items-end">
                 <Col md={3}>
                   <Form.Group>
-                    <Form.Label className="fw-semibold small">Format</Form.Label>
-                    <Form.Select value={format} onChange={e => setFormat(e.target.value)}>
+                    <Form.Label htmlFor="pti-format" className="fw-semibold small">Format</Form.Label>
+                    <Form.Select id="pti-format" value={format} onChange={e => setFormat(e.target.value)}>
                       <option value="png">PNG (Lossless)</option>
                       <option value="jpg">JPEG (Smaller)</option>
                     </Form.Select>
@@ -129,8 +129,8 @@ export default function PDFToImageClient({
                 </Col>
                 <Col md={4}>
                   <Form.Group>
-                    <Form.Label className="fw-semibold small">Resolution Scale: {scale}× ({Math.round(595 * scale)}×{Math.round(842 * scale)} px approx.)</Form.Label>
-                    <Form.Range min="1" max="4" step="0.5" value={scale} onChange={e => setScale(e.target.value)} />
+                    <Form.Label htmlFor="pti-scale" className="fw-semibold small">Resolution Scale: {scale}× ({Math.round(595 * scale)}×{Math.round(842 * scale)} px approx.)</Form.Label>
+                    <Form.Range id="pti-scale" min="1" max="4" step="0.5" value={scale} onChange={e => setScale(e.target.value)} />
                   </Form.Group>
                 </Col>
                 <Col md={5} className="d-flex gap-2 align-items-end">
@@ -145,10 +145,18 @@ export default function PDFToImageClient({
             <Row className="g-3 mb-4">
               {pages.map(page => (
                 <Col key={page.index} xs={6} sm={4} md={3} lg={2}>
-                  <div className={`page-thumbnail${page.selected ? ' selected' : ''}`} onClick={() => togglePage(page.index)}>
-                    <img src={page.thumbnail} alt={`Page ${page.index}`} className="w-100 rounded" />
+                  <div
+                    className={`page-thumbnail${page.selected ? ' selected' : ''}`}
+                    onClick={() => togglePage(page.index)}
+                    onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); togglePage(page.index); } }}
+                    role="checkbox"
+                    aria-checked={page.selected}
+                    aria-label={`Page ${page.index}`}
+                    tabIndex={0}
+                  >
+                    <img src={page.thumbnail} alt="" className="w-100 rounded" />
                     <div className="text-center mt-1 small fw-semibold">Page {page.index}</div>
-                    {page.selected && <div className="text-center"><Badge bg="primary" pill><i className="bi bi-check-lg"></i></Badge></div>}
+                    {page.selected && <div className="text-center"><Badge bg="primary" pill><i className="bi bi-check-lg" aria-hidden="true"></i></Badge></div>}
                   </div>
                 </Col>
               ))}

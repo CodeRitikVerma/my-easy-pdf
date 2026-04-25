@@ -80,10 +80,10 @@ const ColorPickerModal = ({ customColor, colorHex, onChange, onClose, onClear })
           <div style={{ fontWeight: 700, fontSize: '0.92rem', color: palette.text.primary, lineHeight: 1.2 }}>Choose Ink Color</div>
           <div style={{ fontSize: '0.68rem', color: palette.text.muted, marginTop: 1 }}>Drag the picker or choose a preset</div>
         </div>
-        <button onClick={onClose} style={{ width: 30, height: 30, borderRadius: '50%', border: `1.5px solid ${palette.border.strong}`, background: 'transparent', color: palette.text.muted, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem', flexShrink: 0 }}
+        <button onClick={onClose} aria-label="Close color picker" style={{ width: 30, height: 30, borderRadius: '50%', border: `1.5px solid ${palette.border.strong}`, background: 'transparent', color: palette.text.muted, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem', flexShrink: 0 }}
           onMouseEnter={e => { e.currentTarget.style.background='#fee2e2'; e.currentTarget.style.borderColor='#fca5a5'; e.currentTarget.style.color='#ef4444'; }}
           onMouseLeave={e => { e.currentTarget.style.background='transparent'; e.currentTarget.style.borderColor=palette.border.strong; e.currentTarget.style.color=palette.text.muted; }}>
-          <i className="bi bi-x-lg" />
+          <i className="bi bi-x-lg" aria-hidden="true" />
         </button>
       </div>
 

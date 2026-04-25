@@ -55,7 +55,7 @@ export default function AboutPageClient() {
                     <i className={`bi ${v.icon}`} style={{ fontSize: '1.35rem', color: v.color }}></i>
                   </div>
                   <div>
-                    <h6 className="fw-bold mb-1">{v.title}</h6>
+                    <h3 className="fw-bold mb-1" style={{ fontSize: '1rem' }}>{v.title}</h3>
                     <p className="text-muted small mb-0">{v.text}</p>
                   </div>
                 </div>
@@ -76,7 +76,7 @@ export default function AboutPageClient() {
                   </div>
                 </Col>
                 <Col>
-                  <h4 className="fw-bold mb-1">Ritik Verma</h4>
+                  <h3 className="fw-bold mb-1">Ritik Verma</h3>
                   <p className="text-muted mb-3 small">Software Developer &nbsp;·&nbsp; Artist &nbsp;·&nbsp; Creator</p>
                   <p className="text-muted mb-3 small lh-lg">
                     Passionate about building tools that respect users&apos; privacy and just work. MyEasyPDF

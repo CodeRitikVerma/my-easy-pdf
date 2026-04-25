@@ -162,7 +162,7 @@ export default function OrganizePDFClient() {
                     onMouseLeave={e => { e.currentTarget.style.boxShadow = '0 1px 4px rgba(0,0,0,0.05)'; if (dragId !== page.id) e.currentTarget.style.borderColor = '#e5e7eb'; }}
                   >
                     {/* Drag handle hint */}
-                    <div style={{ textAlign: 'center', fontSize: '0.65rem', color: '#c4b5fd', marginBottom: 3, letterSpacing: 2, lineHeight: 1 }}>
+                    <div style={{ textAlign: 'center', fontSize: '0.65rem', color: '#7c3aed', marginBottom: 3, letterSpacing: 2, lineHeight: 1 }}>
                       ⠿
                     </div>
                     <img
@@ -174,7 +174,7 @@ export default function OrganizePDFClient() {
                     <div className="text-center mt-1 small fw-semibold" style={{ color: palette.text.secondary }}>
                       Page {pos + 1}
                       {page.originalIndex !== pos + 1 && (
-                        <span className="ms-1" style={{ color: palette.indigo?.[500] ?? '#6366f1', fontSize: '0.75em' }}>
+                        <span className="ms-1" style={{ color: palette.indigo?.[700] ?? '#4338ca', fontSize: '0.75em' }}>
                           (was {page.originalIndex})
                         </span>
                       )}
@@ -185,20 +185,20 @@ export default function OrganizePDFClient() {
                         variant="outline-secondary"
                         disabled={pos === 0}
                         onClick={() => movePage(pos, -1)}
+                        aria-label="Move page left"
                         style={{ padding: '2px 8px', fontSize: '0.8rem' }}
-                        title="Move left"
                       >
-                        <i className="bi bi-arrow-left" />
+                        <i className="bi bi-arrow-left" aria-hidden="true" />
                       </Button>
                       <Button
                         size="sm"
                         variant="outline-secondary"
                         disabled={pos === pages.length - 1}
                         onClick={() => movePage(pos, 1)}
+                        aria-label="Move page right"
                         style={{ padding: '2px 8px', fontSize: '0.8rem' }}
-                        title="Move right"
                       >
-                        <i className="bi bi-arrow-right" />
+                        <i className="bi bi-arrow-right" aria-hidden="true" />
                       </Button>
                     </div>
                   </div>

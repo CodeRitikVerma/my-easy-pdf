@@ -9,7 +9,7 @@ export default function ContactPageClient() {
     <>
       <div className="page-header text-center">
         <Container>
-          <h1 className="fw-bold mb-2"><i className="bi bi-envelope me-2"></i>Contact</h1>
+          <h1 className="fw-bold mb-2"><i className="bi bi-envelope me-2" aria-hidden="true"></i>Contact</h1>
           <p className="lead opacity-90 mb-0">Have a question, suggestion, or just want to say hi?</p>
         </Container>
       </div>
@@ -26,11 +26,11 @@ export default function ContactPageClient() {
                 </div>
               </Col>
               <Col>
-                <h3 className="fw-bold mb-1">Ritik Verma</h3>
+                <h2 className="fw-bold mb-1" style={{ fontSize: '1.4rem' }}>Ritik Verma</h2>
                 <div className="d-flex flex-wrap gap-2 mb-3">
-                  <span className="badge rounded-pill" style={{ background: palette.tools.imageToPdf.bg, color: palette.tools.imageToPdf.color }}>Software Developer</span>
-                  <span className="badge rounded-pill" style={{ background: palette.tools.pdfToImage.bg, color: palette.tools.pdfToImage.color }}>Artist</span>
-                  <span className="badge rounded-pill" style={{ background: palette.tools.mergePdf.bg, color: palette.tools.mergePdf.color }}>Creator</span>
+                  <span className="badge rounded-pill" style={{ background: palette.tools.imageToPdf.bg, color: '#374151' }}>Software Developer</span>
+                  <span className="badge rounded-pill" style={{ background: palette.tools.pdfToImage.bg, color: '#374151' }}>Artist</span>
+                  <span className="badge rounded-pill" style={{ background: palette.tools.mergePdf.bg, color: '#374151' }}>Creator</span>
                 </div>
                 <p className="text-muted mb-4 lh-lg">
                   I&apos;m the developer behind MyEasyPDF. Whether you&apos;ve found a bug, have a feature request,
@@ -39,14 +39,14 @@ export default function ContactPageClient() {
                 <a href="mailto:ritikverma210@gmail.com"
                   className="btn btn-lg px-4 fw-semibold d-inline-flex align-items-center gap-2"
                   style={{ background: palette.gradient.primary, color: 'white', border: 'none' }}>
-                  <i className="bi bi-envelope-fill fs-5"></i>ritikverma210@gmail.com
+                  <i className="bi bi-envelope-fill fs-5" aria-hidden="true"></i>ritikverma210@gmail.com
                 </a>
               </Col>
             </Row>
           </Card.Body>
         </Card>
 
-        <h5 className="fw-bold mb-3">Before you reach out…</h5>
+        <h2 className="fw-bold mb-3" style={{ fontSize: '1.15rem' }}>Before you reach out…</h2>
         <Row className="g-3">
           {[
             { icon: 'bi-question-circle-fill', color: palette.tools.imageToPdf.color, bg: palette.tools.imageToPdf.bg, title: 'Common Questions', text: 'Check the FAQ — your question is probably already answered there.', href: '/faq', label: 'View FAQ' },
@@ -56,10 +56,10 @@ export default function ContactPageClient() {
             <Col key={i} sm={4}>
               <div className="p-3 rounded-3 h-100 border" style={{ background: item.bg }}>
                 <i className={`bi ${item.icon} mb-2 d-block`} style={{ fontSize: '1.5rem', color: item.color }}></i>
-                <h6 className="fw-bold mb-1">{item.title}</h6>
+                <h3 className="fw-bold mb-1" style={{ fontSize: '0.95rem' }}>{item.title}</h3>
                 <p className="text-muted small mb-2">{item.text}</p>
                 <Link href={item.href} className="small fw-semibold text-decoration-none" style={{ color: item.color }}>
-                  {item.label} <i className="bi bi-arrow-right"></i>
+                  {item.label} <i className="bi bi-arrow-right" aria-hidden="true"></i>
                 </Link>
               </div>
             </Col>

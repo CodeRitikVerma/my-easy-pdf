@@ -4,14 +4,13 @@ const BASE = 'https://myeasypdf.com';
 const PAGE = `${BASE}/add-page-numbers`;
 
 export const metadata = {
-  title: 'Add Page Numbers to PDF Online Free — Number PDF Pages',
+  title: 'Add Page Numbers to PDF Online Free — Any Position, Instant Preview',
   description:
-    'Add page numbers to your PDF online for free. Choose position, starting number, ' +
-    'font size, and margin. Download the numbered PDF instantly. 100% browser-based.',
+    'Insert page numbers into any PDF — free, no sign-up, nothing uploaded. Pick position (top/bottom, left/centre/right), start number, font size, and margin. Live preview before downloading.',
   keywords: [
-    'add page numbers to PDF', 'number PDF pages online free', 'PDF page numbering',
-    'insert page numbers PDF', 'PDF numbering tool', 'add numbers to PDF free',
-    'page number PDF online', 'browser PDF page numbers',
+    'add page numbers to PDF free', 'number PDF pages online', 'PDF page numbering online',
+    'insert page numbers in PDF free', 'add page numbers to PDF no upload',
+    'PDF numbering tool free', 'number pages in PDF free', 'PDF page number generator',
   ],
   alternates: { canonical: '/add-page-numbers' },
   openGraph: {

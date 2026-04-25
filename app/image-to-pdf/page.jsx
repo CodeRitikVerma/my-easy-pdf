@@ -4,14 +4,14 @@ const BASE = 'https://myeasypdf.com';
 const PAGE = `${BASE}/image-to-pdf`;
 
 export const metadata = {
-  title: 'Image to PDF Converter — Free, Instant, No Upload Required',
+  title: 'Image to PDF Converter — Free Online, All Formats, No Upload',
   description:
-    'Convert JPG, PNG, WebP, GIF and BMP images to a single PDF online — completely free. ' +
-    'Choose page size (A4, Letter), set orientation and margins. Works 100% in your browser, nothing uploaded.',
+    'Convert JPG, PNG, WebP, GIF, BMP, and HEIC images to a single PDF — free, instantly, in your browser. ' +
+    'Set page size (A4, Letter), orientation, and margins. No upload, no sign-up, no watermarks.',
   keywords: [
-    'image to PDF', 'JPG to PDF', 'PNG to PDF', 'convert image to PDF online free',
-    'photo to PDF', 'picture to PDF converter', 'WebP to PDF', 'multiple images to PDF',
-    'images to PDF free no watermark', 'convert photos to PDF without uploading',
+    'image to PDF converter free', 'JPG to PDF', 'PNG to PDF', 'convert photos to PDF online',
+    'photo to PDF converter', 'multiple images to PDF', 'WebP to PDF', 'HEIC to PDF',
+    'images to PDF free no watermark', 'convert images to PDF without uploading',
   ],
   alternates: { canonical: '/image-to-pdf' },
   openGraph: {

@@ -4,14 +4,13 @@ const BASE = 'https://myeasypdf.com';
 const PAGE = `${BASE}/organize-pdf`;
 
 export const metadata = {
-  title: 'Organize PDF Pages Online Free — Reorder PDF Pages',
+  title: 'Organize PDF Pages Online Free — Drag to Reorder Pages Instantly',
   description:
-    'Reorder pages in your PDF online for free. Move pages up or down to arrange them ' +
-    'in any order and download the result. 100% browser-based, no upload needed.',
+    'Rearrange PDF pages in any order — free, no sign-up, nothing uploaded. Drag thumbnails to reorder, then download your reorganised PDF in seconds. 100% browser-based.',
   keywords: [
-    'organize PDF pages', 'reorder PDF pages online free', 'rearrange PDF pages',
-    'move pages in PDF', 'PDF page organizer', 'sort PDF pages',
-    'reorder PDF without uploading', 'browser PDF organizer',
+    'organize PDF pages free', 'reorder PDF pages online', 'rearrange PDF pages free',
+    'drag to reorder PDF pages', 'PDF page organizer online', 'sort PDF pages free',
+    'rearrange pages in PDF without uploading', 'free PDF organizer',
   ],
   alternates: { canonical: '/organize-pdf' },
   openGraph: {

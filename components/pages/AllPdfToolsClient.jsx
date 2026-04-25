@@ -129,7 +129,7 @@ export default function AllPdfToolsClient() {
                 <i className={`bi ${cat.icon}`} style={{ fontSize: '1.1rem', color: cat.color }} />
               </div>
               <div>
-                <h4 className="fw-bold mb-0" style={{ color: palette.text.primary }}>{cat.title}</h4>
+                <h2 className="fw-bold mb-0" style={{ color: palette.text.primary, fontSize: '1.15rem' }}>{cat.title}</h2>
                 <small className="text-muted">{cat.tools.length} tool{cat.tools.length !== 1 ? 's' : ''}</small>
               </div>
             </div>
@@ -224,7 +224,7 @@ export default function AllPdfToolsClient() {
         <div className="text-center p-4 rounded-4"
           style={{ background: palette.surface.inset, border: `1px solid ${palette.border.default}` }}>
           <i className="bi bi-shield-lock-fill text-primary mb-2 d-block" style={{ fontSize: '1.8rem' }} />
-          <h6 className="fw-bold mb-1">100% Private — Always</h6>
+          <h3 className="fw-bold mb-1" style={{ fontSize: '1rem' }}>100% Private — Always</h3>
           <p className="text-muted small mb-0">
             Every tool processes files entirely in your browser. Nothing is uploaded to any server.
             No account required. Completely free.

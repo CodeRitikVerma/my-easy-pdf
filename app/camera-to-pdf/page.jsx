@@ -4,16 +4,14 @@ const BASE = 'https://myeasypdf.com';
 const PAGE = `${BASE}/camera-to-pdf`;
 
 export const metadata = {
-  title: 'Camera to PDF — Mobile Document Scanner, No App Needed',
+  title: 'Camera to PDF — Scan Documents with Your Phone, No App Download',
   description:
-    'Use your phone camera to capture documents and instantly convert them into a PDF — for free. ' +
-    'No app download required. Apply filters (Grayscale, Document, Enhance), reorder photos, ' +
-    'and download your PDF directly from the browser.',
+    'Turn your phone camera into a document scanner — free, no app needed. Capture receipts, notes, and ID cards, apply cleanup filters, and download a multi-page PDF instantly from your browser.',
   keywords: [
-    'camera to PDF', 'scan document to PDF free', 'phone camera PDF scanner',
-    'mobile document scanner no app', 'scan to PDF online free', 'photo to PDF mobile',
-    'document scanner browser', 'iPhone scan to PDF', 'Android scan to PDF free',
-    'camera scan PDF no download',
+    'camera to PDF', 'scan document to PDF free', 'phone camera document scanner',
+    'scan to PDF no app', 'mobile document scanner free', 'scan receipts to PDF',
+    'iPhone scan to PDF', 'Android scan to PDF free', 'browser document scanner',
+    'camera scan PDF online',
   ],
   alternates: { canonical: '/camera-to-pdf' },
   openGraph: {

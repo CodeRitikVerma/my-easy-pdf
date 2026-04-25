@@ -4,7 +4,7 @@ import { Container, Alert } from 'react-bootstrap';
 
 const Section = ({ title, children }) => (
   <section className="mb-4">
-    <h5 className="fw-bold mb-2">{title}</h5>
+    <h2 className="fw-bold mb-2" style={{ fontSize: '1.15rem' }}>{title}</h2>
     <div className="text-muted lh-lg small">{children}</div>
   </section>
 );

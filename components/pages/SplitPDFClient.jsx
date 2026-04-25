@@ -190,7 +190,7 @@ export default function SplitPDFClient() {
                     {/* Red X remove button */}
                     <button
                       onClick={() => toggleRemove(page.index)}
-                      title={page.removed ? 'Restore page' : 'Exclude page'}
+                      aria-label={page.removed ? 'Restore page' : 'Exclude page'}
                       style={{
                         position: 'absolute',
                         top: 6,
@@ -215,7 +215,7 @@ export default function SplitPDFClient() {
                       onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.15)'; }}
                       onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; }}
                     >
-                      <i className={`bi ${page.removed ? 'bi-arrow-counterclockwise' : 'bi-x-lg'}`} />
+                      <i className={`bi ${page.removed ? 'bi-arrow-counterclockwise' : 'bi-x-lg'}`} aria-hidden="true" />
                     </button>
 
                     <img

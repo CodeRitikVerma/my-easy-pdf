@@ -103,14 +103,14 @@ const SignatureCanvas = ({ pageImgUrl, sigImgUrl, sigAspectRatio, transformRef, 
         <div onMouseDown={onDragDown} onTouchStart={onDragTouch}
           style={{ position: 'absolute', left: pos.x, top: pos.y, width: w, cursor: 'move', zIndex: 10, touchAction: 'none' }}>
           <div style={{ position: 'absolute', top: -24, left: '50%', transform: 'translateX(-50%)', background: palette.primary, color: '#fff', fontSize: '0.62rem', fontWeight: 600, padding: '2px 9px', borderRadius: 20, whiteSpace: 'nowrap', pointerEvents: 'none', zIndex: 12 }}>
-            <i className="bi bi-arrows-move me-1"></i>Drag to move
+            <i className="bi bi-arrows-move me-1" aria-hidden="true"></i>Drag to move
           </div>
           <div style={{ border: `2px dashed ${palette.primary}99`, borderRadius: 4, padding: 2 }}>
             <img src={sigImgUrl} alt="Signature" draggable={false} style={{ width: '100%', display: 'block', pointerEvents: 'none' }} />
           </div>
           <div onMouseDown={onResizeDown} onTouchStart={onResizeTouch}
             style={{ position: 'absolute', bottom: -9, right: -9, width: 20, height: 20, background: palette.primary, borderRadius: '50%', border: '2.5px solid #fff', cursor: 'se-resize', boxShadow: '0 2px 6px rgba(0,0,0,0.3)', touchAction: 'none', zIndex: 13, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <i className="bi bi-arrows-angle-expand" style={{ fontSize: '0.5rem', color: '#fff' }}></i>
+            <i className="bi bi-arrows-angle-expand" aria-hidden="true" style={{ fontSize: '0.5rem', color: '#fff' }}></i>
           </div>
         </div>
       )}

@@ -4,15 +4,13 @@ const BASE = 'https://myeasypdf.com';
 const PAGE = `${BASE}/rotate-pdf`;
 
 export const metadata = {
-  title: 'Rotate PDF Pages Free Online — 90° or 180°',
+  title: 'Rotate PDF Pages Online Free — Fix Sideways or Upside-Down PDFs',
   description:
-    'Rotate one, some, or all pages of a PDF by 90° or 180° online for free. ' +
-    'Select specific pages and preview rotation instantly before downloading. ' +
-    'No upload required — 100% browser-based.',
+    'Rotate any PDF page 90° or 180° online — free, no upload, no sign-up. Rotations are saved permanently into the file, so they look correct in every PDF reader.',
   keywords: [
-    'rotate PDF online free', 'rotate PDF pages', 'flip PDF pages',
-    'PDF page rotation tool', 'rotate PDF 90 degrees', 'rotate PDF 180 degrees',
-    'fix upside down PDF pages', 'rotate specific PDF pages free',
+    'rotate PDF online free', 'rotate PDF pages', 'fix sideways PDF pages',
+    'rotate PDF 90 degrees free', 'rotate PDF 180 degrees', 'flip PDF pages',
+    'fix upside down PDF', 'permanent PDF rotation', 'rotate PDF without uploading',
   ],
   alternates: { canonical: '/rotate-pdf' },
   openGraph: {

@@ -125,6 +125,11 @@ export default function ExtractPagesClient() {
                 <Col key={page.index} xs={6} sm={4} md={3}>
                   <div
                     onClick={() => togglePage(page.index)}
+                    onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); togglePage(page.index); } }}
+                    role="checkbox"
+                    aria-checked={page.selected}
+                    aria-label={`Page ${page.index}`}
+                    tabIndex={0}
                     style={{
                       cursor: 'pointer',
                       borderRadius: 10,
@@ -137,7 +142,7 @@ export default function ExtractPagesClient() {
                   >
                     <img
                       src={page.thumbnail}
-                      alt={`Page ${page.index}`}
+                      alt=""
                       style={{ width: '100%', borderRadius: 6, display: 'block' }}
                     />
                     {page.selected && (
@@ -146,7 +151,7 @@ export default function ExtractPagesClient() {
                         background: '#10b981', borderRadius: '50%',
                         width: 24, height: 24, display: 'flex', alignItems: 'center', justifyContent: 'center',
                       }}>
-                        <i className="bi bi-check-lg text-white" style={{ fontSize: '0.85rem' }}></i>
+                        <i className="bi bi-check-lg text-white" aria-hidden="true" style={{ fontSize: '0.85rem' }}></i>
                       </div>
                     )}
                     <div className="text-center mt-1 small fw-semibold" style={{ color: page.selected ? '#10b981' : palette.text.secondary }}>

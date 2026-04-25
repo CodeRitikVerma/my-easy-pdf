@@ -66,7 +66,7 @@ export default function NotFound() {
         </div>
 
         {/* Quick-tool links */}
-        <p style={{ color: '#9ca3af', fontSize: '0.8rem', marginBottom: '1rem', textTransform: 'uppercase', letterSpacing: 1, fontWeight: 600 }}>
+        <p style={{ color: '#6b7280', fontSize: '0.8rem', marginBottom: '1rem', textTransform: 'uppercase', letterSpacing: 1, fontWeight: 600 }}>
           Popular Tools
         </p>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', justifyContent: 'center' }}>

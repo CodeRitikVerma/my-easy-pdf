@@ -483,24 +483,24 @@ export default function HomePageClient() {
                   className="fw-bold d-inline-flex align-items-center justify-content-center gap-2"
                   style={{ borderRadius: 12, minHeight: 52, width: 180, background: 'linear-gradient(135deg,#6366f1,#8b5cf6)', border: 'none', fontSize: '1rem', color: 'white', boxShadow: '0 8px 28px rgba(99,102,241,0.38)', letterSpacing: '-0.01em' }}
                 >
-                  <i className="bi bi-rocket-takeoff-fill d-none d-lg-inline me-2" /> Get Started
+                  <i className="bi bi-rocket-takeoff-fill d-none d-lg-inline me-2" aria-hidden="true" /> Get Started
                 </Button>
 
                 {isMobile ? (
                   <Button
                     as={Link} href="/camera-to-pdf" size="lg"
                     className="fw-semibold d-inline-flex align-items-center justify-content-center"
-                    style={{ borderRadius: 12, minHeight: 52, width: 180, fontSize: '1rem', background: 'white', border: '2px solid #6366f1', color: '#6366f1' }}
+                    style={{ borderRadius: 12, minHeight: 52, width: 180, fontSize: '1rem', background: 'white', border: '2px solid #4f46e5', color: '#4f46e5' }}
                   >
-                    <i className="bi bi-camera-fill d-none d-lg-inline me-2" /> Scan to PDF
+                    <i className="bi bi-camera-fill d-none d-lg-inline me-2" aria-hidden="true" /> Scan to PDF
                   </Button>
                 ) : (
                   <Button
                     as={Link} href="/sign-pdf" size="lg"
                     className="fw-semibold d-inline-flex align-items-center justify-content-center"
-                    style={{ borderRadius: 12, minHeight: 52, width: 180, fontSize: '1rem', background: 'white', border: '2px solid #6366f1', color: '#6366f1' }}
+                    style={{ borderRadius: 12, minHeight: 52, width: 180, fontSize: '1rem', background: 'white', border: '2px solid #4f46e5', color: '#4f46e5' }}
                   >
-                    <i className="bi bi-pen-fill d-none d-lg-inline me-2" /> Sign PDF
+                    <i className="bi bi-pen-fill d-none d-lg-inline me-2" aria-hidden="true" /> Sign PDF
                   </Button>
                 )}
               </div>
@@ -513,7 +513,7 @@ export default function HomePageClient() {
                   { icon: 'bi-gift-fill',             color: '#6366f1', bg: '#eef2ff', text: 'Free forever'                  },
                 ].map((f, i) => (
                   <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: 5, background: f.bg, borderRadius: 100, padding: '0.28rem 0.75rem', fontSize: '0.78rem', fontWeight: 600, color: '#374151', whiteSpace: 'nowrap' }}>
-                    <i className={`bi ${f.icon}`} style={{ color: f.color, fontSize: '0.72rem' }} />
+                    <i className={`bi ${f.icon}`} aria-hidden="true" style={{ color: f.color, fontSize: '0.72rem' }} />
                     {f.text}
                   </span>
                 ))}
@@ -550,17 +550,17 @@ export default function HomePageClient() {
               <Col key={i} xs={6} sm={4} md={4} lg={3}>
                 <Link href={tool.href} className="home-tool-card d-flex flex-column h-100">
                   <div className="htc-icon" style={{ background: tool.bg, boxShadow: `0 6px 16px ${tool.color}33` }}>
-                    <i className={`bi ${tool.icon}`} style={{ fontSize: '1.35rem', color: '#fff' }} />
+                    <i className={`bi ${tool.icon}`} aria-hidden="true" style={{ fontSize: '1.35rem', color: '#fff' }} />
                   </div>
                   <div className="htc-title">{tool.title}</div>
                   <div className="htc-desc">{tool.desc}</div>
                   {tool.badge && (
-                    <span className="d-none d-lg-inline-block" style={{ marginTop: 4, fontSize: '0.68rem', fontWeight: 700, color: tool.color, background: tool.light, border: `1px solid ${tool.color}33`, borderRadius: 100, padding: '1px 8px' }}>
+                    <span className="d-none d-lg-inline-block" style={{ marginTop: 4, fontSize: '0.68rem', fontWeight: 700, color: '#374151', background: tool.light, border: `1px solid ${tool.color}33`, borderRadius: 100, padding: '1px 8px' }}>
                       {tool.badge}
                     </span>
                   )}
                   <div className="htc-arrow">
-                    Open <i className="bi bi-arrow-right" />
+                    Open <i className="bi bi-arrow-right" aria-hidden="true" />
                   </div>
                 </Link>
               </Col>
@@ -592,9 +592,9 @@ export default function HomePageClient() {
                 <div
                   style={{ width: 52, height: 52, borderRadius: 14, background: '#f5f3ff', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 0.85rem' }}
                 >
-                  <i className={`bi ${step.icon}`} style={{ fontSize: '1.3rem', color: '#6366f1' }} />
+                  <i className={`bi ${step.icon}`} aria-hidden="true" style={{ fontSize: '1.3rem', color: '#6366f1' }} />
                 </div>
-                <h5 className="fw-bold mb-2" style={{ color: '#1e1b4b' }}>{step.title}</h5>
+                <h3 className="fw-bold mb-2" style={{ color: '#1e1b4b', fontSize: '1.1rem' }}>{step.title}</h3>
                 <p className="text-muted small mb-0" style={{ maxWidth: 220, margin: '0 auto' }}>{step.text}</p>
               </Col>
             ))}
@@ -621,9 +621,9 @@ export default function HomePageClient() {
                   <div
                     style={{ width: 60, height: 60, borderRadius: 16, background: f.gradient, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.25rem', boxShadow: `0 8px 24px ${f.glow}` }}
                   >
-                    <i className={`bi ${f.icon}`} style={{ fontSize: '1.6rem', color: '#fff' }} />
+                    <i className={`bi ${f.icon}`} aria-hidden="true" style={{ fontSize: '1.6rem', color: '#fff' }} />
                   </div>
-                  <h5 className="fw-bold mb-2" style={{ color: '#1e1b4b' }}>{f.title}</h5>
+                  <h3 className="fw-bold mb-2" style={{ color: '#1e1b4b', fontSize: '1.1rem' }}>{f.title}</h3>
                   <p className="text-muted small mb-0" style={{ lineHeight: 1.7 }}>{f.text}</p>
                 </div>
               </Col>
@@ -662,14 +662,14 @@ export default function HomePageClient() {
                 className="fw-bold d-inline-flex align-items-center justify-content-center gap-2"
                 style={{ borderRadius: 12, minHeight: 52, flex: 1, maxWidth: 200, background: 'linear-gradient(135deg,#6366f1,#8b5cf6)', border: 'none', color: '#ffffff', fontSize: '1rem', boxShadow: '0 8px 28px rgba(99,102,241,0.35)' }}
               >
-                <i className="bi bi-rocket-takeoff-fill d-none d-lg-inline me-2" /> Get Started
+                <i className="bi bi-rocket-takeoff-fill d-none d-lg-inline me-2" aria-hidden="true" /> Get Started
               </Button>
               <Button
                 as={Link} href="/all-pdf-tools" size="lg"
                 className="fw-semibold d-inline-flex align-items-center justify-content-center"
-                style={{ borderRadius: 12, minHeight: 52, flex: 1, maxWidth: 200, fontSize: '1rem', background: 'white', border: '2px solid #6366f1', color: '#6366f1' }}
+                style={{ borderRadius: 12, minHeight: 52, flex: 1, maxWidth: 200, fontSize: '1rem', background: 'white', border: '2px solid #4f46e5', color: '#4f46e5' }}
               >
-                <i className="bi bi-grid d-none d-lg-inline me-2" /> Browse Tools
+                <i className="bi bi-grid d-none d-lg-inline me-2" aria-hidden="true" /> Browse Tools
               </Button>
             </div>
           </div>
