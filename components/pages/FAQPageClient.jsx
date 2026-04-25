@@ -62,7 +62,7 @@ export default function FAQPageClient() {
           <div key={si} className="mb-5">
             <h2 className="fw-bold mb-3 d-flex align-items-center gap-2" style={{ color: palette.text.primary, fontSize: '1.15rem' }}>
               <i className={`bi ${section.icon} text-primary`}></i>{section.title}
-            </h5>
+            </h2>
             <Accordion flush className="border rounded-3 overflow-hidden">
               {section.items.map((item, ii) => (
                 <Accordion.Item key={ii} eventKey={`${si}-${ii}`} className="border-0 border-bottom">
