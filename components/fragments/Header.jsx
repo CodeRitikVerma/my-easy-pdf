@@ -69,6 +69,20 @@ const Header = () => {
 
   return (
     <>
+      {/* Mobile backdrop — closes menu on outside click */}
+      {expanded && (
+        <div
+          className="d-lg-none"
+          onClick={() => setExpanded(false)}
+          style={{
+            position: 'fixed', inset: 0, zIndex: 1019,
+            background: 'rgba(15,23,42,0.45)',
+            backdropFilter: 'blur(3px)',
+            WebkitBackdropFilter: 'blur(3px)',
+          }}
+        />
+      )}
+
       <Navbar
         ref={navbarRef}
         bg="primary" variant="dark" expand="lg" sticky="top"
@@ -126,8 +140,8 @@ const Header = () => {
                       />
                     </Nav.Link>
 
-                    {/* Mobile: inline sub-items */}
-                    <div className="d-lg-none ms-3">
+                    {/* Mobile: inline sub-items — only when toggled */}
+                    <div className={clickDrop?.index === index ? 'd-lg-none ms-3' : 'd-none'}>
                       {item.subMenu.map((sub, si) => (
                         <Nav.Link key={si} as={Link} href={sub.href} onClick={close}
                           active={pathname === sub.href}

@@ -1,9 +1,9 @@
 const headerJson = {
   brand: { name: "MyEasyPDF", href: "/" },
   menu: [
-    { name: "JPG to PDF",    href: "/jpg-to-pdf",    icon: "bi-image"        },
+    { name: "Image to PDF",  href: "/image-to-pdf",  icon: "bi-images"       },
     { name: "Camera to PDF", href: "/camera-to-pdf", icon: "bi-camera-fill", mobileOnly: true },
-    { name: "PDF to JPG",    href: "/pdf-to-jpg",    icon: "bi-file-earmark-image" },
+    { name: "PDF to Image",  href: "/pdf-to-image",  icon: "bi-card-image"   },
     { name: "Merge PDF",     href: "/merge-pdf",     icon: "bi-layers-fill"  },
     {
       name: "Company",

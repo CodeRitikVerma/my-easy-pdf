@@ -7,36 +7,47 @@ const footerJson = {
     {
       title: 'Convert & Create',
       links: [
-        { name: 'Image to PDF', href: '/image-to-pdf' },
+        { name: 'Image to PDF',  href: '/image-to-pdf'  },
+        { name: 'JPG to PDF',    href: '/jpg-to-pdf'    },
+        { name: 'PNG to PDF',    href: '/png-to-pdf'    },
         { name: 'Camera to PDF', href: '/camera-to-pdf' },
-        { name: 'PDF to Image', href: '/pdf-to-image' },
+        { name: 'PDF to Image',  href: '/pdf-to-image'  },
+        { name: 'PDF to JPG',    href: '/pdf-to-jpg'    },
+      ]
+    },
+    {
+      title: 'Organize PDF',
+      links: [
+        { name: 'Merge PDF',     href: '/merge-pdf'     },
+        { name: 'Split PDF',     href: '/split-pdf'     },
+        { name: 'Remove Pages',  href: '/remove-pages'  },
+        { name: 'Extract Pages', href: '/extract-pages' },
+        { name: 'Organize PDF',  href: '/organize-pdf'  },
+        { name: 'Compress PDF',  href: '/compress-pdf'  },
       ]
     },
     {
       title: 'Edit & Customize',
       links: [
-        { name: 'Merge PDF',  href: '/merge-pdf'  },
-        { name: 'Split PDF',  href: '/split-pdf'  },
-        { name: 'Rotate PDF', href: '/rotate-pdf' },
-        { name: 'Sign PDF',   href: '/sign-pdf'   },
+        { name: 'Sign PDF',         href: '/sign-pdf'         },
+        { name: 'Rotate PDF',       href: '/rotate-pdf'       },
+        { name: 'Add Watermark',    href: '/add-watermark'    },
+        { name: 'Add Page Numbers', href: '/add-page-numbers' },
+        { name: 'Crop PDF',         href: '/crop-pdf'         },
       ]
     },
     {
       title: 'Company',
       links: [
-        { name: 'About Us', href: '/about' },
-        { name: 'Contact', href: '/contact' },
-        { name: 'FAQ', href: '/faq' }
+        { name: 'All PDF Tools',  href: '/all-pdf-tools' },
+        { name: 'About Us',       href: '/about'         },
+        { name: 'Contact',        href: '/contact'       },
+        { name: 'FAQ',            href: '/faq'           },
+        { name: 'Terms of Service', href: '/terms'         },
+        { name: 'Privacy Policy',   href: '/privacy'       },
+        { name: 'Cookie Policy',    href: '/cookie-policy' },
       ]
     },
-    {
-      title: 'Legal',
-      links: [
-        { name: 'Terms of Service', href: '/terms'          },
-        { name: 'Privacy Policy',   href: '/privacy'        },
-        { name: 'Cookie Policy',    href: '/cookie-policy'  },
-      ]
-    }
   ],
   social: [
     {

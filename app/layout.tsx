@@ -3,6 +3,7 @@ import './globals.css';
 import Header from '@/components/fragments/Header';
 import Footer from '@/components/fragments/Footer';
 import ScrollToTop from '@/components/fragments/ScrollToTop';
+import RangeInputFill from '@/components/common/RangeInputFill';
 
 /* ─────────────────────────────────────────────
    Base domain — swap to production URL before deploy
@@ -199,6 +200,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Skip navigation — keyboard accessibility (Lighthouse bypass audit) */}
         <a href="#main-content" className="visually-hidden-focusable">Skip to main content</a>
 
+        <RangeInputFill />
         <ScrollToTop />
         <div className="d-flex flex-column min-vh-100">
           <Header />

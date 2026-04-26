@@ -454,10 +454,10 @@ export default function HomePageClient() {
       ══════════════════════════════════════════ */}
       <section className="hero-section">
         <Container style={{ position: 'relative', zIndex: 1 }}>
-          <Row className="align-items-center g-4 g-lg-5">
+          <Row className="align-items-center g-4 g-md-5">
 
             {/* Left — text */}
-            <Col xs={12} lg={6} className="py-3 py-lg-4">
+            <Col xs={12} md={6} className="py-3 py-md-4">
               <h1
                 className="fw-bold mb-3"
                 style={{
@@ -477,30 +477,30 @@ export default function HomePageClient() {
               </p>
 
               {/* CTA buttons */}
-              <div className="d-flex gap-3 mb-4">
+              <div className="d-flex flex-nowrap gap-3 mb-4">
                 <Button
                   as={Link} href="/jpg-to-pdf" size="lg"
-                  className="fw-bold d-inline-flex align-items-center justify-content-center gap-2"
-                  style={{ borderRadius: 12, minHeight: 52, width: 180, background: 'linear-gradient(135deg,#6366f1,#8b5cf6)', border: 'none', fontSize: '1rem', color: 'white', boxShadow: '0 8px 28px rgba(99,102,241,0.38)', letterSpacing: '-0.01em' }}
+                  className="fw-bold d-inline-flex align-items-center justify-content-center gap-2 flex-fill"
+                  style={{ borderRadius: 12, minHeight: 52, background: 'linear-gradient(135deg,#6366f1,#8b5cf6)', border: 'none', fontSize: '1rem', color: 'white', boxShadow: '0 8px 28px rgba(99,102,241,0.38)', letterSpacing: '-0.01em' }}
                 >
-                  <i className="bi bi-rocket-takeoff-fill d-none d-lg-inline me-2" aria-hidden="true" /> Get Started
+                  <i className="bi bi-rocket-takeoff-fill me-2" aria-hidden="true" /> Get Started
                 </Button>
 
                 {isMobile ? (
                   <Button
                     as={Link} href="/camera-to-pdf" size="lg"
-                    className="fw-semibold d-inline-flex align-items-center justify-content-center"
-                    style={{ borderRadius: 12, minHeight: 52, width: 180, fontSize: '1rem', background: 'white', border: '2px solid #4f46e5', color: '#4f46e5' }}
+                    className="fw-semibold d-inline-flex align-items-center justify-content-center flex-fill"
+                    style={{ borderRadius: 12, minHeight: 52, fontSize: '1rem', background: 'white', border: '2px solid #4f46e5', color: '#4f46e5' }}
                   >
-                    <i className="bi bi-camera-fill d-none d-lg-inline me-2" aria-hidden="true" /> Scan to PDF
+                    <i className="bi bi-camera-fill me-2" aria-hidden="true" /> Scan to PDF
                   </Button>
                 ) : (
                   <Button
                     as={Link} href="/sign-pdf" size="lg"
-                    className="fw-semibold d-inline-flex align-items-center justify-content-center"
-                    style={{ borderRadius: 12, minHeight: 52, width: 180, fontSize: '1rem', background: 'white', border: '2px solid #4f46e5', color: '#4f46e5' }}
+                    className="fw-semibold d-inline-flex align-items-center justify-content-center flex-fill"
+                    style={{ borderRadius: 12, minHeight: 52, fontSize: '1rem', background: 'white', border: '2px solid #4f46e5', color: '#4f46e5' }}
                   >
-                    <i className="bi bi-pen-fill d-none d-lg-inline me-2" aria-hidden="true" /> Sign PDF
+                    <i className="bi bi-pen-fill me-2" aria-hidden="true" /> Sign PDF
                   </Button>
                 )}
               </div>
@@ -521,7 +521,7 @@ export default function HomePageClient() {
             </Col>
 
             {/* Right — illustration */}
-            <Col xs={12} lg={6} className="d-flex justify-content-center align-items-end" style={{ zIndex: 1 }}>
+            <Col xs={12} md={6} className="d-flex justify-content-center align-items-end" style={{ zIndex: 1 }}>
               <div className="hero-illustration-wrap w-100">
                 <HeroIllustration />
               </div>

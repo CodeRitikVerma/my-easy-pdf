@@ -8,15 +8,15 @@ import palette from '@/theme/palette';
 const isInternal = (href) => href.startsWith('/');
 
 const Footer = () => {
-  const [openSections, setOpenSections] = useState([0]);
-  const toggle = (i) => setOpenSections(prev => prev.includes(i) ? prev.filter(x => x !== i) : [...prev, i]);
-  const isOpen = (i) => openSections.includes(i);
+  const [openSection, setOpenSection] = useState(null);
+  const toggle = (i) => setOpenSection(prev => prev === i ? null : i);
+  const isOpen = (i) => openSection === i;
 
   return (
     <footer className="site-footer">
       <Container>
         <Row className="g-4 g-md-5">
-          <Col xs={12} md={4} lg={4}>
+          <Col xs={12} md={12} lg={3}>
             <Link href="/" className="footer-brand">
               <i className="bi bi-file-earmark-pdf-fill" style={{ color: palette.indigo[400], fontSize: '1.4rem' }}></i>
               {footerJson.brand.name}
@@ -30,10 +30,10 @@ const Footer = () => {
               ))}
             </div>
           </Col>
-          <Col xs={12} md={8}>
+          <Col xs={12} lg={9}>
             <Row className="g-0 g-md-3">
               {footerJson.sections.map((section, i) => (
-                <Col key={i} xs={12} md={3}>
+                <Col key={i} xs={12} md={6} lg={3}>
                   <button className="footer-acc-toggle d-flex d-md-none" onClick={() => toggle(i)} aria-expanded={isOpen(i)} aria-controls={`footer-section-${i}`}>
                     <span className="footer-heading mb-0">{section.title}</span>
                     <i className={`bi bi-chevron-${isOpen(i) ? 'up' : 'down'} footer-acc-icon`} aria-hidden="true"></i>
