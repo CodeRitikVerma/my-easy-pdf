@@ -17,7 +17,7 @@ export const metadata = {
     url:         PAGE,
     title:       'Organize PDF Pages Online Free',
     description: 'Reorder pages in your PDF by moving them up or down. No upload needed.',
-    images:      [{ url: `${BASE}/og-image.png`, width: 1200, height: 630, alt: 'Organize PDF Pages Online' }],
+    images:      [{ url: `${BASE}/og-image.svg`, width: 1200, height: 630, alt: 'Organize PDF Pages Online' }],
   },
   twitter: {
     title:       'Organize PDF Pages Free',

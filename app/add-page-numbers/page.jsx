@@ -17,7 +17,7 @@ export const metadata = {
     url:         PAGE,
     title:       'Add Page Numbers to PDF Online Free',
     description: 'Number your PDF pages with custom position, font size and margin. No upload.',
-    images:      [{ url: `${BASE}/og-image.png`, width: 1200, height: 630, alt: 'Add Page Numbers to PDF' }],
+    images:      [{ url: `${BASE}/og-image.svg`, width: 1200, height: 630, alt: 'Add Page Numbers to PDF' }],
   },
   twitter: {
     title:       'Add Page Numbers to PDF Free',

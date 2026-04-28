@@ -18,7 +18,7 @@ export const metadata = {
     url:         PAGE,
     title:       'Compress PDF Online Free — Reduce File Size',
     description: 'Reduce PDF file size with High, Medium, or Low quality. See savings. No upload.',
-    images:      [{ url: `${BASE}/og-image.png`, width: 1200, height: 630, alt: 'Compress PDF Online' }],
+    images:      [{ url: `${BASE}/og-image.svg`, width: 1200, height: 630, alt: 'Compress PDF Online' }],
   },
   twitter: {
     title:       'Compress PDF Free',

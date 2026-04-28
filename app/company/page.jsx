@@ -11,7 +11,7 @@ export const metadata = {
     url: PAGE,
     title: 'Company — MyEasyPDF',
     description: 'Free, private PDF tools built with care. Learn about our mission, values, and policies.',
-    images: [{ url: `${BASE}/og-image.png`, width: 1200, height: 630, alt: 'MyEasyPDF Company' }],
+    images: [{ url: `${BASE}/og-image.svg`, width: 1200, height: 630, alt: 'MyEasyPDF Company' }],
   },
 };
 

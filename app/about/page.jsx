@@ -18,7 +18,7 @@ export const metadata = {
     url:         PAGE,
     title:       'About MyEasyPDF — Free Privacy-First PDF Tools',
     description: 'Free, private, browser-based PDF tools built for everyone. No uploads, no account, no watermarks.',
-    images:      [{ url: `${BASE}/og-image.png`, width: 1200, height: 630, alt: 'About MyEasyPDF' }],
+    images:      [{ url: `${BASE}/og-image.svg`, width: 1200, height: 630, alt: 'About MyEasyPDF' }],
   },
   twitter: {
     title:       'About MyEasyPDF — Privacy-First PDF Tools',

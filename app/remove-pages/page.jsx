@@ -17,7 +17,7 @@ export const metadata = {
     url:         PAGE,
     title:       'Remove Pages from PDF Online Free',
     description: 'Select and delete unwanted pages from your PDF. No upload needed.',
-    images:      [{ url: `${BASE}/og-image.png`, width: 1200, height: 630, alt: 'Remove PDF Pages Online' }],
+    images:      [{ url: `${BASE}/og-image.svg`, width: 1200, height: 630, alt: 'Remove PDF Pages Online' }],
   },
   twitter: {
     title:       'Remove Pages from PDF Free',

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     url:         BASE,
     title:       'MyEasyPDF — Free Online PDF Tools. No Uploads.',
     description: 'Merge, split, sign PDFs and convert images to PDF — 100% in your browser.',
-    images:      [{ url: `${BASE}/og-image.png`, width: 1200, height: 630, alt: 'MyEasyPDF Tools' }],
+    images:      [{ url: `${BASE}/og-image.svg`, width: 1200, height: 630, alt: 'MyEasyPDF Tools' }],
   },
   twitter: {
     title:       'MyEasyPDF — Free Online PDF Tools. No Uploads.',

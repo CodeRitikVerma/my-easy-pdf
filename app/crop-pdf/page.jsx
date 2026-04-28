@@ -19,7 +19,7 @@ export const metadata = {
     url:         PAGE,
     title:       'Crop PDF Online Free — Trim Margins & Whitespace',
     description: 'Drag a crop box to trim margins or whitespace from every PDF page. No upload.',
-    images:      [{ url: `${BASE}/og-image.png`, width: 1200, height: 630, alt: 'Crop PDF Online' }],
+    images:      [{ url: `${BASE}/og-image.svg`, width: 1200, height: 630, alt: 'Crop PDF Online' }],
   },
   twitter: {
     title:       'Crop PDF Online Free',

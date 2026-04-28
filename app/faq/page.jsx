@@ -18,7 +18,7 @@ export const metadata = {
     url:         PAGE,
     title:       'FAQ — MyEasyPDF Help & Common Questions',
     description: 'Answers to common questions about privacy, formats, file size, and how MyEasyPDF tools work.',
-    images:      [{ url: `${BASE}/og-image.png`, width: 1200, height: 630, alt: 'MyEasyPDF FAQ' }],
+    images:      [{ url: `${BASE}/og-image.svg`, width: 1200, height: 630, alt: 'MyEasyPDF FAQ' }],
   },
   twitter: {
     title:       'FAQ — MyEasyPDF Help',

@@ -19,7 +19,7 @@ export const metadata = {
     url:         PAGE,
     title:       'Merge PDF Files Online — Free, No Upload',
     description: 'Combine multiple PDFs into one. Drag to reorder. No upload to servers.',
-    images:      [{ url: `${BASE}/og-image.png`, width: 1200, height: 630, alt: 'Merge PDF Online' }],
+    images:      [{ url: `${BASE}/og-image.svg`, width: 1200, height: 630, alt: 'Merge PDF Online' }],
   },
   twitter: {
     title:       'Merge PDF Files Free Online',

@@ -18,7 +18,7 @@ export const metadata = {
     url:         PAGE,
     title:       'Image to PDF Converter — Free, No Upload',
     description: 'Convert JPG, PNG, WebP images to PDF online. Set page size and orientation. No upload needed.',
-    images:      [{ url: `${BASE}/og-image.png`, width: 1200, height: 630, alt: 'Image to PDF Converter' }],
+    images:      [{ url: `${BASE}/og-image.svg`, width: 1200, height: 630, alt: 'Image to PDF Converter' }],
   },
   twitter: {
     title:       'Image to PDF Converter — Free & Private',

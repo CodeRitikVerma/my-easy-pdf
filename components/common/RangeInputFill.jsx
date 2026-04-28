@@ -9,23 +9,33 @@ function applyFill(input) {
   input.style.setProperty('--fill', pct + '%');
 }
 
+function initAll() {
+  document.querySelectorAll('input[type="range"]').forEach(applyFill);
+}
+
 export default function RangeInputFill() {
   useEffect(() => {
-    const initAll = () =>
-      document.querySelectorAll('input[type="range"]').forEach(applyFill);
-
-    const onInput = (e) => {
-      if (e.target.type === 'range') applyFill(e.target);
-    };
+    const onInput = (e) => { if (e.target.type === 'range') applyFill(e.target); };
 
     initAll();
-    document.addEventListener('input', onInput);
+    // React sets .value as a DOM property after paint — re-run after a tick
+    const t1 = setTimeout(initAll, 0);
+    const t2 = setTimeout(initAll, 150);
 
-    const observer = new MutationObserver(initAll);
+    document.addEventListener('input', onInput);
+    document.addEventListener('change', onInput);
+
+    const observer = new MutationObserver(() => {
+      // delay so React finishes setting .value after adding nodes
+      setTimeout(initAll, 0);
+    });
     observer.observe(document.body, { subtree: true, childList: true });
 
     return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
       document.removeEventListener('input', onInput);
+      document.removeEventListener('change', onInput);
       observer.disconnect();
     };
   }, []);

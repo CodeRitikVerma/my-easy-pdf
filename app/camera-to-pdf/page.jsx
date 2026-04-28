@@ -18,7 +18,7 @@ export const metadata = {
     url:         PAGE,
     title:       'Camera to PDF — Scan Documents with Your Phone',
     description: 'Scan documents with your phone camera and convert to PDF. No app required.',
-    images:      [{ url: `${BASE}/og-image.png`, width: 1200, height: 630, alt: 'Camera to PDF Scanner' }],
+    images:      [{ url: `${BASE}/og-image.svg`, width: 1200, height: 630, alt: 'Camera to PDF Scanner' }],
   },
   twitter: {
     title:       'Camera to PDF — Mobile Document Scanner',

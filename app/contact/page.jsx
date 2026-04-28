@@ -17,7 +17,7 @@ export const metadata = {
     url:         PAGE,
     title:       'Contact MyEasyPDF — Support & Feedback',
     description: 'Report a bug, request a feature, or ask for help. We typically respond within 24–48 hours.',
-    images:      [{ url: `${BASE}/og-image.png`, width: 1200, height: 630, alt: 'Contact MyEasyPDF' }],
+    images:      [{ url: `${BASE}/og-image.svg`, width: 1200, height: 630, alt: 'Contact MyEasyPDF' }],
   },
   twitter: {
     title:       'Contact MyEasyPDF',

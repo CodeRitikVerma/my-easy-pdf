@@ -12,7 +12,7 @@ export const metadata = {
     url: PAGE,
     title: 'All PDF Tools — Free Online | MyEasyPDF',
     description: '13 free browser-based PDF tools. No uploads, no account, always private.',
-    images: [{ url: `${BASE}/og-image.png`, width: 1200, height: 630, alt: 'All PDF Tools — MyEasyPDF' }],
+    images: [{ url: `${BASE}/og-image.svg`, width: 1200, height: 630, alt: 'All PDF Tools — MyEasyPDF' }],
   },
 };
 
