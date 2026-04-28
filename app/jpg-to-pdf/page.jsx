@@ -19,7 +19,7 @@ export const metadata = {
     url:         PAGE,
     title:       'JPG to PDF Converter — Free, Private, No Upload',
     description: 'Convert one or many JPG photos into a PDF directly in your browser. Free, no watermark, no account.',
-    images:      [{ url: `${BASE}/og-image.svg`, width: 1200, height: 630, alt: 'JPG to PDF Converter' }],
+    images:      [{ url: `${BASE}/opengraph-image`, width: 1200, height: 630, alt: 'JPG to PDF Converter' }],
   },
   twitter: {
     title:       'JPG to PDF Converter — Free & Private',

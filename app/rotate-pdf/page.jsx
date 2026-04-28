@@ -17,7 +17,7 @@ export const metadata = {
     url:         PAGE,
     title:       'Rotate PDF Pages Free Online — 90° or 180°',
     description: 'Rotate any PDF pages 90° or 180°. Preview instantly. No upload needed.',
-    images:      [{ url: `${BASE}/og-image.svg`, width: 1200, height: 630, alt: 'Rotate PDF Online' }],
+    images:      [{ url: `${BASE}/opengraph-image`, width: 1200, height: 630, alt: 'Rotate PDF Online' }],
   },
   twitter: {
     title:       'Rotate PDF Pages Free Online',

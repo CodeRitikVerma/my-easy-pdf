@@ -17,7 +17,7 @@ export const metadata = {
     url:         PAGE,
     title:       'Add Watermark to PDF Online Free',
     description: 'Add a diagonal text watermark to your PDF with custom opacity and color. No upload.',
-    images:      [{ url: `${BASE}/og-image.svg`, width: 1200, height: 630, alt: 'Add Watermark to PDF' }],
+    images:      [{ url: `${BASE}/opengraph-image`, width: 1200, height: 630, alt: 'Add Watermark to PDF' }],
   },
   twitter: {
     title:       'Add Watermark to PDF Free',

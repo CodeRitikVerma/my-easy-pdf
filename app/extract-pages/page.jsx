@@ -17,7 +17,7 @@ export const metadata = {
     url:         PAGE,
     title:       'Extract Pages from PDF Online Free',
     description: 'Select pages to keep and extract them into a new PDF. No upload needed.',
-    images:      [{ url: `${BASE}/og-image.svg`, width: 1200, height: 630, alt: 'Extract PDF Pages Online' }],
+    images:      [{ url: `${BASE}/opengraph-image`, width: 1200, height: 630, alt: 'Extract PDF Pages Online' }],
   },
   twitter: {
     title:       'Extract Pages from PDF Free',

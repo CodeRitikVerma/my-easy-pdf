@@ -19,7 +19,7 @@ export const metadata = {
     url:         PAGE,
     title:       'PDF to JPG Converter — Free, Private, No Upload',
     description: 'Export PDF pages as JPEG images. Choose resolution, select pages, download ZIP. No upload needed.',
-    images:      [{ url: `${BASE}/og-image.svg`, width: 1200, height: 630, alt: 'PDF to JPG Converter' }],
+    images:      [{ url: `${BASE}/opengraph-image`, width: 1200, height: 630, alt: 'PDF to JPG Converter' }],
   },
   twitter: {
     title:       'PDF to JPG Converter — Free & Private',

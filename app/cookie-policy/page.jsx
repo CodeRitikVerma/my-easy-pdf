@@ -17,7 +17,7 @@ export const metadata = {
     url:         PAGE,
     title:       'Cookie Policy — MyEasyPDF',
     description: 'We do not set tracking cookies. See how Google AdSense uses cookies and how to opt out.',
-    images:      [{ url: `${BASE}/og-image.svg`, width: 1200, height: 630, alt: 'MyEasyPDF Cookie Policy' }],
+    images:      [{ url: `${BASE}/opengraph-image`, width: 1200, height: 630, alt: 'MyEasyPDF Cookie Policy' }],
   },
   twitter: {
     title:       'Cookie Policy — MyEasyPDF',

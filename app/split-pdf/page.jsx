@@ -18,7 +18,7 @@ export const metadata = {
     url:         PAGE,
     title:       'Split PDF Online Free — No Upload',
     description: 'Split a PDF by page or custom ranges. Download as ZIP. No upload needed.',
-    images:      [{ url: `${BASE}/og-image.svg`, width: 1200, height: 630, alt: 'Split PDF Online' }],
+    images:      [{ url: `${BASE}/opengraph-image`, width: 1200, height: 630, alt: 'Split PDF Online' }],
   },
   twitter: {
     title:       'Split PDF Online Free',

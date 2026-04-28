@@ -17,7 +17,7 @@ export const metadata = {
     url:         PAGE,
     title:       'Privacy Policy — MyEasyPDF',
     description: 'Your files never leave your device. No uploads, no tracking, no data collection.',
-    images:      [{ url: `${BASE}/og-image.svg`, width: 1200, height: 630, alt: 'MyEasyPDF Privacy Policy' }],
+    images:      [{ url: `${BASE}/opengraph-image`, width: 1200, height: 630, alt: 'MyEasyPDF Privacy Policy' }],
   },
   twitter: {
     title:       'Privacy Policy — MyEasyPDF',

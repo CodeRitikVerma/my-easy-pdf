@@ -17,7 +17,7 @@ export const metadata = {
     url:         PAGE,
     title:       'Terms of Service — MyEasyPDF',
     description: 'Free for personal and commercial use. All processing is local. Read the full terms.',
-    images:      [{ url: `${BASE}/og-image.svg`, width: 1200, height: 630, alt: 'MyEasyPDF Terms of Service' }],
+    images:      [{ url: `${BASE}/opengraph-image`, width: 1200, height: 630, alt: 'MyEasyPDF Terms of Service' }],
   },
   twitter: {
     title:       'Terms of Service — MyEasyPDF',

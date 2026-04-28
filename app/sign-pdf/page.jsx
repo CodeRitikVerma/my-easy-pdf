@@ -18,7 +18,7 @@ export const metadata = {
     url:         PAGE,
     title:       'Sign PDF Online Free — Type or Draw Your Signature',
     description: 'Add a typed or hand-drawn signature to any PDF. Drag it anywhere. No upload needed.',
-    images:      [{ url: `${BASE}/og-image.svg`, width: 1200, height: 630, alt: 'Sign PDF Online' }],
+    images:      [{ url: `${BASE}/opengraph-image`, width: 1200, height: 630, alt: 'Sign PDF Online' }],
   },
   twitter: {
     title:       'Sign PDF Online Free',

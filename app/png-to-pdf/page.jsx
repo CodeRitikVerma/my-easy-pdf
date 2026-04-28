@@ -19,7 +19,7 @@ export const metadata = {
     url:         PAGE,
     title:       'PNG to PDF Converter — Free, Private, No Upload',
     description: 'Convert one or many PNG images into a PDF directly in your browser. Free forever, no watermark, no account.',
-    images:      [{ url: `${BASE}/og-image.svg`, width: 1200, height: 630, alt: 'PNG to PDF Converter' }],
+    images:      [{ url: `${BASE}/opengraph-image`, width: 1200, height: 630, alt: 'PNG to PDF Converter' }],
   },
   twitter: {
     title:       'PNG to PDF Converter — Free & Private',

@@ -11,7 +11,7 @@ import RangeInputFill from '@/components/common/RangeInputFill';
 const BASE = 'https://myeasypdf.com';
 // NOTE: OG image is SVG for now — most social platforms (Facebook, LinkedIn, Twitter, Slack)
 // require PNG/JPG for link previews. Generate a real 1200x630 PNG and swap this to .png when ready.
-const OG_IMAGE = `${BASE}/og-image.svg`;
+const OG_IMAGE = `${BASE}/opengraph-image`;
 
 /* ─────────────────────────────────────────────
    Viewport (separate export — Next.js 15+ requirement)
@@ -85,7 +85,7 @@ export const metadata: Metadata = {
         width:  1200,
         height: 630,
         alt:    'MyEasyPDF — Free Online PDF Tools',
-        type:   'image/svg+xml',
+        type:   'image/png',
       },
     ],
   },
