@@ -27,6 +27,12 @@ const nextConfig: NextConfig = {
         destination: '/',
         permanent:   true,
       },
+      // Legacy static-site URLs — the old pre-Next.js site served .html pages
+      // (e.g. /contact.html) and Google still has them indexed, so they 404
+      // instead of resolving to the new clean route. index.html must come
+      // before the generic rule since it maps to "/" instead of "/index".
+      { source: '/index.html', destination: '/',       permanent: true },
+      { source: '/:path.html', destination: '/:path',  permanent: true },
       // Canonical aliases — keep traffic from common alternate spellings
       { source: '/jpeg-to-pdf',        destination: '/jpg-to-pdf',   permanent: true },
       { source: '/photo-to-pdf',       destination: '/image-to-pdf', permanent: true },
