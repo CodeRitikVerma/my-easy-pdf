@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { Container, Row, Col, Button, Alert, Spinner } from 'react-bootstrap';
+import { Container, Row, Col, Button, ButtonGroup, Alert, Spinner } from 'react-bootstrap';
 import { PDFDocument } from 'pdf-lib';
 import DropZone from '@/components/common/DropZone';
 import palette from '@/theme/palette';
@@ -34,6 +34,9 @@ export default function ExtractPagesClient() {
   const [isLoading,    setIsLoading]    = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [error,        setError]        = useState('');
+  const [outputFormat, setOutputFormat] = useState('pdf'); // 'pdf' | 'images'
+  const [dragSrc,      setDragSrc]      = useState(null);
+  const [dragOver,     setDragOver]     = useState(null);
 
   const handleFiles = async (files) => {
     const file = files.find(f => f.type === 'application/pdf');
@@ -56,9 +59,21 @@ export default function ExtractPagesClient() {
   const selectAll   = () => setPages(prev => prev.map(p => ({ ...p, selected: true })));
   const deselectAll = () => setPages(prev => prev.map(p => ({ ...p, selected: false })));
 
+  const handleDrop = (targetPos) => {
+    if (dragSrc === null || dragSrc === targetPos) return;
+    setPages(prev => {
+      const arr = [...prev];
+      const [removed] = arr.splice(dragSrc, 1);
+      arr.splice(targetPos, 0, removed);
+      return arr;
+    });
+    setDragSrc(null);
+    setDragOver(null);
+  };
+
   const selectedCount = pages.filter(p => p.selected).length;
 
-  const handleExtract = async () => {
+  const handleExtractPdf = async () => {
     if (!pdfFile || selectedCount === 0) return;
     setIsProcessing(true); setError('');
     try {
@@ -76,12 +91,54 @@ export default function ExtractPagesClient() {
     finally { setIsProcessing(false); }
   };
 
+  const handleExtractImages = async () => {
+    if (!pdfFile || selectedCount === 0) return;
+    setIsProcessing(true); setError('');
+    try {
+      const pdfjsLib = await getPdfJs();
+      const pdf = await pdfjsLib.getDocument({ data: await pdfFile.arrayBuffer() }).promise;
+      const selectedPages = pages.filter(p => p.selected);
+      const baseName = pdfFile.name.replace(/\.pdf$/i, '');
+
+      const renderPageToPng = async (pageIndex) => {
+        const pdfPage = await pdf.getPage(pageIndex);
+        const viewport = pdfPage.getViewport({ scale: 2 });
+        const canvas = document.createElement('canvas');
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+        await pdfPage.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+        return new Promise(res => canvas.toBlob(res, 'image/png'));
+      };
+
+      if (selectedPages.length === 1) {
+        const blob = await renderPageToPng(selectedPages[0].index);
+        const url = URL.createObjectURL(blob);
+        Object.assign(document.createElement('a'), { href: url, download: `${baseName}-page-${selectedPages[0].index}.png` }).click();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      } else {
+        const JSZip = (await import('jszip')).default;
+        const zip = new JSZip();
+        for (const p of selectedPages) {
+          const blob = await renderPageToPng(p.index);
+          zip.file(`page-${String(p.index).padStart(3, '0')}.png`, blob);
+        }
+        const content = await zip.generateAsync({ type: 'blob' });
+        const url = URL.createObjectURL(content);
+        Object.assign(document.createElement('a'), { href: url, download: `${baseName}-pages.zip` }).click();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      }
+    } catch (err) { setError('Failed to process PDF: ' + err.message); }
+    finally { setIsProcessing(false); }
+  };
+
+  const handleExtract = () => outputFormat === 'pdf' ? handleExtractPdf() : handleExtractImages();
+
   return (
     <>
       <div className="page-header text-center">
         <Container>
           <h1 className="fw-bold mb-2"><i className="bi bi-file-earmark-plus me-2"></i>Extract Pages</h1>
-          <p className="lead opacity-90 mb-0">Select pages to keep and extract them into a new PDF</p>
+          <p className="lead opacity-90 mb-0">Select pages to keep and extract them as a PDF or images</p>
         </Container>
       </div>
 
@@ -117,52 +174,90 @@ export default function ExtractPagesClient() {
             </div>
 
             <p className="text-muted small mb-3">
-              Click a page to select it (green border). Only selected pages will appear in the extracted PDF.
+              Click a page to select it (green border). Drag pages to reorder. Only selected pages appear in the output.
             </p>
 
             <Row className="g-3 mb-4">
-              {pages.map(page => (
-                <Col key={page.index} xs={6} sm={4} md={3}>
-                  <div
-                    onClick={() => togglePage(page.index)}
-                    onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); togglePage(page.index); } }}
-                    role="checkbox"
-                    aria-checked={page.selected}
-                    aria-label={`Page ${page.index}`}
-                    tabIndex={0}
-                    style={{
-                      cursor: 'pointer',
-                      borderRadius: 10,
-                      border: page.selected ? '3px solid #10b981' : '2px solid #e5e7eb',
-                      background: page.selected ? '#ecfdf5' : '#fff',
-                      padding: 6,
-                      position: 'relative',
-                      transition: 'border-color 0.15s, background 0.15s',
-                    }}
-                  >
-                    <img
-                      src={page.thumbnail}
-                      alt=""
-                      style={{ width: '100%', borderRadius: 6, display: 'block' }}
-                    />
-                    {page.selected && (
-                      <div style={{
-                        position: 'absolute', top: 8, right: 8,
-                        background: '#10b981', borderRadius: '50%',
-                        width: 24, height: 24, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      }}>
-                        <i className="bi bi-check-lg text-white" aria-hidden="true" style={{ fontSize: '0.85rem' }}></i>
+              {pages.map((page, i) => {
+                const isDropTarget = dragOver === i && dragSrc !== i;
+                return (
+                  <Col key={page.index} xs={6} sm={4} md={3}>
+                    <div
+                      draggable
+                      onDragStart={() => setDragSrc(i)}
+                      onDragOver={e => { e.preventDefault(); setDragOver(i); }}
+                      onDrop={e => { e.preventDefault(); handleDrop(i); }}
+                      onDragEnd={() => { setDragSrc(null); setDragOver(null); }}
+                      onClick={() => togglePage(page.index)}
+                      onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); togglePage(page.index); } }}
+                      role="checkbox"
+                      aria-checked={page.selected}
+                      aria-label={`Page ${page.index}`}
+                      tabIndex={0}
+                      style={{
+                        cursor: 'grab',
+                        borderRadius: 10,
+                        border: isDropTarget
+                          ? '2px dashed #6366f1'
+                          : page.selected
+                            ? '3px solid #10b981'
+                            : '2px solid #e5e7eb',
+                        background: isDropTarget ? '#eef2ff' : page.selected ? '#ecfdf5' : '#fff',
+                        padding: 6,
+                        position: 'relative',
+                        transition: 'border-color 0.15s, background 0.15s',
+                        opacity: dragSrc === i ? 0.4 : 1,
+                      }}
+                    >
+                      <div style={{ position: 'absolute', top: 8, left: 8, color: '#9ca3af', lineHeight: 1 }}>
+                        <i className="bi bi-grip-vertical" style={{ fontSize: '0.85rem' }} aria-hidden="true"></i>
                       </div>
-                    )}
-                    <div className="text-center mt-1 small fw-semibold" style={{ color: page.selected ? '#10b981' : palette.text.secondary }}>
-                      Page {page.index}
+                      <img
+                        src={page.thumbnail}
+                        alt=""
+                        style={{ width: '100%', borderRadius: 6, display: 'block' }}
+                      />
+                      {page.selected && (
+                        <div style={{
+                          position: 'absolute', top: 8, right: 8,
+                          background: '#10b981', borderRadius: '50%',
+                          width: 24, height: 24, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        }}>
+                          <i className="bi bi-check-lg text-white" aria-hidden="true" style={{ fontSize: '0.85rem' }}></i>
+                        </div>
+                      )}
+                      <div className="text-center mt-1 small fw-semibold" style={{ color: page.selected ? '#10b981' : palette.text.secondary }}>
+                        Page {page.index}
+                      </div>
                     </div>
-                  </div>
-                </Col>
-              ))}
+                  </Col>
+                );
+              })}
             </Row>
 
-            <div className="text-center">
+            <div className="d-flex flex-column align-items-center gap-3">
+              <div>
+                <small className="text-muted me-2 fw-semibold">Output as:</small>
+                <ButtonGroup size="sm">
+                  <Button
+                    variant={outputFormat === 'pdf' ? 'primary' : 'outline-primary'}
+                    onClick={() => setOutputFormat('pdf')}
+                  >
+                    <i className="bi bi-file-earmark-pdf me-1"></i>PDF
+                  </Button>
+                  <Button
+                    variant={outputFormat === 'images' ? 'primary' : 'outline-primary'}
+                    onClick={() => setOutputFormat('images')}
+                  >
+                    <i className="bi bi-images me-1"></i>Images (PNG)
+                  </Button>
+                </ButtonGroup>
+              </div>
+
+              {outputFormat === 'images' && selectedCount > 1 && (
+                <small className="text-muted">Multiple pages will be bundled into a ZIP file</small>
+              )}
+
               <Button
                 size="lg"
                 disabled={isProcessing || selectedCount === 0}
@@ -172,8 +267,11 @@ export default function ExtractPagesClient() {
               >
                 {isProcessing
                   ? <><Spinner size="sm" className="me-2" />Processing…</>
-                  : <><i className="bi bi-file-earmark-arrow-down me-2"></i>
-                    {selectedCount === 0 ? 'Select pages to extract' : `Extract ${selectedCount} Page${selectedCount !== 1 ? 's' : ''}`}
+                  : <><i className={`bi ${outputFormat === 'images' ? 'bi-image' : 'bi-file-earmark-arrow-down'} me-2`}></i>
+                    {selectedCount === 0
+                      ? 'Select pages to extract'
+                      : `Extract ${selectedCount} Page${selectedCount !== 1 ? 's' : ''} as ${outputFormat === 'pdf' ? 'PDF' : selectedCount === 1 ? 'PNG' : 'ZIP'}`
+                    }
                   </>
                 }
               </Button>

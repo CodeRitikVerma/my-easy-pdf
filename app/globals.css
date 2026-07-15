@@ -3,10 +3,11 @@
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 
 /* Fonts */
-@import '@fontsource/inter/400.css';
-@import '@fontsource/inter/500.css';
-@import '@fontsource/inter/600.css';
-@import '@fontsource/inter/700.css';
+@import '@fontsource/plus-jakarta-sans/400.css';
+@import '@fontsource/plus-jakarta-sans/500.css';
+@import '@fontsource/plus-jakarta-sans/600.css';
+@import '@fontsource/plus-jakarta-sans/700.css';
+@import '@fontsource/plus-jakarta-sans/800.css';
 
 /* ── Design Tokens ── */
 :root {
@@ -29,14 +30,14 @@ html::-webkit-scrollbar,body::-webkit-scrollbar { display: none; }
 html,body { scrollbar-width: none; }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: var(--text-base); font-weight: 400; line-height: 1.65;
   color: var(--text-secondary); background: #fafafa;
   -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overscroll-behavior: none;
 }
 
 h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
-  font-family: 'Inter', system-ui, sans-serif; color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: var(--text-primary);
   font-weight: 700; line-height: 1.25; letter-spacing: -0.02em;
 }
 p { color: var(--text-secondary); margin-bottom: 1rem; }
@@ -47,20 +48,16 @@ small,.small { font-size: var(--text-sm) !important; }
 
 /* Navbar */
 .navbar { padding-top: 0.6rem; padding-bottom: 0.6rem; }
-.navbar.bg-primary { background: linear-gradient(135deg, #2d2a8e 0%, #4f46e5 100%) !important; border-bottom: 1px solid rgba(255,255,255,0.08); box-shadow: 0 2px 16px rgba(31,27,100,0.35); }
 .navbar-brand { font-size: 1.15rem !important; font-weight: 700 !important; letter-spacing: -0.3px; }
-.navbar-dark .nav-link { font-size: var(--text-sm); font-weight: 500; padding: 0.45rem 0.85rem !important; border-radius: var(--radius-sm); transition: background var(--ease), color var(--ease); color: rgba(255,255,255,0.88) !important; }
-.navbar-dark .nav-link:hover { background: rgba(255,255,255,0.14); color: #fff !important; }
-.navbar-dark .nav-link.active { font-weight: 600 !important; background: rgba(255,255,255,0.2) !important; color: #fff !important; }
-.navbar-dark .dropdown-menu { border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); padding: 0.5rem; margin-top: 0.4rem; }
-.navbar-dark .dropdown-item { border-radius: var(--radius-sm); font-size: var(--text-sm); font-weight: 500; padding: 0.55rem 0.85rem; color: var(--text-primary); transition: background var(--ease), color var(--ease); }
-.navbar-dark .dropdown-item:hover { background: #eef2ff; color: var(--primary); }
+.navbar-light .nav-link { font-size: 0.8rem; font-weight: 600; padding: 0.45rem 0.85rem !important; border-radius: var(--radius-sm); transition: background var(--ease), color var(--ease); color: var(--text-secondary) !important; }
+.navbar-light .nav-link:hover { background: #eef2ff; color: var(--primary) !important; }
+.navbar-light .nav-link.active { font-weight: 700 !important; background: #eef2ff !important; color: var(--primary) !important; }
+.navbar-light .dropdown-menu { border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); padding: 0.5rem; margin-top: 0.4rem; }
+.navbar-light .dropdown-item { border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 600; padding: 0.55rem 0.85rem; color: var(--text-primary); transition: background var(--ease), color var(--ease); }
+.navbar-light .dropdown-item:hover { background: #eef2ff; color: var(--primary); }
 @media (max-width: 991px) {
-  .navbar-collapse { padding: 0.5rem 0 0.25rem; border-top: 1px solid rgba(255,255,255,0.12); margin-top: 0.5rem; max-height: calc(100dvh - 60px); overflow-y: auto; overscroll-behavior: contain; }
-  .navbar-dark .nav-link { padding: 0.65rem 0.85rem !important; margin-bottom: 2px; }
-  .navbar-dark .dropdown-menu { background: rgba(255,255,255,0.1); box-shadow: none; border: none; }
-  .navbar-dark .dropdown-item { color: rgba(255,255,255,0.9); background: transparent; }
-  .navbar-dark .dropdown-item:hover { background: rgba(255,255,255,0.15); color: #fff; }
+  .navbar-collapse { padding: 0.5rem 0 0.25rem; border-top: 1px solid var(--border); margin-top: 0.5rem; max-height: calc(100dvh - 60px); overflow-y: auto; overscroll-behavior: contain; }
+  .navbar-light .nav-link { padding: 0.65rem 0.85rem !important; margin-bottom: 2px; }
 }
 
 /* ── Hero ── */
@@ -138,7 +135,7 @@ small,.small { font-size: var(--text-sm) !important; }
 @media (max-width: 767px) { .page-header { padding: 1.75rem 0 1.5rem; } .page-header h1 { font-size: 1.5rem !important; } .page-header .lead { font-size: var(--text-sm) !important; } }
 
 /* Buttons */
-.btn { font-family: 'Inter', system-ui, sans-serif; font-weight: 600; letter-spacing: -0.01em; border-radius: var(--radius-sm); }
+.btn { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-weight: 600; letter-spacing: -0.01em; border-radius: var(--radius-sm); }
 .btn i.bi { color: inherit; }
 .btn-primary { background: var(--gradient) !important; border-color: transparent !important; color: #fff !important; box-shadow: 0 4px 14px rgba(91,94,244,0.35); transition: box-shadow var(--ease), transform var(--ease), filter var(--ease); }
 .btn-primary:hover:not(:disabled) { filter: brightness(1.08); box-shadow: 0 6px 22px rgba(91,94,244,0.45); transform: translateY(-1px); }
@@ -150,7 +147,7 @@ small,.small { font-size: var(--text-sm) !important; }
 
 /* Forms */
 .form-label,.form-check-label { font-size: var(--text-sm); font-weight: 600; color: var(--text-primary); margin-bottom: 0.35rem; }
-.form-control,.form-select { font-family: 'Inter', system-ui, sans-serif; font-size: var(--text-sm); color: var(--text-primary); border-color: var(--border-strong); border-radius: var(--radius-sm); }
+.form-control,.form-select { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: var(--text-sm); color: var(--text-primary); border-color: var(--border-strong); border-radius: var(--radius-sm); }
 .form-control:focus,.form-select:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(91,94,244,0.15); }
 
 /* ── Merge PDF — "Add more" strip ── */

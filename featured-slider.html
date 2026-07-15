@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Featured Video Slider</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #eef2fb;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 0;
+    }
+
+    /* ─── Outer section ─── */
+    .featured-section {
+      width: 100%;
+      max-width: 1100px;
+      padding: 0 20px;
+    }
+
+    /* ─── Two-column row: text | slider ─── */
+    .featured-row {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    /* ── Left text panel ── */
+    .featured-text {
+      flex: 0 0 280px;
+      padding-right: 32px;
+      transition: opacity .4s;
+    }
+
+    .featured-text h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1a3bbf;
+      line-height: 1.4;
+      margin-bottom: 14px;
+    }
+
+    .featured-text p {
+      font-size: 13px;
+      color: #6b7a99;
+      line-height: 1.75;
+    }
+
+    /* ── Right slider column ── */
+    .slider-col {
+      flex: 1;
+      min-width: 0;
+      position: relative;
+    }
+
+    /* ─── Slick slider ─── */
+    .video-slider {
+      /* overflow is handled by slick */
+    }
+
+    /* Each slide wrapper */
+    .slide-wrap {
+      padding: 16px 0;
+      outline: none;
+      transition: filter .4s, opacity .4s;
+      filter: blur(4px);
+      opacity: 0.5;
+    }
+
+    /* Center (active) slide */
+    .slick-center .slide-wrap {
+      filter: blur(0);
+      opacity: 1;
+    }
+
+    /* Card itself */
+    .video-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(60, 90, 200, 0.12);
+      position: relative;
+    }
+
+    .video-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Featured badge */
+    .badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(255,255,255,0.9);
+      font-size: 11px;
+      font-weight: 500;
+      color: #444;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    /* Expand icon */
+    .expand-icon {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 30px;
+      height: 30px;
+      background: rgba(255,255,255,0.85);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .expand-icon svg {
+      width: 13px; height: 13px;
+      stroke: #555; fill: none; stroke-width: 2;
+    }
+
+    /* Play button */
+    .play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50px;
+      height: 50px;
+      background: rgba(255,255,255,0.92);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform .2s;
+    }
+
+    .play-btn:hover { transform: translate(-50%,-50%) scale(1.1); }
+
+    .play-btn svg {
+      width: 18px; height: 18px;
+      fill: #1a3bbf;
+      margin-left: 3px;
+    }
+
+    /* Meta row below card */
+    .slide-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 14px;
+      font-size: 12px;
+      color: #8898bb;
+    }
+
+    .slide-meta span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .slide-meta svg {
+      width: 14px; height: 14px;
+      stroke: #8898bb; fill: none; stroke-width: 1.8;
+    }
+
+    /* ─── Bottom nav: arrow · dots · arrow ─── */
+    .slider-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .nav-arrow {
+      width: 34px;
+      height: 34px;
+      border: 1.5px solid #d0d8ee;
+      border-radius: 50%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background .2s, border-color .2s;
+    }
+
+    .nav-arrow:hover {
+      background: #1a3bbf;
+      border-color: #1a3bbf;
+    }
+
+    .nav-arrow:hover svg { stroke: #fff; }
+
+    .nav-arrow svg {
+      width: 14px; height: 14px;
+      stroke: #8898bb; fill: none; stroke-width: 2;
+    }
+
+    /* Slick dots styled inline */
+    .dots-wrap .slick-dots {
+      position: static;
+      display: flex !important;
+      align-items: center;
+      gap: 6px;
+      list-style: none;
+      padding: 0;
+    }
+
+    .dots-wrap .slick-dots li { width: auto; height: auto; margin: 0; }
+
+    .dots-wrap .slick-dots li button {
+      width: 8px;
+      height: 8px;
+      padding: 0;
+      border-radius: 50%;
+      border: none;
+      background: #c8d2e8;
+      cursor: pointer;
+      transition: background .2s, width .25s;
+    }
+
+    .dots-wrap .slick-dots li button::before { display: none; }
+
+    .dots-wrap .slick-dots li.slick-active button {
+      background: #1a3bbf;
+      width: 22px;
+      border-radius: 4px;
+    }
+
+    /* ─── Video Gallery ─── */
+    .gallery-section {
+      width: 100%;
+      max-width: 1100px;
+      padding: 0 20px;
+      margin-top: 56px;
+      text-align: center;
+    }
+
+    .gallery-section h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #1a2340;
+      margin-bottom: 20px;
+    }
+
+    .tabs {
+      display: inline-flex;
+      background: #e0e8f8;
+      border-radius: 30px;
+      padding: 4px;
+      gap: 4px;
+      margin-bottom: 28px;
+    }
+
+    .tab-btn {
+      padding: 8px 22px;
+      border-radius: 24px;
+      border: none;
+      background: transparent;
+      font-size: 13px;
+      color: #6b7a99;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+
+    .tab-btn.active {
+      background: #1a3bbf;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(26,59,191,.25);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .gallery-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 18px rgba(80,100,200,.08);
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .gallery-card .thumb { position: relative; }
+
+    .gallery-card img {
+      width: 100%; height: 150px;
+      object-fit: cover; display: block;
+    }
+
+    .mini-play {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,.88);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .mini-play svg { width: 13px; height: 13px; fill: #1a3bbf; margin-left: 2px; }
+
+    .card-body { padding: 12px 14px 14px; }
+
+    .card-body h4 {
+      font-size: 13px; font-weight: 600;
+      color: #1a2340; margin-bottom: 8px; line-height: 1.4;
+    }
+
+    .card-meta {
+      display: flex; gap: 12px;
+      font-size: 11.5px; color: #9aa5bf;
+    }
+
+    .card-meta span { display: flex; align-items: center; gap: 4px; }
+
+    .card-meta svg {
+      width: 12px; height: 12px;
+      stroke: #9aa5bf; fill: none; stroke-width: 1.8;
+    }
+
+    /* ─── Video Modal ─── */
+    .v-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.78);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .v-modal-overlay.open {
+      display: flex;
+      animation: fadeIn .25s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .v-modal {
+      position: relative;
+      width: 90%;
+      max-width: 820px;
+      background: #000;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+      animation: scaleIn .25s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    @keyframes scaleIn {
+      from { transform: scale(0.92); opacity: 0; }
+      to   { transform: scale(1);    opacity: 1; }
+    }
+
+    .v-modal .ratio-box {
+      position: relative;
+      padding-top: 56.25%; /* 16:9 */
+    }
+
+    .v-modal iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .v-modal-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      width: 34px;
+      height: 34px;
+      background: rgba(255,255,255,0.15);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .2s;
+    }
+
+    .v-modal-close:hover { background: rgba(255,255,255,0.3); }
+
+    .v-modal-close svg {
+      width: 16px; height: 16px;
+      stroke: #fff; fill: none; stroke-width: 2.5;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Featured Section ─── -->
+  <div class="featured-section">
+    <div class="featured-row">
+
+      <!-- Left: text changes per active slide -->
+      <div class="featured-text" id="slide-text">
+        <h2 id="slide-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+        <p id="slide-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</p>
+      </div>
+
+      <!-- Right: slider -->
+      <div class="slider-col">
+        <div class="video-slider">
+
+          <!-- Slide 1 -->
+          <div>
+            <div class="slide-wrap"
+              data-title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              data-desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit."
+              data-mins="24 mins" data-views="5.2k View" data-date="11 June 2025">
+              <div class="video-card">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&q=80" alt="Slide 1" />
+                <div class="badge">Featured</div>
+                <div class="expand-icon">
+                  <svg viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                </div>
+                <div class="play-btn open-video" data-video="LXb3EKWsInQ">
+                  <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+                </div>
+              </div>
+              <div class="slide-meta">
+                <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>24 mins</span>
+                <span><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>5.2k View</span>
+                <span><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>11 June 2025</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div>
+            <div class="slide-wrap"
+              data-title="Understanding Home Loan Interest Rates in 2025."
+              data-desc="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo nemo enim ipsam voluptatem quia voluptas sit."
+              data-mins="18 mins" data-views="8.1k View" data-date="22 July 2025">
+              <div class="video-card">
+                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80" alt="Slide 2" />
+                <div class="badge">Featured</div>
+                <div class="expand-icon">
+                  <svg viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                </div>
+                <div class="play-btn open-video" data-video="dQw4w9WgXcQ">
+                  <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+                </div>
+              </div>
+              <div class="slide-meta">
+                <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>18 mins</span>
+                <span><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>8.1k View</span>
+                <span><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>22 July 2025</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div>
+            <div class="slide-wrap"
+              data-title="How to Calculate Your EMI Effectively Today."
+              data-desc="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident similique sunt in culpa qui officia deserunt mollitia animi."
+              data-mins="31 mins" data-views="3.7k View" data-date="05 Aug 2025">
+              <div class="video-card">
+                <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80" alt="Slide 3" />
+                <div class="badge">Featured</div>
+                <div class="expand-icon">
+                  <svg viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                </div>
+                <div class="play-btn open-video" data-video="9bZkp7q19f0">
+                  <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+                </div>
+              </div>
+              <div class="slide-meta">
+                <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>31 mins</span>
+                <span><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>3.7k View</span>
+                <span><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>05 Aug 2025</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div>
+            <div class="slide-wrap"
+              data-title="Loan Against Property: Everything You Must Know."
+              data-desc="Nam libero tempore cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus omnis voluptas assumenda est omnis dolor repellendus temporibus autem quibusdam et aut officiis debitis rerum necessitatibus."
+              data-mins="42 mins" data-views="6.9k View" data-date="19 Sep 2025">
+              <div class="video-card">
+                <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80" alt="Slide 4" />
+                <div class="badge">Featured</div>
+                <div class="expand-icon">
+                  <svg viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                </div>
+                <div class="play-btn open-video" data-video="kJQP7kiw5Fk">
+                  <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+                </div>
+              </div>
+              <div class="slide-meta">
+                <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>42 mins</span>
+                <span><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>6.9k View</span>
+                <span><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>19 Sep 2025</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Nav: prev · dots · next -->
+        <div class="slider-nav">
+          <div class="nav-arrow" id="prev-btn">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </div>
+          <div class="dots-wrap" id="dots-wrap"></div>
+          <div class="nav-arrow" id="next-btn">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+
+      </div><!-- /.slider-col -->
+    </div><!-- /.featured-row -->
+  </div><!-- /.featured-section -->
+
+
+  <!-- ─── Video Gallery ─── -->
+  <div class="gallery-section">
+    <h3>Video Gallery</h3>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="home-loan">Home Loan</button>
+      <button class="tab-btn" data-tab="lap">Loan Against Property</button>
+      <button class="tab-btn" data-tab="emi">EMI Calculator</button>
+    </div>
+
+    <div class="tab-content" id="home-loan">
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&q=75" alt="" />
+            <div class="mini-play open-video" data-video="LXb3EKWsInQ"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          </div>
+          <div class="card-body">
+            <h4>How to Apply for a Home Loan Step by Step</h4>
+            <div class="card-meta">
+              <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>15 mins</span>
+              <span><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>4.3k Views</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=400&q=75" alt="" />
+            <div class="mini-play open-video" data-video="LXb3EKWsInQ"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          </div>
+          <div class="card-body">
+            <h4>Top 5 Mistakes to Avoid When Taking a Home Loan</h4>
+            <div class="card-meta">
+              <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>22 mins</span>
+              <span><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>7.1k Views</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=400&q=75" alt="" />
+            <div class="mini-play open-video" data-video="LXb3EKWsInQ"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          </div>
+          <div class="card-body">
+            <h4>Understanding Fixed vs Floating Interest Rates</h4>
+            <div class="card-meta">
+              <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>18 mins</span>
+              <span><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>2.8k Views</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="lap" style="display:none">
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=400&q=75" alt="" />
+            <div class="mini-play open-video" data-video="LXb3EKWsInQ"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          </div>
+          <div class="card-body">
+            <h4>What is Loan Against Property & How it Works</h4>
+            <div class="card-meta">
+              <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>28 mins</span>
+              <span><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>5.5k Views</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&q=75" alt="" />
+            <div class="mini-play open-video" data-video="LXb3EKWsInQ"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          </div>
+          <div class="card-body">
+            <h4>Eligibility Criteria for Loan Against Property</h4>
+            <div class="card-meta">
+              <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>20 mins</span>
+              <span><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>3.2k Views</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=75" alt="" />
+            <div class="mini-play open-video" data-video="LXb3EKWsInQ"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          </div>
+          <div class="card-body">
+            <h4>Documents Required for Property Loan Approval</h4>
+            <div class="card-meta">
+              <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>35 mins</span>
+              <span><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>1.9k Views</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="emi" style="display:none">
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&q=75" alt="" />
+            <div class="mini-play open-video" data-video="LXb3EKWsInQ"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          </div>
+          <div class="card-body">
+            <h4>How to Use an EMI Calculator Correctly</h4>
+            <div class="card-meta">
+              <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>12 mins</span>
+              <span><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>9.4k Views</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&q=75" alt="" />
+            <div class="mini-play open-video" data-video="LXb3EKWsInQ"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          </div>
+          <div class="card-body">
+            <h4>Reducing EMI Burden: Practical Tips & Tricks</h4>
+            <div class="card-meta">
+              <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>19 mins</span>
+              <span><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>6.2k Views</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=400&q=75" alt="" />
+            <div class="mini-play open-video" data-video="LXb3EKWsInQ"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          </div>
+          <div class="card-body">
+            <h4>Impact of Prepayment on Your Loan EMI</h4>
+            <div class="card-meta">
+              <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>25 mins</span>
+              <span><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>4.0k Views</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ─── Video Modal ─── -->
+  <div class="v-modal-overlay" id="videoModal">
+    <div class="v-modal">
+      <button class="v-modal-close" id="modalClose" aria-label="Close">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="ratio-box">
+        <iframe id="videoFrame" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script>
+    $(function () {
+
+      // ── Modal helpers ──
+      var $modal  = $('#videoModal');
+      var $frame  = $('#videoFrame');
+      var YT_BASE = 'https://www.youtube.com/embed/';
+
+      function openModal(videoId) {
+        $frame.attr('src', YT_BASE + videoId + '?autoplay=1&rel=0');
+        $modal.addClass('open');
+        $('body').css('overflow', 'hidden');
+      }
+
+      function closeModal() {
+        $frame.attr('src', '');           // stops playback immediately
+        $modal.removeClass('open');
+        $('body').css('overflow', '');
+      }
+
+      // Open on any play button
+      $(document).on('click', '.open-video', function (e) {
+        e.stopPropagation();
+        var vid = $(this).data('video');
+        if (vid) openModal(vid);
+      });
+
+      // Close on X button or overlay click
+      $('#modalClose').on('click', closeModal);
+      $modal.on('click', function (e) {
+        if ($(e.target).is($modal)) closeModal();
+      });
+
+      // Close on Escape key
+      $(document).on('keydown', function (e) {
+        if (e.key === 'Escape') closeModal();
+      });
+
+      // ── Slider ──
+      function updateText($center) {
+        $('#slide-title').text($center.data('title'));
+        $('#slide-desc').text($center.data('desc'));
+      }
+
+      var $slider = $('.video-slider').slick({
+        centerMode: true,
+        centerPadding: '120px',
+        slidesToShow: 1,
+        infinite: true,
+        speed: 450,
+        cssEase: 'cubic-bezier(0.4, 0, 0.2, 1)',
+        dots: true,
+        arrows: false,
+        appendDots: $('#dots-wrap'),
+        dotsClass: 'slick-dots',
+      });
+
+      updateText($('.video-slider .slick-center .slide-wrap'));
+
+      $slider.on('afterChange', function (e, slick, idx) {
+        updateText($(slick.$slides[idx]).find('.slide-wrap'));
+      });
+
+      $('#prev-btn').on('click', function () { $slider.slick('slickPrev'); });
+      $('#next-btn').on('click', function () { $slider.slick('slickNext'); });
+
+      // ── Tabs ──
+      $('.tab-btn').on('click', function () {
+        $('.tab-btn').removeClass('active');
+        $(this).addClass('active');
+        $('.tab-content').hide();
+        $('#' + $(this).data('tab')).show();
+      });
+    });
+  </script>
+</body>
+</html>

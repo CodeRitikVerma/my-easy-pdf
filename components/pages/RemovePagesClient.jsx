@@ -34,6 +34,8 @@ export default function RemovePagesClient() {
   const [isLoading,    setIsLoading]    = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [error,        setError]        = useState('');
+  const [dragSrc,      setDragSrc]      = useState(null);
+  const [dragOver,     setDragOver]     = useState(null);
 
   const handleFiles = async (files) => {
     const file = files.find(f => f.type === 'application/pdf');
@@ -52,6 +54,18 @@ export default function RemovePagesClient() {
 
   const togglePage = (index) =>
     setPages(prev => prev.map(p => p.index === index ? { ...p, selected: !p.selected } : p));
+
+  const handleDrop = (targetPos) => {
+    if (dragSrc === null || dragSrc === targetPos) return;
+    setPages(prev => {
+      const arr = [...prev];
+      const [removed] = arr.splice(dragSrc, 1);
+      arr.splice(targetPos, 0, removed);
+      return arr;
+    });
+    setDragSrc(null);
+    setDragOver(null);
+  };
 
   const selectedCount = pages.filter(p => p.selected).length;
 
@@ -110,56 +124,72 @@ export default function RemovePagesClient() {
         {pages.length > 0 && (
           <>
             <p className="text-muted small mb-3">
-              Click a page to mark it for removal (red border). Marked pages will be deleted from the output.
+              Click a page to mark it for removal (red border). Drag pages to reorder. Marked pages will be deleted from the output.
             </p>
 
             <Row className="g-3 mb-4">
-              {pages.map(page => (
-                <Col key={page.index} xs={6} sm={4} md={3}>
-                  <div
-                    onClick={() => togglePage(page.index)}
-                    onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); togglePage(page.index); } }}
-                    role="checkbox"
-                    aria-checked={page.selected}
-                    aria-label={`Page ${page.index}${page.selected ? ' — marked for removal' : ''}`}
-                    tabIndex={0}
-                    style={{
-                      cursor: 'pointer',
-                      borderRadius: 10,
-                      border: page.selected ? '3px solid #ef4444' : '2px solid #e5e7eb',
-                      background: page.selected ? '#fef2f2' : '#fff',
-                      padding: 6,
-                      position: 'relative',
-                      transition: 'border-color 0.15s, background 0.15s',
-                    }}
-                  >
-                    <img
-                      src={page.thumbnail}
-                      alt=""
+              {pages.map((page, i) => {
+                const isDropTarget = dragOver === i && dragSrc !== i;
+                return (
+                  <Col key={page.index} xs={6} sm={4} md={3}>
+                    <div
+                      draggable
+                      onDragStart={() => setDragSrc(i)}
+                      onDragOver={e => { e.preventDefault(); setDragOver(i); }}
+                      onDrop={e => { e.preventDefault(); handleDrop(i); }}
+                      onDragEnd={() => { setDragSrc(null); setDragOver(null); }}
+                      onClick={() => togglePage(page.index)}
+                      onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); togglePage(page.index); } }}
+                      role="checkbox"
+                      aria-checked={page.selected}
+                      aria-label={`Page ${page.index}${page.selected ? ' — marked for removal' : ''}`}
+                      tabIndex={0}
                       style={{
-                        width: '100%',
-                        borderRadius: 6,
-                        display: 'block',
-                        opacity: page.selected ? 0.5 : 1,
-                        transition: 'opacity 0.15s',
+                        cursor: 'grab',
+                        borderRadius: 10,
+                        border: isDropTarget
+                          ? '2px dashed #6366f1'
+                          : page.selected
+                            ? '3px solid #ef4444'
+                            : '2px solid #e5e7eb',
+                        background: isDropTarget ? '#eef2ff' : page.selected ? '#fef2f2' : '#fff',
+                        padding: 6,
+                        position: 'relative',
+                        transition: 'border-color 0.15s, background 0.15s',
+                        opacity: dragSrc === i ? 0.4 : 1,
                       }}
-                    />
-                    {page.selected && (
-                      <div style={{
-                        position: 'absolute', top: '50%', left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        background: 'rgba(239,68,68,0.85)', borderRadius: '50%',
-                        width: 36, height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      }}>
-                        <i className="bi bi-x-lg text-white" aria-hidden="true" style={{ fontSize: '1.1rem' }}></i>
+                    >
+                      <div style={{ position: 'absolute', top: 8, left: 8, color: '#9ca3af', lineHeight: 1 }}>
+                        <i className="bi bi-grip-vertical" style={{ fontSize: '0.85rem' }} aria-hidden="true"></i>
                       </div>
-                    )}
-                    <div className="text-center mt-1 small fw-semibold" style={{ color: page.selected ? '#ef4444' : palette.text.secondary }}>
-                      Page {page.index}
+                      <img
+                        src={page.thumbnail}
+                        alt=""
+                        style={{
+                          width: '100%',
+                          borderRadius: 6,
+                          display: 'block',
+                          opacity: page.selected ? 0.5 : 1,
+                          transition: 'opacity 0.15s',
+                        }}
+                      />
+                      {page.selected && (
+                        <div style={{
+                          position: 'absolute', top: '50%', left: '50%',
+                          transform: 'translate(-50%, -50%)',
+                          background: 'rgba(239,68,68,0.85)', borderRadius: '50%',
+                          width: 36, height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        }}>
+                          <i className="bi bi-x-lg text-white" aria-hidden="true" style={{ fontSize: '1.1rem' }}></i>
+                        </div>
+                      )}
+                      <div className="text-center mt-1 small fw-semibold" style={{ color: page.selected ? '#ef4444' : palette.text.secondary }}>
+                        Page {page.index}
+                      </div>
                     </div>
-                  </div>
-                </Col>
-              ))}
+                  </Col>
+                );
+              })}
             </Row>
 
             <div className="text-center">
