@@ -4,7 +4,7 @@ const BASE = 'https://myeasypdf.com';
 const PAGE = `${BASE}/faq`;
 
 export const metadata = {
-  title: 'FAQ — MyEasyPDF Help & Common Questions',
+  title: 'FAQ — Help & Common Questions',
   description:
     'Find answers to the most common questions about MyEasyPDF: privacy, file uploads, ' +
     'supported formats, page limits, and how each PDF tool works. 100% free, no account required.',

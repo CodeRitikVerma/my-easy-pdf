@@ -4,7 +4,7 @@ const BASE = 'https://myeasypdf.com';
 const PAGE = `${BASE}/privacy`;
 
 export const metadata = {
-  title: 'Privacy Policy — MyEasyPDF',
+  title: 'Privacy Policy',
   description:
     'MyEasyPDF privacy policy. All PDF processing runs entirely in your browser — ' +
     'your files are never uploaded, stored, or logged. No tracking, no data collection.',

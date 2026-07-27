@@ -4,7 +4,7 @@ const BASE = 'https://myeasypdf.com';
 const PAGE = `${BASE}/contact`;
 
 export const metadata = {
-  title: 'Contact MyEasyPDF — Bug Reports, Feature Requests & Support',
+  title: 'Contact Us — Bug Reports, Feature Requests & Support',
   description:
     'Get in touch with the MyEasyPDF developer. Report a bug, request a new feature, ' +
     'or ask for help. We typically respond within 24–48 hours.',

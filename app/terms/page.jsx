@@ -4,7 +4,7 @@ const BASE = 'https://myeasypdf.com';
 const PAGE = `${BASE}/terms`;
 
 export const metadata = {
-  title: 'Terms of Service — MyEasyPDF',
+  title: 'Terms of Service',
   description:
     'Terms of service for MyEasyPDF. Free to use for personal and commercial purposes. ' +
     'All PDF processing runs locally in your browser. No liability for file content.',

@@ -13,7 +13,19 @@
       "Bash(node -e \"require\\('./json_utils/seoContent.js'\\)\")",
       "Read(//d D:/projects/**)",
       "Bash(npx next *)",
-      "Bash(node -e \"import\\('./json_utils/seoContent.js'\\).then\\(m => console.log\\('OK:', Object.keys\\(m.default\\).length, 'entries'\\)\\).catch\\(e => { console.error\\(e\\); process.exit\\(1\\); }\\)\")"
+      "Bash(node -e \"import\\('./json_utils/seoContent.js'\\).then\\(m => console.log\\('OK:', Object.keys\\(m.default\\).length, 'entries'\\)\\).catch\\(e => { console.error\\(e\\); process.exit\\(1\\); }\\)\")",
+      "WebFetch(domain:myeasypdf.com)",
+      "WebFetch(domain:www.myeasypdf.com)",
+      "Bash(git log *)",
+      "WebSearch",
+      "Bash(pandoc -t markdown \"C:\\\\Users\\\\ritik.verma\\\\Downloads\\\\List of Empaneled Fintech with Category_126_03.07.2026 \\(1\\).docx\" -o \"C:\\\\Users\\\\RITIK~1.VER\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\D--projects-my-easy-pdf\\\\f4864d20-e7e6-46c1-82b5-db24fc6c694f\\\\scratchpad\\\\fintech_docx.md\")",
+      "PowerShell(Get-Command pandoc -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-Command python -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-Command soffice -ErrorAction SilentlyContinue)",
+      "PowerShell(python -c \"import docx; print\\('ok'\\)\" 2>&1)",
+      "Bash(mkdir -p \"C:\\\\Users\\\\RITIK~1.VER\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\D--projects-my-easy-pdf\\\\f4864d20-e7e6-46c1-82b5-db24fc6c694f\\\\scratchpad\\\\docx_unpacked\")",
+      "Bash(unzip -o -q \"C:\\\\Users\\\\ritik.verma\\\\Downloads\\\\List of Empaneled Fintech with Category_126_03.07.2026 \\(1\\).docx\" -d .)",
+      "Bash(python \"C:\\\\Users\\\\RITIK~1.VER\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\D--projects-my-easy-pdf\\\\f4864d20-e7e6-46c1-82b5-db24fc6c694f\\\\scratchpad\\\\gen_rows.py\")"
     ]
   }
 }

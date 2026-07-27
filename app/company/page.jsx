@@ -4,14 +4,22 @@ const BASE = 'https://myeasypdf.com';
 const PAGE = `${BASE}/company`;
 
 export const metadata = {
-  title: 'Company — MyEasyPDF',
+  title: 'Company',
   description: 'Learn about MyEasyPDF — our mission to provide free, private, browser-based PDF tools. Meet the developer, read our policies, and get in touch.',
+  keywords: [
+    'MyEasyPDF company', 'about MyEasyPDF', 'free PDF tools company',
+    'privacy-first PDF tools', 'PDF tools developer', 'browser-based PDF software',
+  ],
   alternates: { canonical: '/company' },
   openGraph: {
     url: PAGE,
     title: 'Company — MyEasyPDF',
     description: 'Free, private PDF tools built with care. Learn about our mission, values, and policies.',
     images: [{ url: `${BASE}/opengraph-image`, width: 1200, height: 630, alt: 'MyEasyPDF Company' }],
+  },
+  twitter: {
+    title: 'Company — MyEasyPDF',
+    description: 'Free, private PDF tools built with care. Learn about our mission, values, and policies.',
   },
 };
 

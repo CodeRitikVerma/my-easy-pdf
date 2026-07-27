@@ -4,7 +4,7 @@ const BASE = 'https://myeasypdf.com';
 const PAGE = `${BASE}/cookie-policy`;
 
 export const metadata = {
-  title: 'Cookie Policy — MyEasyPDF',
+  title: 'Cookie Policy',
   description:
     'MyEasyPDF cookie policy. We do not set tracking cookies. Google AdSense may set third-party cookies ' +
     'to serve relevant ads. Learn how to control or opt out of cookies.',

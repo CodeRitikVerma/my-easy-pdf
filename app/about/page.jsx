@@ -4,7 +4,7 @@ const BASE = 'https://myeasypdf.com';
 const PAGE = `${BASE}/about`;
 
 export const metadata = {
-  title: 'About MyEasyPDF — Free Privacy-First Browser PDF Tools',
+  title: 'About Us — Free Privacy-First Browser PDF Tools',
   description:
     'MyEasyPDF is a free, 100% browser-based PDF toolkit. Merge, split, rotate, sign, convert, ' +
     'and scan PDFs without uploading a single file. Your documents never leave your device.',
