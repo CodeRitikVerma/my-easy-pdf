@@ -2980,7 +2980,7 @@ function buildMemoryBook(){
   const esc = s => String(s == null ? '' : s);
   function imgTag(src, pos){
     const p = pos || POS_MAP[src] || 'center';
-    return '<img alt="" loading="lazy" src="' + esc(src) + '" style="object-position:' + esc(p) + '" onerror="var p=this.closest(\'.pg-photo\');if(p)p.classList.add(\'noimg\')">';
+    return '<img alt="" loading="eager" fetchpriority="high" src="' + esc(src) + '" style="object-position:' + esc(p) + '" onerror="var p=this.closest(\'.pg-photo\');if(p)p.classList.add(\'noimg\')">';
   }
   function doodle(n){
     const bank = [['→', 'right:14%;top:20%;transform:rotate(12deg)'], ['♥', 'left:15%;bottom:22%'],
