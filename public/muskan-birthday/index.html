@@ -123,6 +123,11 @@
   #earthIntro #hudSub{ margin-top:8px; font-family:'Inter',sans-serif; font-weight:300; font-size:clamp(10px,1.3vw,13px);
     letter-spacing:3px; text-transform:uppercase; color:#8fd3ff; opacity:0; transition:opacity 1s ease .1s; }
   #earthIntro #hudSub.show{ opacity:.7; }
+  #earthIntro #cityLabel{ position:fixed; top:16%; left:50%; transform:translateX(-50%) translateY(-8px);
+    z-index:4; pointer-events:none; font-family:'Playfair Display',serif; font-weight:600;
+    font-size:clamp(20px,3.4vw,34px); letter-spacing:2px; color:#fff7f8; opacity:0;
+    text-shadow:0 2px 30px rgba(143,211,255,0.25); transition:opacity 1.2s ease, transform 1.2s ease; }
+  #earthIntro #cityLabel.show{ opacity:.92; transform:translateX(-50%) translateY(0); }
 
   #earthIntro #replayBtn{ position:fixed; bottom:6%; left:50%; transform:translate(-50%,10px); z-index:5;
     padding:14px 34px; border-radius:999px; background:rgba(255,247,248,0.07); backdrop-filter:blur(14px);
@@ -780,6 +785,8 @@
     <p id="hudSub"></p>
   </div>
 
+  <div id="cityLabel">Bhiwani</div>
+
   <div id="curtain"></div>
 
   <button id="beginBtn">Start ✨</button>
@@ -1436,7 +1443,7 @@ body{ background:#060412; }
       <h4>Dear <span id="letterName">you</span>,</h4>
       <p id="letterBody" class="ink"></p>
       <p class="ink closer">Keep smiling, birthday girl. 🌷</p>
-      <div class="sign ink">— Your Bestie</div>
+      <div class="sign ink">— Ritik</div>
     </div>
     <button class="btn magnetic" id="letterNext" style="margin-top:22px;padding:12px 26px;">✧</button>
   </section>
@@ -1739,7 +1746,7 @@ function createMarker(lat,lon,color){
   return { group, core, ring };
 }
 const mumbai = createMarker(19.07,72.87,0xffd166);
-const delhi  = createMarker(28.6,77.2,0xffb877);
+const delhi  = createMarker(28.79,76.13,0xffb877);
 
 function updateRing(ring, activation, elapsed){
   if(activation<=0.01){ ring.material.opacity=0; return; }
@@ -1755,7 +1762,7 @@ function updateRing(ring, activation, elapsed){
 // LEFT -> RIGHT while descending  ->  come in from the RIGHT  ->  land at the
 // DESTINATION (a different point from the take-off).
 const mumbaiPos = llToVec3(19.07,72.87,R);
-const delhiPos  = llToVec3(28.6,77.2,R);
+const delhiPos  = llToVec3(28.79,76.13,R);
 const srcPos    = mumbaiPos;                      // take off from here (departure)
 const destPos   = delhiPos;                       // land here (arrival) — a different point
 
@@ -1971,6 +1978,7 @@ function updateHud(elapsed){
       hudHidden = true;
       hudTitle.classList.remove('show');
       hudSub.classList.remove('show');
+      cityLabel.classList.remove('show');
       if(clockTimer){ clearInterval(clockTimer); clockTimer = null; }
     }
     return;
@@ -2005,6 +2013,7 @@ const T = {
 
 const curtain = document.getElementById('curtain');
 const replayBtn = document.getElementById('replayBtn');
+const cityLabel = document.getElementById('cityLabel');
 
 let startTime=null, lastNow=null, rafId=null;
 let mumbaiAct=0, delhiAct=0, mumbaiTriggered=false, delhiTriggered=false, loopTriggered=false;
@@ -2023,6 +2032,7 @@ function reset(){
   plane.visible=false; plane.scale.set(0,0,0);
   mumbai.core.material.opacity=0.2; mumbai.ring.material.opacity=0;
   delhi.core.material.opacity=0.15; delhi.ring.material.opacity=0;
+  cityLabel.classList.remove('show');
   bursts.forEach(b=>scene.remove(b.sprite)); bursts.length=0;
   if(replayBtn) replayBtn.classList.remove('visible');
 }
@@ -2125,7 +2135,7 @@ function tick(now){
     leadParticle.material.opacity = eased < 0.99 ? 0.8 : 0;
 
     if(eased>=0.82){ delhiAct = clamp01((eased-0.82)/0.18); }
-    if(eased>=0.999 && !delhiTriggered){ delhiTriggered=true; spawnBurst(delhiPos,0xffb877,elapsed); }
+    if(eased>=0.999 && !delhiTriggered){ delhiTriggered=true; spawnBurst(delhiPos,0xffb877,elapsed); cityLabel.classList.add('show'); }
   }
   delhi.core.material.opacity = 0.15+delhiAct*0.7;
   updateRing(delhi.ring, delhiAct, elapsed);
@@ -2244,7 +2254,7 @@ let soundOn = true, audioCtx = null;
 function actx(){ if(!audioCtx){ try{ audioCtx = new (window.AudioContext||window.webkitAudioContext)(); }catch(e){ audioCtx=null; } } return audioCtx; }
 /* browsers block audio until a user gesture — the "Begin" button click unlocks it */
 const bgMusic = document.getElementById('bgMusic');
-if (bgMusic) bgMusic.volume = 0.35;
+if (bgMusic) bgMusic.volume = 0.18;
 if (bgMusic) bgMusic.addEventListener('ended', () => {
   bgMusic.src = 'second-song.mp3';
   bgMusic.play().catch(()=>{});
@@ -2944,6 +2954,13 @@ function buildMemoryBook(){
   }));
   const POS_MAP = {};
   raw.forEach(m => { const src = m.image || m.photo; if (src && m.pos) POS_MAP[src] = m.pos; });
+
+  // warm the browser's cache for every photo up front so a page flip never has to
+  // wait on a network fetch or JPEG decode mid-animation (that's what made it feel choppy)
+  const allSrcs = new Set();
+  mems.forEach(m => { if (m.image) allSrcs.add(m.image); (m.images || []).forEach(u => allSrcs.add(u)); });
+  allSrcs.forEach(src => { const img = new Image(); img.decoding = 'async'; img.src = src; });
+
   const LAYS = ['full','photo-note','polaroid','film','fullbleed','collage'];
   const total = mems.length;
   const pages = mems.map((m, i) => ({ mem: m, num: i + 1, layout: m.layout || LAYS[i % LAYS.length] }));
@@ -2980,7 +2997,7 @@ function buildMemoryBook(){
   const esc = s => String(s == null ? '' : s);
   function imgTag(src, pos){
     const p = pos || POS_MAP[src] || 'center';
-    return '<img alt="" loading="eager" fetchpriority="high" src="' + esc(src) + '" style="object-position:' + esc(p) + '" onerror="var p=this.closest(\'.pg-photo\');if(p)p.classList.add(\'noimg\')">';
+    return '<img alt="" loading="eager" decoding="async" fetchpriority="high" src="' + esc(src) + '" style="object-position:' + esc(p) + '" onerror="var p=this.closest(\'.pg-photo\');if(p)p.classList.add(\'noimg\')">';
   }
   function doodle(n){
     const bank = [['→', 'right:14%;top:20%;transform:rotate(12deg)'], ['♥', 'left:15%;bottom:22%'],
@@ -3046,10 +3063,9 @@ function buildMemoryBook(){
   function rustle(){ if (soundOn){ tone(2100, .1, 'sawtooth', .018); tone(880, .14, 'triangle', .014, .03); } }
   function animFlip(from, to, done){
     if (RM || !window.gsap){ flip.style.transform = 'rotateY(' + to + 'deg)'; setTimeout(done, 40); return; }
-    const o = { r: from };
-    gsap.to(o, { r: to, duration: 1.05, ease: 'power2.inOut',
-      onUpdate(){ flip.style.transform = 'rotateY(' + o.r + 'deg)';
-        flipSh.style.opacity = Math.sin((Math.abs(o.r - from) / 180) * Math.PI) * 0.7; },
+    gsap.killTweensOf(flip);
+    gsap.fromTo(flip, { rotationY: from }, { rotationY: to, duration: 1.05, ease: 'power2.inOut', force3D: true,
+      onUpdate(){ flipSh.style.opacity = Math.sin(this.progress() * Math.PI) * 0.7; },
       onComplete(){ flipSh.style.opacity = 0; done(); } });
   }
   function turn(dir){
