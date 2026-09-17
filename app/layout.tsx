@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
-import Header from '@/components/fragments/Header';
-import Footer from '@/components/fragments/Footer';
+import SiteChrome from '@/components/fragments/SiteChrome';
 import ScrollToTop from '@/components/fragments/ScrollToTop';
 import RangeInputFill from '@/components/common/RangeInputFill';
 
@@ -203,9 +202,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <RangeInputFill />
         <ScrollToTop />
         <div className="d-flex flex-column min-vh-100">
-          <Header />
-          <main id="main-content" className="flex-grow-1">{children}</main>
-          <Footer />
+          <SiteChrome>{children}</SiteChrome>
         </div>
       </body>
     </html>
