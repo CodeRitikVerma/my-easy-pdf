@@ -152,6 +152,31 @@
   @media (max-width:640px){ #earthIntro #hud{ bottom:7%; } #earthIntro #replayBtn{ padding:12px 26px; font-size:12.5px; bottom:5%; }
     #earthIntro #beginBtn{ padding:13px 30px; font-size:12.5px; } }
 
+  #earthIntro #passwordGate{ position:fixed; inset:0; z-index:30; display:flex; align-items:center; justify-content:center;
+    background:rgba(2,3,10,0.72); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+    opacity:1; transition:opacity .3s ease; }
+  #earthIntro #passwordGate.hidden{ opacity:0; pointer-events:none; }
+  #earthIntro #passwordGate form{ width:min(320px,86vw); padding:32px 28px; border-radius:20px;
+    background:rgba(255,247,248,0.06); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+    border:1px solid rgba(255,247,248,0.2); text-align:center; }
+  #earthIntro #passwordGate label{ display:block; font-family:'Inter',sans-serif; font-weight:500; font-size:12.5px;
+    letter-spacing:1.5px; text-transform:uppercase; color:#8fd3ff; margin-bottom:16px; }
+  #earthIntro #passwordGate input{ width:100%; padding:12px 16px; border-radius:999px; border:1px solid rgba(255,247,248,0.25);
+    background:rgba(2,3,10,0.4); color:#fff7f8; font-family:'Inter',sans-serif; font-size:14px; letter-spacing:2px;
+    text-align:center; outline:none; }
+  #earthIntro #passwordGate input:focus{ border-color:rgba(143,211,255,0.6); box-shadow:0 0 0 3px rgba(143,211,255,0.15); }
+  #earthIntro #passwordError{ margin-top:10px; min-height:16px; font-size:12px; color:#ff8fab; opacity:0; transition:opacity .2s ease; }
+  #earthIntro #passwordError.show{ opacity:1; }
+  #earthIntro .password-actions{ display:flex; gap:10px; justify-content:center; margin-top:20px; }
+  #earthIntro .password-actions button{ padding:10px 24px; border-radius:999px; font-family:'Inter',sans-serif;
+    font-weight:500; font-size:12.5px; letter-spacing:1px; cursor:pointer; transition:background .25s, transform .25s; }
+  #earthIntro #passwordSubmit{ background:rgba(143,211,255,0.18); border:1px solid rgba(143,211,255,0.4); color:#fff7f8; }
+  #earthIntro #passwordSubmit:hover{ background:rgba(143,211,255,0.3); transform:translateY(-2px); }
+  #earthIntro #passwordCancel{ background:transparent; border:1px solid rgba(255,247,248,0.25); color:#fff7f8; }
+  #earthIntro #passwordCancel:hover{ background:rgba(255,247,248,0.1); }
+  #earthIntro #passwordGate form.shake{ animation: passwordShake .4s ease; }
+  @keyframes passwordShake{ 10%,90%{transform:translateX(-2px);} 20%,80%{transform:translateX(4px);} 30%,50%,70%{transform:translateX(-8px);} 40%,60%{transform:translateX(8px);} }
+
   .heading-font { font-family: 'Playfair Display', serif; }
   .script-font { font-family: 'Great Vibes', cursive; }
 
@@ -790,6 +815,18 @@
   <div id="curtain"></div>
 
   <button id="beginBtn">Start ✨</button>
+
+  <div id="passwordGate" class="hidden">
+    <form id="passwordForm" autocomplete="off">
+      <label for="passwordInput">Enter password to begin</label>
+      <input type="password" id="passwordInput" placeholder="••••••••" autocomplete="off" />
+      <div id="passwordError">Incorrect password, try again</div>
+      <div class="password-actions">
+        <button type="button" id="passwordCancel">Cancel</button>
+        <button type="submit" id="passwordSubmit">Unlock</button>
+      </div>
+    </form>
+  </div>
 </div>
 
 <div class="grain"></div>
@@ -2162,14 +2199,57 @@ function tick(now){
 
 const beginBtn = document.getElementById('beginBtn');
 const storyEl = document.getElementById('story');
+const passwordGate = document.getElementById('passwordGate');
+const passwordForm = document.getElementById('passwordForm');
+const passwordInput = document.getElementById('passwordInput');
+const passwordError = document.getElementById('passwordError');
+const passwordCancel = document.getElementById('passwordCancel');
+const SITE_PASSWORD = 'Galu2003';
+
+function beginJourney(){
+  if (window.unlockAudio) window.unlockAudio();
+  beginBtn.classList.add('hidden');
+  if (storyEl) storyEl.inert = false;
+  startJourney();
+}
+
 if (beginBtn){
   if (storyEl) storyEl.inert = true;
   beginBtn.addEventListener('click', () => {
-    if (window.unlockAudio) window.unlockAudio();
-    beginBtn.classList.add('hidden');
-    if (storyEl) storyEl.inert = false;
-    startJourney();
-  }, { once: true });
+    if (passwordGate){
+      passwordGate.classList.remove('hidden');
+      passwordError.classList.remove('show');
+      if (passwordInput){
+        passwordInput.value = '';
+        setTimeout(() => passwordInput.focus(), 50);
+      }
+    } else {
+      beginJourney();
+    }
+  });
+
+  if (passwordForm){
+    passwordForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (passwordInput.value === SITE_PASSWORD){
+        passwordGate.classList.add('hidden');
+        beginJourney();
+      } else {
+        passwordError.classList.add('show');
+        passwordForm.classList.remove('shake');
+        void passwordForm.offsetWidth;
+        passwordForm.classList.add('shake');
+        passwordInput.value = '';
+        passwordInput.focus();
+      }
+    });
+  }
+
+  if (passwordCancel){
+    passwordCancel.addEventListener('click', () => {
+      passwordGate.classList.add('hidden');
+    });
+  }
 } else {
   startJourney();
 }
